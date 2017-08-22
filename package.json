@@ -1,0 +1,22 @@
+{
+  "name": "bslint",
+  "version": "0.0.1",
+  "description": "A linter for BrightScript",
+  "bin": {
+    "bslint": "./bin/bslint.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willowtreeapps/bslint.git"
+  },
+  "author": "Matt VanNuys",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/willowtreeapps/bslint/issues"
+  },
+  "homepage": "https://github.com/willowtreeapps/bslint#readme",
+  "dependencies": {
+    "brs-lang": "git+https://github.com/willowtreeapps/brs-lang.git#feature/bslint",
+    "optionator": "^0.8.2"
+  }
+}
