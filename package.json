@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/willowtreeapps/bslint#readme",
   "dependencies": {
-    "brs-lang": "git+https://github.com/willowtreeapps/brs-lang.git#feature/bslint",
+    "brs-lang": "willowtreeapps/brs-lang.git#v1.0.0-alpha.1",
     "optionator": "^0.8.2"
   }
 }
