@@ -5,6 +5,7 @@
   "bin": {
     "bslint": "./bin/bslint.js"
   },
+  "main": "./lib/api.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/willowtreeapps/bslint.git"
