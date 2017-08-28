@@ -1,6 +1,6 @@
 {
   "name": "bslint",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.1",
   "description": "A linter for BrightScript",
   "bin": {
     "bslint": "./bin/bslint.js"
@@ -18,6 +18,6 @@
   "homepage": "https://github.com/willowtreeapps/bslint#readme",
   "dependencies": {
     "brs-lang": "git+https://github.com/willowtreeapps/brs-lang.git#v1.0.0-alpha.1",
-    "optionator": "^0.8.2"
+    "optionator": "0.8.2"
   }
 }
