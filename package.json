@@ -18,10 +18,13 @@
   "homepage": "https://github.com/willowtreeapps/bslint#readme",
   "dependencies": {
     "brs-lang": "git+https://github.com/willowtreeapps/brs-lang.git#v1.0.0-alpha.2",
+    "chalk": "2.1.0",
     "js-yaml": "3.9.1",
     "minimatch": "3.0.4",
     "optionator": "0.8.2",
     "path-is-inside": "1.0.2",
-    "strip-json-comments": "2.0.1"
+    "strip-ansi": "4.0.0",
+    "strip-json-comments": "2.0.1",
+    "text-table": "0.2.0"
   }
 }
