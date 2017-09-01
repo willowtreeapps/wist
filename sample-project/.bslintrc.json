@@ -1,0 +1,6 @@
+{
+    "rules": {
+        "no-stop": "warn",
+        "no-print": "warn"
+    }
+}
