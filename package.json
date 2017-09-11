@@ -1,6 +1,6 @@
 {
   "name": "bslint",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "A linter for BrightScript",
   "bin": {
     "bslint": "./bin/bslint.js"
