@@ -1,0 +1,10 @@
+title: BSLint - A linter for BrightScript
+description: A linter tool for identifying and reporting on patterns in BrightScript.
+baseurl: "/bslint" # the subpath of your site, e.g. /blog
+url: "https://willowtreeapps.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: willowtreeapps
+github_username:  willowtreeapps
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-octicons
