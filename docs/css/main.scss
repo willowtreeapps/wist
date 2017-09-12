@@ -1,0 +1,75 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "_custom";
+@import "bootstrap";
+
+.page-content {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.site-navigation {
+    border-bottom: 1px solid $gray-200;
+}
+
+.site-footer {
+    border-top: 1px solid $gray-200;
+    padding: 1rem 0;
+}
+
+.footer-heading {
+    font-size: 18px;
+    margin-bottom: .75rem;
+}
+
+.highlighter-rouge {
+    background-color: $gray-100;
+}
+
+.highlight {
+    padding: .5rem 1rem;
+    border: 1px solid $gray-300;
+}
+
+code.highlighter-rouge {
+    border: 1px solid $gray-300;
+}
+
+ul > li:not(:last-child) {
+    margin-bottom: .5rem;
+}
+
+.social-media-list {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.social-media-list .icon {
+    padding-right: 5px;
+}
+
+.social-media-list a:hover {
+    text-decoration: none;
+}
+
+.social-media-list a:hover .username {
+    text-decoration: underline;
+}
+
+.icon > svg {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon > svg path {
+    fill: $gray-600;
+}
+
+.octicon {
+    display: inline-block;
+    vertical-align: text-top;
+    fill: currentColor;
+}

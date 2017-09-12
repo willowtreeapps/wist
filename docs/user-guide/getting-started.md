@@ -1,7 +1,7 @@
 ---
-title: Getting Started with ESLint
+title: Getting Started with BSLint
 layout: doc
-edit_link: https://github.com/eslint/eslint/edit/master/docs/user-guide/getting-started.md
+edit_link: https://github.com/willowtreeapps/bslint/edit/master/docs/user-guide/getting-started.md
 ---
 
 # Getting Started with BSLint

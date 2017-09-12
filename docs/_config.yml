@@ -6,5 +6,8 @@ twitter_username: willowtreeapps
 github_username:  willowtreeapps
 markdown: kramdown
 theme: minima
+sass:
+  sass_dir: "_assets/stylesheets"
 plugins:
   - jekyll-octicons
+  - bootstrap
