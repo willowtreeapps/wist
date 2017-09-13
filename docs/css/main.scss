@@ -97,10 +97,23 @@ ul > li:not(:last-child) {
 .sidebar-nav {
     position: sticky;
     top: 5.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.sidebar-nav-item {
+    margin-bottom: 1rem;
 }
 
 .sidebar-subnav {
-    list-style-type: square;
     color: $gray-900;
-    padding-left: 48px;
+    display: block;
+}
+
+.sidebar-subnav > li:not(:last-child) {
+    margin-bottom: .25rem;
+}
+
+.sidebar-subnav a {
+    color: $gray-900;
 }

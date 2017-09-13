@@ -1,16 +1,16 @@
-<nav class="col-12 col-md-3 col-xl-2 sidebar">
-    <ul class="nav flex-column sidebar-nav">
+<div class="col-12 col-md-3 col-xl-2 sidebar">
+    <nav class="sidebar-nav">
         {% for heading in site.data.sidebar[page.sidebar] %}
-            <li class="nav-item">
-                <a href="{{ site.baseurl }}{{ heading.url }}" class="nav-link">{{ heading.title }}</a>
-                <ul class="sidebar-subnav">
+            <div class="sidebar-nav-item">
+                <a href="{{ site.baseurl }}{{ heading.url }}">{{ heading.title }}</a>
+                <ul class="nav sidebar-subnav">
                     {% for item in heading.children %}
                         <li>
                             <a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
                         </li>
                     {% endfor %}
                 </ul>
-            </li>
+            </div>
         {% endfor %}
-    </ul>
-</nav>
+    </nav>
+</div>
