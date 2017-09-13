@@ -1,21 +1,19 @@
-<footer class="site-footer">
-  <div class="container">
-    <h2 class="footer-heading">{{ site.title | escape }}</h2>
+<footer class="site-footer bg-light container-fluid p-3 p-md-5">
+  <h2 class="footer-heading">{{ site.title | escape }}</h2>
 
-    <ul class="social-media-list">
-      {% if site.github_username %}
-      <li>
-        {% include icon-github.html username=site.github_username %}
-      </li>
-      {% endif %}
+  <ul class="social-media-list">
+    {% if site.github_username %}
+    <li>
+      {% include icon-github.html username=site.github_username %}
+    </li>
+    {% endif %}
 
-      {% if site.twitter_username %}
-      <li>
-        {% include icon-twitter.html username=site.twitter_username %}
-      </li>
-      {% endif %}
-    </ul>
-  </div>
+    {% if site.twitter_username %}
+    <li>
+      {% include icon-twitter.html username=site.twitter_username %}
+    </li>
+    {% endif %}
+  </ul>
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

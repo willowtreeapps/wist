@@ -85,3 +85,22 @@ ul > li:not(:last-child) {
 .navbar-brand > svg path {
     fill: theme-color("primary");
 }
+
+.sidebar {
+    margin-top: -1rem;
+    margin-bottom: -1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-right: 1px solid $gray-200;
+}
+
+.sidebar-nav {
+    position: sticky;
+    top: 5.25rem;
+}
+
+.sidebar-subnav {
+    list-style-type: square;
+    color: $gray-900;
+    padding-left: 48px;
+}

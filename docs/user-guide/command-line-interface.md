@@ -2,6 +2,7 @@
 title: Command Line Interface
 layout: doc
 edit_link: https://github.com/willowtreeapps/bslint/edit/master/docs/user-guide/command-line-interface.md
+sidebar: "user-guide"
 ---
 
 # Command Line Interface
@@ -35,7 +36,7 @@ Basic configuration:
 
 ### Basic configuration
 
-#### `-f`, `--format`
+`-f`, `--format`
 
 This option specifies the output format for the console. Possible formats are:
 
@@ -55,18 +56,16 @@ When specified, the given format is output to the console. If you'd like to save
 
 This saves the output into the `results.txt` file.
 
-### Miscellaneous
-
-#### `--init`
+`--init`
 
 This option will start config initialization wizard. It's designed to help new users quickly create .bslintrc file by answering a few questions, choosing a popular style guide, or inspecting your source files and attempting to automatically generate a suitable configuration.
 
 The resulting configuration file will be created in the current directory.
 
-#### `-h`, `--help`
+`-h`, `--help`
 
 This option outputs the help menu, displaying all of the available options. All other options are ignored when this is present.
 
-#### `-v`, `--verbose`
+`-v`, `--verbose`
 
 This option outputs debugging information to the console. This information is useful when you're seeing a problem and having a hard time pinpointing it. The BSLint team may ask for this debugging information to help solve bugs.

@@ -1,0 +1,13 @@
+user-guide:
+  - title: Getting Started
+    url: /user-guide/getting-started
+    children:
+      - title: "Installation and Usage"
+        url: /user-guide/getting-started#installation-and-usage
+      - title: "Configuration"
+        url: /user-guide/getting-started#configuration
+  - title: Command Line Interface
+    url: /user-guide/command-line-interface
+    children:
+      - title: "Options"
+        url: /user-guide/command-line-interface#options

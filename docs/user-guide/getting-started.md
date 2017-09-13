@@ -2,6 +2,7 @@
 title: Getting Started with BSLint
 layout: doc
 edit_link: https://github.com/willowtreeapps/bslint/edit/master/docs/user-guide/getting-started.md
+sidebar: "user-guide"
 ---
 
 # Getting Started with BSLint
