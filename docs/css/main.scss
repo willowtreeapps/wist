@@ -48,7 +48,7 @@ ul > li:not(:last-child) {
 }
 
 .social-media-list .icon {
-    padding-right: 5px;
+    padding-right: 4px;
 }
 
 .social-media-list a:hover {
@@ -72,4 +72,16 @@ ul > li:not(:last-child) {
     display: inline-block;
     vertical-align: text-top;
     fill: currentColor;
+}
+
+.navbar-brand > svg {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 4px;
+}
+
+.navbar-brand > svg path {
+    fill: theme-color("primary");
 }
