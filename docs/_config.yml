@@ -11,3 +11,6 @@ sass:
 plugins:
   - jekyll-octicons
   - bootstrap
+
+# Custom variables
+current_version: 1.0.0-alpha.3

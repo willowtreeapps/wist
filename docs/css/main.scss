@@ -6,12 +6,11 @@
 @import "bootstrap";
 
 body {
-    padding-top: 109px;
+    padding-top: 57px;
 }
 
 .page-content {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: calc(52px + 1rem);
 }
 
 .site-navigation {
@@ -99,10 +98,6 @@ ul > li:not(:last-child) {
 }
 
 @include media-breakpoint-up(md) {
-    body {
-        padding-top: 57px;
-    }
-
     #sidebar-nav {
         display: block !important;
         border: 0;

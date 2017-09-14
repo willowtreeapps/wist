@@ -1,0 +1,51 @@
+---
+layout: default
+homepage: true
+---
+
+<div class="jumbotron bg-primary text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-3">BSLint</h1>
+                <p class="lead mb-4">
+                    BSLint is an open source linting utility for BrighScript. Its goal is to provide a flexible linting toolkit that you can
+                    use to build awesome Roku experiences. <a href="#integrations" class="text-info">See how</a> BSLint is being used by us,
+                    and feel free to <a href="{{ site.baseurl }}/developer-guide/contributing" class="text-info">contribute your own ideas</a>.
+                </p>
+
+                <hr class="my-4">
+                <p class="lead">
+                    <a href="{{ site.baseurl }}/user-guide/getting-started" class="btn btn-info btn-lg" role="button">Get started</a>
+                </p>
+
+                <p class="mb-0">
+                    <small>Currently v{{ site.current_version }}</small>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 id="integrations" class="text-center text-secondary">Projects Using BSLint</h2>
+    <hr class="my-4">
+
+    <div class="card-deck">
+        {% for integrator in site.data.integrators %}
+            <div class="card mb-3">
+                <a href="{{ integrator.url }}" title="{{ integrator.name }}" class="bg-primary text-white py-1">
+                    {% octicon package height:64 class:card-img-top %}
+                </a>
+    
+                <div class="card-body">
+                    <h4 class="card-title text-center">
+                        <a href="{{ integrator.url }}" title="{{ integrator.name }}">{{ integrator.name }}</a>
+                    </h4>
+    
+                    <p class="card-text">{{ integrator.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

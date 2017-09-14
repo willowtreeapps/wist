@@ -5,6 +5,9 @@
   "bin": {
     "bslint": "./bin/bslint.js"
   },
+  "scripts": {
+    "version": "./build/update-docs-version.sh"
+  },
   "main": "./lib/api.js",
   "repository": {
     "type": "git",
