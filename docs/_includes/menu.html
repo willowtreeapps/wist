@@ -1,38 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light site-navigation sticky-top">
-  <a class="navbar-brand" href="{{ site.url }}{{ site.baseurl }}/">
+<nav class="navbar navbar-expand navbar-light bg-light site-navigation fixed-top">
+  <a class="navbar-brand mr-2 mr-md-4" href="{{ site.url }}{{ site.baseurl }}/">
     {% include logos/wt-logo.svg %}
     BSLint
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bslint-navbar" aria-controls="bslint-navbar" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse justify-content-end" id="bslint-navbar">
-    <ul class="navbar-nav mr-4">
-      <li class="nav-item dropdown">
-        <a href="{{ site.url }}{{ site.baseurl }}/user-guide" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">User guide<span class="caret"></span></a>
-        <div class="dropdown-menu dropdown-menu-right" role="menu">
-          <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}/user-guide/getting-started">Getting Started</a>
-          <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}/user-guide/configuring">Configuring bslint</a>
-          <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}/user-guide/command-line-interface">Command Line Interface</a>
-          <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}/rules/">Rules</a>
-          <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}/user-guide/formatters">Formatters</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a href="{{ site.url }}{{ site.baseurl }}/developer-guide" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Developer guide<span class="caret"></span></a>
-        <div class="dropdown-menu dropdown-menu-right" role="menu">
-          <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}/developer-guide/architecture">Architecture</a>
-          <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}/developer-guide/contributing">Contributing</a>
-          <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}/developer-guide/source-code">Get the Source Code</a>
-          <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}/developer-guide/development-environment">Set up a Development Environment</a>
-          <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}/developer-guide/unit-tests">Run the Unit Tests</a>
-          <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}/developer-guide/working-with-rules">Working with Rules</a>
-          <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}/developer-guide/working-with-custom-formatters">Working with Custom Formatters</a>
-          <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}/maintainer-guide">Maintainer guide</a>
-        </div>
-      </li>
-      <li clas="nav-item"><a href="{{ site.url }}{{ site.baseurl }}/about/" class="nav-link">About</a></li>
+  <div class="navbar-nav-scroll" id="bslint-navbar">
+    <ul class="navbar-nav flex-row">
+      <li class="nav-item"><a href="{{ site.url }}{{ site.baseurl }}/user-guide/getting-started" class="nav-link">User guide</a></li>
+      <li class="nav-item"><a href="{{ site.url }}{{ site.baseurl }}/developer-guide/getting-started" class="nav-link">Developer guide</a></li>
+      <li class="nav-item"><a href="{{ site.url }}{{ site.baseurl }}/examples" class="nav-link">Examples</a></li>
+      <li class="nav-item"><a href="{{ site.url }}{{ site.baseurl }}/about" class="nav-link">About</a></li>
     </ul>
   </div>
 </nav>

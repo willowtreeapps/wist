@@ -5,6 +5,10 @@
 @import "_custom";
 @import "bootstrap";
 
+body {
+    padding-top: 109px;
+}
+
 .page-content {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -12,16 +16,18 @@
 
 .site-navigation {
     border-bottom: 1px solid $gray-200;
+
+    &.navbar-light .navbar-brand {
+        color: theme-color("primary");
+
+        @include hover-focus {
+            color: theme-color("secondary");
+        }
+    }
 }
 
-.site-footer {
-    border-top: 1px solid $gray-200;
-    padding: 1rem 0;
-}
-
-.footer-heading {
-    font-size: 18px;
-    margin-bottom: .75rem;
+#bslint-navbar ul.navbar-nav > li:not(:last-child) {
+    margin-bottom: 0;
 }
 
 .highlighter-rouge {
@@ -41,33 +47,6 @@ ul > li:not(:last-child) {
     margin-bottom: .5rem;
 }
 
-.social-media-list {
-    list-style: none;
-    margin-left: 0;
-    padding-left: 0;
-}
-
-.social-media-list .icon {
-    padding-right: 4px;
-}
-
-.social-media-list a:hover {
-    text-decoration: none;
-}
-
-.social-media-list a:hover .username {
-    text-decoration: underline;
-}
-
-.icon > svg {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.icon > svg path {
-    fill: $gray-600;
-}
-
 .octicon {
     display: inline-block;
     vertical-align: text-top;
@@ -79,41 +58,81 @@ ul > li:not(:last-child) {
     height: 30px;
     display: inline-block;
     vertical-align: top;
-    margin-right: 4px;
-}
-
-.navbar-brand > svg path {
-    fill: theme-color("primary");
+    margin-right: .25rem;
 }
 
 .sidebar {
-    margin-top: -1rem;
-    margin-bottom: -1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    border-right: 1px solid $gray-200;
+    position: fixed;
+    top: 57px;
+    z-index: 1983; /* The Best Year (tm) */
 }
 
-.sidebar-nav {
-    position: sticky;
-    top: 5.25rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+.sidebar-toggler {
+    display: block;
+    text-align: right;
+    padding: .25rem 1rem;
+    margin-right: -15px;
+    margin-left: -15px;
 }
 
-.sidebar-nav-item {
+#sidebar-nav {
+    padding: 1rem;
+    border: 1px solid $gray-200;
+    background-color: $gray-100;
+}
+
+#sidebar-nav > .sidebar-nav-item:not(:last-child) {
     margin-bottom: 1rem;
 }
 
 .sidebar-subnav {
     color: $gray-900;
     display: block;
+
+    & > li:not(:last-child) {
+        margin-bottom: .25rem;
+    }
+
+    a {
+        color: $gray-900;
+    }
 }
 
-.sidebar-subnav > li:not(:last-child) {
-    margin-bottom: .25rem;
+@include media-breakpoint-up(md) {
+    body {
+        padding-top: 57px;
+    }
+
+    #sidebar-nav {
+        display: block !important;
+        border: 0;
+        padding: .5rem;
+        background-color: transparent;
+    }
+
+    .sidebar {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        border-right: 1px solid $gray-200;
+        bottom: 0;
+        left: 0;
+    }
+
+    .sidebar-toggler {
+        display: none !important;
+    }
 }
 
-.sidebar-subnav a {
-    color: $gray-900;
+@include media-breakpoint-down(lg) {
+    #bslint-navbar {
+        max-width: 100%;
+        height: 2.5rem;
+        overflow: hidden;
+
+        .navbar-nav {
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
 }
