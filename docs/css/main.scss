@@ -29,17 +29,16 @@ body {
     margin-bottom: 0;
 }
 
-.highlighter-rouge {
+pre {
+    padding: .5rem 1rem;
+    border: 1px solid $gray-300;
     background-color: $gray-100;
 }
 
-.highlight {
-    padding: .5rem 1rem;
-    border: 1px solid $gray-300;
-}
-
-code.highlighter-rouge {
-    border: 1px solid $gray-300;
+code {
+    background-color: theme-color("dark");
+    color: theme-color("light");
+    border-radius: $border-radius;
 }
 
 ul > li:not(:last-child) {
