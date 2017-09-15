@@ -11,3 +11,8 @@ user-guide:
     children:
       - title: "Options"
         url: /user-guide/command-line-interface#options
+  - title: "Rules"
+    url: /user-guide/rules
+    children:
+      - title: "Best Practices"
+        url: /user-guide/rules#best-practices
