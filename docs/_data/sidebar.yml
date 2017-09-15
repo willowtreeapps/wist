@@ -2,17 +2,27 @@ user-guide:
   - title: Getting Started
     url: /user-guide/getting-started
     children:
-      - title: "Installation and Usage"
+      - title: Installation and Usage
         url: /user-guide/getting-started#installation-and-usage
-      - title: "Configuration"
+      - title: Configuration
         url: /user-guide/getting-started#configuration
   - title: Command Line Interface
     url: /user-guide/command-line-interface
     children:
-      - title: "Options"
+      - title: Options
         url: /user-guide/command-line-interface#options
-  - title: "Rules"
+  - title: Rules
     url: /user-guide/rules
     children:
-      - title: "Best Practices"
+      - title: Best Practices
         url: /user-guide/rules#best-practices
+developer-guide:
+  - title: Getting Started
+    url: /developer-guide/getting-started
+    children:
+      - title: Prerequisites
+        url: /developer-guide/getting-started#prerequisites
+      - title: Build Scripts
+        url: /developer-guide/getting-started#build-scripts
+      - title: Directory Structure
+        url: /developer-guide/getting-started#directory-structure

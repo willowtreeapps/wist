@@ -9,8 +9,12 @@ body {
     padding-top: 57px;
 }
 
-.page-content {
-    padding-top: calc(52px + 1rem);
+.page-content [id]:before { 
+    display: block;
+    content: " ";
+    margin-top: -57px;
+    height: 57px;
+    visibility: hidden; 
 }
 
 .site-navigation {
