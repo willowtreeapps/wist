@@ -9,12 +9,12 @@ body {
     padding-top: 57px;
 }
 
-.page-content [id]:before { 
+.page-content h2[id]:before {
     display: block;
     content: " ";
     margin-top: -57px;
-    height: 57px;
-    visibility: hidden; 
+    height: calc(1rem + 57px);
+    visibility: hidden;
 }
 
 .site-navigation {
