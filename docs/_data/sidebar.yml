@@ -22,7 +22,7 @@ developer-guide:
     children:
       - title: Prerequisites
         url: /developer-guide/getting-started#prerequisites
-      - title: Build Scripts
-        url: /developer-guide/getting-started#build-scripts
+      - title: Running the Docs
+        url: /developer-guide/getting-started#running-the-docs
       - title: Directory Structure
         url: /developer-guide/getting-started#directory-structure

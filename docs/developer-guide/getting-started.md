@@ -31,17 +31,18 @@ Now when you run `bslint`, it will be running your local copy and showing your c
 
 **Note:** It's a good idea to re-rerun `npm install` whenever you pull from the main repository to ensure you have the latest development dependencies.
 
-## Build Scripts
-BSLint has several build scripts that help with various parts of development.
+## Running the Docs
 
-### npm run docs
-Launches a local instance of Jekyll that allows you to make changes to the docs and view them at [http://localhost:4000/bslint/](http://localhost:4000/bslint/).
+`npm run docs`
+
+This command launches an instance of Jekyll that allows you to view a local copy of the docs, found at [http://localhost:4000/bslint/](http://localhost:4000/bslint/).
 
 ## Directory Structure
 
 The BSLint directory and file structure is as follows:
 
 * `bin` - executable files that are available when BSLint is installed
+* `build` - build scripts that help with various parts of development
 * `docs` - documentation for the project
 * `lib` - contains the source code
     * `formatters` - all source files defining formatters
