@@ -26,3 +26,5 @@ developer-guide:
         url: /developer-guide/getting-started#running-the-docs
       - title: Directory Structure
         url: /developer-guide/getting-started#directory-structure
+  - title: Contributing
+    url: /developer-guide/contributing
