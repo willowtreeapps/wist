@@ -5,6 +5,9 @@
   "bin": {
     "bslint": "./bin/bslint.js"
   },
+  "scripts": {
+		"test": "ava"
+	},
   "main": "./lib/api.js",
   "repository": {
     "type": "git",
@@ -26,5 +29,12 @@
     "strip-ansi": "4.0.0",
     "strip-json-comments": "2.0.1",
     "text-table": "0.2.0"
+  },
+  "devDependencies": {
+    "ava": "0.22.0"
+  },
+  "ava": {
+    "files": [ "test/**/*.js" ],
+    "source": [ "lib/**/*.js" ]
   }
 }
