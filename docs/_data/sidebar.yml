@@ -31,3 +31,5 @@ developer-guide:
     children:
       - title: Code of Conduct
         url: /developer-guide/contributing/code-of-conduct
+      - title: License Grant
+        url: /developer-guide/contributing#license-grant
