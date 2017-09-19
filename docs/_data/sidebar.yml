@@ -28,3 +28,6 @@ developer-guide:
         url: /developer-guide/getting-started#directory-structure
   - title: Contributing
     url: /developer-guide/contributing
+    children:
+      - title: Code of Conduct
+        url: /developer-guide/contributing/code-of-conduct

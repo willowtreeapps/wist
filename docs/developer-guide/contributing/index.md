@@ -7,4 +7,4 @@ sidebar: "developer-guide"
 
 # Contributing
 
-We need to come up with some governance around how to contribute to this project (SLAs, Code of Conduct, Issue templates, etc).
+## [Code of Conduct](code-of-conduct)
