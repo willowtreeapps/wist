@@ -31,5 +31,7 @@ developer-guide:
     children:
       - title: Code of Conduct
         url: /developer-guide/contributing/code-of-conduct
+      - title: Reporting Bugs
+        url: /developer-guide/contributing#reporting-bugs
       - title: License Grant
         url: /developer-guide/contributing#license-grant
