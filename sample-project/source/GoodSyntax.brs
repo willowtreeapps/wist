@@ -1,10 +1,3 @@
-'*************************************************************
-'** Hello World example
-'** Copyright (c) 2015 Roku, Inc.  All rights reserved.
-'** Use of the Roku Platform is subject to the Roku SDK Licence Agreement:
-'** https://docs.roku.com/doc/developersdk/en-us
-'*************************************************************
-
 sub DefaultMain()
     print "in showChannelSGScreen"
     'Indicate this is a Roku SceneGraph application'
@@ -12,8 +5,8 @@ sub DefaultMain()
     m.port = CreateObject("roMessagePort")
     screen.setMessagePort(m.port)
 
-    'Create a scene and load /components/helloworld.xml'
-    scene = screen.CreateScene("HelloWorld")
+    'Create a scene and load /components/sampleproject.xml'
+    scene = screen.CreateScene("SampleProject")
     screen.show()
 
     stop
