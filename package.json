@@ -6,8 +6,10 @@
     "bslint": "./bin/bslint.js"
   },
   "scripts": {
-		"test": "ava"
-	},
+		"test": "ava",
+    "version": "./build/update-docs-version.sh",
+    "docs": "./build/run-docs.sh"
+  },
   "main": "./lib/api.js",
   "repository": {
     "type": "git",

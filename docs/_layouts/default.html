@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  {% include head.html %}
+
+  <body>
+    {% include menu.html %}
+
+    <main aria-label="Content">
+        {{ content }}
+    </main>
+
+    {% include footer.html %}
+  </body>
+</html>

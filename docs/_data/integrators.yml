@@ -1,0 +1,7 @@
+- name: Ukor
+  description: "A build management tool to manage Roku channel builds. It has support for build flavors, automated unit test runs, and linting."
+  url: https://github.com/willowtreeapps/ukor
+
+- name: Atom-BSLint
+  description: "A plugin for <a href=\"https://atom.io\">Atom Editor</a> that provides support for linting of BrightScript files in real-time."
+  url: https://github.com/willowtreeapps/atom-bslint

@@ -1,0 +1,40 @@
+user-guide:
+  - title: Getting Started
+    url: /user-guide/getting-started
+    children:
+      - title: Installation and Usage
+        url: /user-guide/getting-started#installation-and-usage
+      - title: Configuration
+        url: /user-guide/getting-started#configuration
+  - title: Command Line Interface
+    url: /user-guide/command-line-interface
+    children:
+      - title: Options
+        url: /user-guide/command-line-interface#options
+  - title: Rules
+    url: /user-guide/rules
+    children:
+      - title: Best Practices
+        url: /user-guide/rules#best-practices
+developer-guide:
+  - title: Getting Started
+    url: /developer-guide/getting-started
+    children:
+      - title: Prerequisites
+        url: /developer-guide/getting-started#prerequisites
+      - title: Running the Docs
+        url: /developer-guide/getting-started#running-the-docs
+      - title: Directory Structure
+        url: /developer-guide/getting-started#directory-structure
+  - title: Contributing
+    url: /developer-guide/contributing
+    children:
+      - title: Code of Conduct
+        url: /developer-guide/contributing/code-of-conduct
+      - title: Reporting Bugs
+        url: /developer-guide/contributing#reporting-bugs
+      - title: License Grant
+        url: /developer-guide/contributing#license-grant
+about:
+  - title: About BSLint
+    url: /about
