@@ -1,7 +1,7 @@
 ---
-title: Contributing
+title: Code of Conduct
 layout: doc
-edit_link: https://github.com/willowtreeapps/bslint/edit/master/docs/developer-guide/code-of-conduct.md
+edit_link: https://github.com/willowtreeapps/bslint/edit/master/docs/developer-guide/contributing/code-of-conduct.md
 sidebar: "developer-guide"
 ---
 

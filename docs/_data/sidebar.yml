@@ -35,3 +35,6 @@ developer-guide:
         url: /developer-guide/contributing#reporting-bugs
       - title: License Grant
         url: /developer-guide/contributing#license-grant
+about:
+  - title: About BSLint
+    url: /about

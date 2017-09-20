@@ -1,7 +1,7 @@
 ---
 title: Contributing
 layout: doc
-edit_link: https://github.com/willowtreeapps/bslint/edit/master/docs/developer-guide/contributing.md
+edit_link: https://github.com/willowtreeapps/bslint/edit/master/docs/developer-guide/contributing/index.md
 sidebar: "developer-guide"
 ---
 
