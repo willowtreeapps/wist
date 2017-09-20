@@ -1,0 +1,37 @@
+// Bootstrap Grid only
+//
+// Includes relevant variables and mixins for the flexbox grid
+// system, as well as the generated predefined classes (e.g., `.col-sm-4`).
+
+//
+// Box sizing, responsive, and more
+//
+
+@at-root {
+  @-ms-viewport { width: device-width; }
+}
+
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+
+//
+// Grid mixins
+//
+
+@import "bootstrap/mixins/breakpoints";
+@import "bootstrap/mixins/grid-framework";
+@import "bootstrap/mixins/grid";
+
+@import "bootstrap/grid";
+@import "bootstrap/utilities/flex";
