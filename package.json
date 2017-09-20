@@ -6,7 +6,7 @@
     "bslint": "./bin/bslint.js"
   },
   "scripts": {
-		"test": "ava",
+    "test": "ava",
     "version": "./build/update-docs-version.sh",
     "docs": "./build/run-docs.sh"
   },
@@ -36,7 +36,11 @@
     "ava": "0.22.0"
   },
   "ava": {
-    "files": [ "test/**/*.js" ],
-    "source": [ "lib/**/*.js" ]
+    "files": [
+      "test/**/*.js"
+    ],
+    "source": [
+      "lib/**/*.js"
+    ]
   }
 }
