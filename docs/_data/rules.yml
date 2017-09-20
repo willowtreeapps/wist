@@ -1,0 +1,8 @@
+categories:
+  - name: Best Practices
+    description: 'These rules relate to better ways of doing things to help you avoid problems:'
+    rules:
+      - name: no-stop
+        description: disallow `stop` statements
+      - name: no-print
+        description: disallow `print` and `?` statements

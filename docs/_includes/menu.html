@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand navbar-light bg-light site-navigation fixed-top">
+  <a class="navbar-brand mr-2 mr-md-4" href="{{ site.baseurl }}/">
+    {% include logos/wt-logo.svg %}
+    BSLint
+  </a>
+
+  <div class="navbar-nav-scroll" id="bslint-navbar">
+    <ul class="navbar-nav flex-row">
+      {% for item in site.data.menu %}
+        <li class="nav-item"><a href="{{ site.baseurl }}{{ item.url }}" class="nav-link">{{ item.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
