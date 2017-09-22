@@ -22,7 +22,7 @@ $grays: (
   900: $gray-900
 );
 
-$blue:    #3f8b99;
+$blue:    #1c77c3;
 $indigo:  #6610f2;
 $purple:  #6f42c1;
 $pink:    #e83e8c;
@@ -30,7 +30,7 @@ $red:     #dc3545;
 $orange:  #fd7e14;
 $yellow:  #ffc107;
 $green:   #28a745;
-$teal:    #7bd2bf;
+$teal:    #1bd9c4;
 $cyan:    #3f8b99;
 
 $colors: (
@@ -53,7 +53,7 @@ $theme-colors: (
   primary: $teal,
   secondary: $gray-600,
   success: $green,
-  info: $cyan,
+  info: $blue,
   warning: $yellow,
   danger: $red,
   light: $gray-100,
@@ -69,3 +69,5 @@ $dropdown-link-hover-bg:      map-get($theme-colors, "primary");
 
 $dropdown-link-active-color:  $gray-900;
 $dropdown-link-active-bg:     $gray-200;
+
+$link-color:  $blue;

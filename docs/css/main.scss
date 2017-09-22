@@ -40,8 +40,8 @@ pre {
 }
 
 code {
-    background-color: theme-color("secondary");
-    color: theme-color("light");
+    background-color: $gray-200;
+    color: theme-color("dark");
     border-radius: $border-radius;
 }
 
@@ -55,7 +55,7 @@ ul > li:not(:last-child) {
     fill: currentColor;
 }
 
-.navbar-brand > svg {
+#wt-logo {
     width: 30px;
     height: 30px;
     display: inline-block;
@@ -81,14 +81,14 @@ ul > li:not(:last-child) {
     padding: 1rem;
     border: 1px solid $gray-200;
     background-color: $gray-100;
-}
 
-#sidebar-nav > .sidebar-nav-item:not(:last-child) {
-    margin-bottom: 1rem;
+    & > .sidebar-nav-item:not(:last-child) {
+        margin-bottom: 1rem;
+    }
 }
 
 .sidebar-subnav {
-    color: $gray-900;
+    color: theme-color("dark");
     display: block;
 
     & > li:not(:last-child) {
@@ -96,8 +96,14 @@ ul > li:not(:last-child) {
     }
 
     a {
-        color: $gray-900;
+        color: theme-color("dark");
     }
+}
+
+#home-blurb a {
+    background: theme-color("dark");
+    color: $white;
+    padding: 0.1rem 0.25rem;
 }
 
 @include media-breakpoint-up(md) {
