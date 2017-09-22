@@ -11,7 +11,9 @@ BSLint is hosted at [GitHub](https://github.com/willowtreeapps/bslint) and uses 
 
 If you simply want to create a local copy of the source to play with, you can clone the main repository using this command:
 
-    git clone git://github.com/willowtreeapps/bslint.git
+```
+git clone git://github.com/willowtreeapps/bslint.git
+```
 
 If you're planning on contributing to BSLint, then it's a good idea to fork the repository. You can find instructions for forking a repository at [http://help.github.com/fork-a-repo/](http://help.github.com/fork-a-repo/). After forking the BSLint repository, you'll want to create a local copy of your fork.
 
@@ -24,8 +26,10 @@ Before you can get started developing, you'll need to have a couple of things in
 
 Once you have a local copy and have Node.JS and npm installed, you'll need to install the BSLint dependencies:
 
-    cd bslint
-    npm install
+```
+cd bslint
+npm install
+```
 
 Now when you run `bslint`, it will be running your local copy and showing your changes.
 
@@ -33,7 +37,13 @@ Now when you run `bslint`, it will be running your local copy and showing your c
 
 ## Running the Docs
 
-`npm run docs`
+In order to run the docs you will need these additional prerequisites:
+
+* [Ruby](https://www.ruby-lang.org/en/documentation/installation/) (version 2.1 or higher)
+* [Jekyll](https://jekyllrb.com/docs/installation/)
+* [Bundler](http://bundler.io/)
+
+Now you can `npm run docs`.
 
 This command launches an instance of Jekyll that allows you to view a local copy of the docs, found at [http://localhost:4000/bslint/](http://localhost:4000/bslint/).
 
