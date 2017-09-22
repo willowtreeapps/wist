@@ -3,15 +3,15 @@ layout: default
 homepage: true
 ---
 
-<div class="jumbotron bg-primary text-white">
+<div class="jumbotron bg-primary">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <h1 class="display-3">BSLint</h1>
-                <p class="lead mb-4">
+                <p id="home-blurb" class="lead mb-4">
                     BSLint is an open source linting utility for BrighScript. Its goal is to provide a flexible linting toolkit that you can
-                    use to build awesome Roku experiences. <a href="#integrations" class="text-info">See how</a> BSLint is being used by us,
-                    and feel free to <a href="{{ site.baseurl }}/developer-guide/contributing" class="text-info">contribute your own ideas</a>.
+                    use to build awesome Roku experiences. <a href="#integrations-title">See how</a> BSLint is being used by us,
+                    and feel free to <a href="{{ site.baseurl }}/developer-guide/contributing">contribute your own ideas</a>.
                 </p>
 
                 <hr class="my-4">
@@ -28,19 +28,19 @@ homepage: true
 </div>
 
 <div class="container">
-    <h2 id="integrations" class="text-center text-secondary">Projects Using BSLint</h2>
+    <h2 id="integrations-title" class="text-center">Projects Using BSLint</h2>
     <hr class="my-4">
 
     <div class="card-deck">
         {% for integrator in site.data.integrators %}
             <div class="card mb-3">
-                <a href="{{ integrator.url }}" title="{{ integrator.name }}" class="bg-primary text-white py-1">
+                <a href="{{ integrator.url }}" title="{{ integrator.name }}" class="bg-dark text-white py-1">
                     {% octicon package height:64 class:card-img-top %}
                 </a>
     
                 <div class="card-body">
                     <h4 class="card-title text-center">
-                        <a href="{{ integrator.url }}" title="{{ integrator.name }}">{{ integrator.name }}</a>
+                        <a class="text-dark" href="{{ integrator.url }}" title="{{ integrator.name }}">{{ integrator.name }}</a>
                     </h4>
     
                     <p class="card-text">{{ integrator.description }}</p>

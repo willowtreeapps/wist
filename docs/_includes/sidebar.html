@@ -12,7 +12,7 @@
                 <ul class="nav sidebar-subnav">
                     {% for item in heading.children %}
                         <li>
-                            <a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
+                            <a class="sidebar-nav-item" href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
                         </li>
                     {% endfor %}
                 </ul>

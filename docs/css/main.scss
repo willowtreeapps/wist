@@ -9,12 +9,22 @@ body {
     padding-top: 57px;
 }
 
-.page-content h2[id]:before {
+:target:before {
+    content: "";
     display: block;
-    content: " ";
-    margin-top: -57px;
-    height: calc(1rem + 57px);
-    visibility: hidden;
+    height: calc(57px + 1rem);
+    margin-top: calc(-57px - 1rem);
+}
+
+.page-content {
+    padding-top: 4rem;
+
+    :target:before {
+        content: "";
+        display: block;
+        height: calc(109px + 1rem);
+        margin-top: calc(-109px - 1rem);
+    }
 }
 
 .site-navigation {
@@ -40,8 +50,8 @@ pre {
 }
 
 code {
-    background-color: theme-color("secondary");
-    color: theme-color("light");
+    background-color: $gray-200;
+    color: theme-color("dark");
     border-radius: $border-radius;
 }
 
@@ -55,7 +65,7 @@ ul > li:not(:last-child) {
     fill: currentColor;
 }
 
-.navbar-brand > svg {
+#wt-logo {
     width: 30px;
     height: 30px;
     display: inline-block;
@@ -75,20 +85,24 @@ ul > li:not(:last-child) {
     padding: .25rem 1rem;
     margin-right: -15px;
     margin-left: -15px;
+
+    &.bg-dark .octicon {
+        fill: theme-color("primary");
+    }
 }
 
 #sidebar-nav {
     padding: 1rem;
     border: 1px solid $gray-200;
     background-color: $gray-100;
-}
 
-#sidebar-nav > .sidebar-nav-item:not(:last-child) {
-    margin-bottom: 1rem;
+    & > .sidebar-nav-item:not(:last-child) {
+        margin-bottom: 1rem;
+    }
 }
 
 .sidebar-subnav {
-    color: $gray-900;
+    color: theme-color("dark");
     display: block;
 
     & > li:not(:last-child) {
@@ -96,8 +110,14 @@ ul > li:not(:last-child) {
     }
 
     a {
-        color: $gray-900;
+        color: theme-color("dark");
     }
+}
+
+#home-blurb a {
+    background: theme-color("dark");
+    color: $white;
+    padding: 0.1rem 0.25rem;
 }
 
 @include media-breakpoint-up(md) {
@@ -118,6 +138,13 @@ ul > li:not(:last-child) {
 
     .sidebar-toggler {
         display: none !important;
+    }
+    
+    .page-content {
+        :target:before {
+            height: calc(57px + 1rem);
+            margin-top: calc(-57px - 1rem);
+        }
     }
 }
 
