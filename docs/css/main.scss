@@ -9,15 +9,21 @@ body {
     padding-top: 57px;
 }
 
+:target:before {
+    content: "";
+    display: block;
+    height: calc(57px + 1rem);
+    margin-top: calc(-57px - 1rem);
+}
+
 .page-content {
     padding-top: 4rem;
 
-    h2[id]:before {
+    :target:before {
+        content: "";
         display: block;
-        content: " ";
-        margin-top: -57px;
-        height: calc(1rem + 57px);
-        visibility: hidden;
+        height: calc(109px + 1rem);
+        margin-top: calc(-109px - 1rem);
     }
 }
 
@@ -132,6 +138,13 @@ ul > li:not(:last-child) {
 
     .sidebar-toggler {
         display: none !important;
+    }
+    
+    .page-content {
+        :target:before {
+            height: calc(57px + 1rem);
+            margin-top: calc(-57px - 1rem);
+        }
     }
 }
 
