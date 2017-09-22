@@ -57,7 +57,7 @@ $theme-colors: (
   warning: $yellow,
   danger: $red,
   light: $gray-100,
-  dark: $gray-800
+  dark: $gray-700
 );
 
 $enable-rounded:    false;
@@ -70,4 +70,5 @@ $dropdown-link-hover-bg:      map-get($theme-colors, "primary");
 $dropdown-link-active-color:  $gray-900;
 $dropdown-link-active-bg:     $gray-200;
 
+$body-color:  $gray-700;
 $link-color:  $blue;
