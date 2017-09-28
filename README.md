@@ -2,7 +2,7 @@
 
 BSLint is a tool for identifying and reporting on patterns found in BrightScript code, with the goal of making code more consistent and avoiding bugs.
 
-* BSLint uses [brs-lang](https://github.com/willowtreeapps/brs-lang) for BrightScript parsing.
+* BSLint uses [ANTLR](https://www.antlr.org) for BrightScript parsing.
 * BSLint uses an AST to evaluate patterns in code.
 
 ## Installation and Usage
