@@ -1,10 +1,10 @@
 const antlr4 = require('antlr4'),
       FileStream = antlr4.FileStream,
       InputStream = antlr4.InputStream,
-      BrightScriptLexer = require('./antlr/parser/BrightScriptLexer').BrightScriptLexer,
-      BrightScriptParser = require('./antlr/parser/BrightScriptParser').BrightScriptParser,
-      SyntaxErrorListener = require('./antlr/SyntaxErrorListener'),
-      BrightScriptEventGenerator = require('./antlr/BrightScriptEventGenerator');
+      BrightScriptLexer = require('./antlr/BrightScriptLexer').BrightScriptLexer,
+      BrightScriptParser = require('./antlr/BrightScriptParser').BrightScriptParser,
+      SyntaxErrorListener = require('./SyntaxErrorListener'),
+      BrightScriptEventGenerator = require('./BrightScriptEventGenerator');
 
 function parse(stream) {
     const lexer = new BrightScriptLexer(stream),
