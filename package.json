@@ -6,14 +6,25 @@
     "bslint": "./bin/bslint.js"
   },
   "scripts": {
+    "docs": "./shell-scripts/run-docs.sh",
+    "event-generator": "node ./bin/event-generator.js",
+    "grammar": "./gradlew clean generateGrammarSource",
     "test": "ava",
-    "version": "./build/update-docs-version.sh",
-    "docs": "./build/run-docs.sh"
+    "test:watch": "ava --watch",
+    "version": "./shell-scripts/update-docs-version.sh"
   },
+  "pre-commit": [
+    "grammar",
+    "event-generator"
+  ],
   "main": "./lib/api.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/willowtreeapps/bslint.git"
+  },
+  "engines": {
+    "node": ">=7.6.0",
+    "npm": ">=5.3.0"
   },
   "author": "Matt VanNuys",
   "license": "Apache-2.0",
@@ -22,7 +33,6 @@
   },
   "homepage": "https://github.com/willowtreeapps/bslint#readme",
   "dependencies": {
-    "brs-lang": "git+https://github.com/willowtreeapps/brs-lang.git#v1.0.0-alpha.3",
     "chalk": "2.1.0",
     "js-yaml": "3.9.1",
     "minimatch": "3.0.4",
@@ -33,7 +43,9 @@
     "text-table": "0.2.0"
   },
   "devDependencies": {
-    "ava": "0.22.0"
+    "antlr4": "4.7.0",
+    "ava": "0.22.0",
+    "fs-extra": "4.0.1"
   },
   "ava": {
     "files": [

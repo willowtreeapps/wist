@@ -1,0 +1,22 @@
+apply plugin: "antlr"
+
+repositories {
+    jcenter()
+}
+
+sourceSets {
+    main {
+        antlr {
+            srcDirs = ['grammar']
+        }
+    }
+}
+
+generateGrammarSource {
+    outputDirectory = file("parser/antlr") 
+    arguments += ["-visitor", "-Dlanguage=JavaScript", "-long-messages"]
+}
+
+dependencies {
+    antlr("org.antlr:antlr4:4.7")
+}
