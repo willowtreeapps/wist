@@ -4,9 +4,9 @@ const antlr4 = require('antlr4'),
       BrightScriptLexer = require('./antlr/BrightScriptLexer').BrightScriptLexer,
       BrightScriptParser = require('./antlr/BrightScriptParser').BrightScriptParser,
       SyntaxErrorListener = require('./SyntaxErrorListener'),
-      BrightScriptEventGenerator = require('./BrightScriptEventGenerator');
+      BrightScriptEventListener = require('./BrightScriptEventListener');
 
-function parse(stream) {
+function parse(stream, eventListener) {
     const lexer = new BrightScriptLexer(stream),
         tokenStream = new antlr4.CommonTokenStream(lexer),
         parser = new BrightScriptParser(tokenStream),
@@ -19,25 +19,29 @@ function parse(stream) {
     parser.addErrorListener(errorListener);
     parser.buildParseTrees = true;
 
+    const ast = parser.startRule();
+    antlr4.tree.ParseTreeWalker.DEFAULT.walk(eventListener, ast);
+
     return {
-        ast: parser.startRule(),
+        ast: ast,
         errors: errorListener.messages
     }
 }
 
-module.exports = {
+class Parser {
+    constructor(emitter) {
+        this.eventListener = new BrightScriptEventListener(emitter);
+    }
+
     parseFile(path) {
         let stream = new FileStream(path);
-        return parse(stream);
-    },
+        return parse(stream, this.eventListener);
+    }
 
     parseText(text) {
         let stream = new InputStream(text);
-        return parse(stream);
-    },
-
-    traverse(ast, emitter) {
-        const eventGenerator = new BrightScriptEventGenerator(emitter);
-        antlr4.tree.ParseTreeWalker.DEFAULT.walk(eventGenerator, ast);
+        return parse(stream, this.eventListener);
     }
-};
+}
+
+module.exports = Parser;

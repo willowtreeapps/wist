@@ -89,3 +89,11 @@ sub Main()
       end if
   end while
 end sub
+
+sub foo()
+  a = 'foo'
+end sub
+
+sub foo()
+  a = 'foo'
+end sub

@@ -62,3 +62,6 @@ typings/
 
 # Gradle
 .gradle/
+
+# ANTLR
+.antlr/
