@@ -1,11 +1,26 @@
 const BrightScriptEventGenerator = require('./BrightScriptEventGenerator'),
     BrightScriptParser = require('./antlr/BrightScriptParser').BrightScriptParser;
 
+const FunctionType = {
+    Void: 'Void',
+    Dynamic: 'Dynamic'
+};
+
 const isFunction = (context) => isSub(context) || context.ruleIndex === BrightScriptParser.RULE_anonymousFunctionDeclaration || context.ruleIndex === BrightScriptParser.RULE_functionDeclaration;
 const isSub = (context) => context.ruleIndex === BrightScriptParser.RULE_anonymousSubDeclaration || context.ruleIndex === BrightScriptParser.RULE_subDeclaration;
-const typeText = (text) => {
-    let first = text[0].toUpperCase();
-    return `${first}${text.slice(1).toLowerCase()}`;
+const typeText = (token, context) => {
+    if (isSub(context) || (token && token.getText().toUpperCase() === 'VOID')) {
+       return FunctionType.Void;
+    }
+    
+    if (token != null) {
+        let text = token.getText(),
+            first = text[0].toUpperCase();
+            
+        return `${first}${text.slice(1).toLowerCase()}`;
+    }
+
+    return FunctionType.Dynamic;
 };
 
 class BrightScriptEventListener extends BrightScriptEventGenerator {
@@ -38,24 +53,13 @@ class BrightScriptEventListener extends BrightScriptEventGenerator {
 
         const expression = context.children[1];
         const baseTypeToken = functionContext.children.find(child => child.ruleIndex === BrightScriptParser.RULE_baseType);
-        const isVoid = (baseTypeToken && baseTypeToken.getText().toUpperCase() === 'VOID') || isSub(functionContext);
-        
-        let baseType;
-        if (isSub(functionContext)) { // Sub is always 'Void'
-            baseType = 'Void';
-        }
-        else if (baseTypeToken != null) { // It's a function with a return type declared
-            baseType = typeText(baseTypeToken.getText());
-        }
-        else { // It's a function with no return type declared, which defaults to 'Dynamic'
-            baseType = 'Dynamic';
-        }
+        const baseType = typeText(baseTypeToken, functionContext);
 
-        if (isVoid && expression != null) {
-            context.parser.notifyErrorListeners(`return value unexpected for function with return type of '${baseType}'`);
+        if (baseType === FunctionType.Void && expression != null) {
+            context.parser.notifyErrorListeners(`return value unexpected for function with return type of '${baseType}'`, context.start);
         }
-        else if (!isVoid && expression == null) {
-            context.parser.notifyErrorListeners(`return value expected for function with return type of '${baseType}'`);
+        else if (baseType !== FunctionType.Void && expression == null) {
+            context.parser.notifyErrorListeners(`return value expected for function with return type of '${baseType}'`, context.start);
         }
     }
 
@@ -67,7 +71,7 @@ class BrightScriptEventListener extends BrightScriptEventGenerator {
                 let name = child.getText();
 
                 if (functionExists(name)) {
-                    child.parser.notifyErrorListeners(`function '${name}' is declared multiple times`);
+                    child.parser.notifyErrorListeners(`function '${name}' is declared multiple times`, context.start);
                 }
                 else {
                     this.functionNames.push(name);

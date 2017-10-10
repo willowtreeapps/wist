@@ -100,12 +100,12 @@ function foo()
   return
 end function
 
-sub bar() as string
-  a = "foo"
-  return
-end sub
-
 sub bar()
   a = "foo"
   return a
+end sub
+
+sub bar() as string
+  a = "foo"
+  return
 end sub
