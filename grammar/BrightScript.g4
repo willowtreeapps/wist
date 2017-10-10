@@ -115,11 +115,11 @@ functionDeclaration
     ;
 
 anonymousSubDeclaration
-    : SUB parameterList? (AS baseType)? endOfLine+ block* END SUB
+    : SUB parameterList? endOfLine+ block* END SUB
     ;
 
 subDeclaration
-    : SUB untypedIdentifier parameterList? (AS baseType)? endOfLine+ block* END SUB
+    : SUB untypedIdentifier parameterList? endOfLine+ block* END SUB
     ;
 
 parameterList

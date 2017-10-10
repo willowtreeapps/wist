@@ -90,10 +90,22 @@ sub Main()
   end while
 end sub
 
-sub foo()
-  a = 'foo'
+function foo() as string
+  a = "foo"
+  return
+end function
+
+function foo()
+  a = "foo"
+  return
+end function
+
+sub bar() as string
+  a = "foo"
+  return
 end sub
 
-sub foo()
-  a = 'foo'
+sub bar()
+  a = "foo"
+  return a
 end sub
