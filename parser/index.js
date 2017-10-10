@@ -42,6 +42,10 @@ class Parser {
         let stream = new InputStream(text);
         return parse(stream, this.eventListener);
     }
+
+    traverse(ast) {
+        antlr4.tree.ParseTreeWalker.DEFAULT.walk(this.eventListener, ast);
+    }
 }
 
 module.exports = Parser;
