@@ -89,3 +89,23 @@ sub Main()
       end if
   end while
 end sub
+
+function foo() as string
+  a = "foo"
+  return
+end function
+
+function foo()
+  a = "foo"
+  return
+end function
+
+sub bar() as string
+  a = "foo"
+  return
+end sub
+
+sub bar()
+  a = "foo"
+  return a
+end sub
