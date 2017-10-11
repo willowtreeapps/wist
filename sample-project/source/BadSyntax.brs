@@ -97,7 +97,9 @@ end function
 
 function foo()
   a = "foo"
-  return
+  b = function()
+    c = "baz"
+  end function
 end function
 
 sub bar()
