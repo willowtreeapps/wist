@@ -65,3 +65,6 @@ typings/
 
 # ANTLR
 .antlr/
+
+# IntelliJ IDEA
+.idea/
