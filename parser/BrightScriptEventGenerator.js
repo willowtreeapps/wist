@@ -47,6 +47,9 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     enterIfThenElseStatement(context) {
         this.emitter.emit('ifThenElseStatement:enter', context);
     }
+    enterIfSingleLineStatement(context) {
+        this.emitter.emit('ifSingleLineStatement:enter', context);
+    }
     enterIfBlockStatement(context) {
         this.emitter.emit('ifBlockStatement:enter', context);
     }
@@ -187,6 +190,9 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     }
     exitIfThenElseStatement(context) {
         this.emitter.emit('ifThenElseStatement:exit', context);
+    }
+    exitIfSingleLineStatement(context) {
+        this.emitter.emit('ifSingleLineStatement:exit', context);
     }
     exitIfBlockStatement(context) {
         this.emitter.emit('ifBlockStatement:exit', context);
