@@ -66,8 +66,12 @@ forEachStatement
     ;
 
 ifThenElseStatement
-    : IF expression THEN? blockStatement (ELSE blockStatement)?
+    : ifSingleLineStatement
     | ifBlockStatement ifElseIfBlockStatement* ifElseBlockStatement? END IF
+    ;
+
+ifSingleLineStatement
+    : IF expression THEN? blockStatement (ELSE blockStatement)?
     ;
 
 ifBlockStatement

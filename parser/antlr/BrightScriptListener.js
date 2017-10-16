@@ -137,6 +137,15 @@ BrightScriptListener.prototype.exitIfThenElseStatement = function(ctx) {
 };
 
 
+// Enter a parse tree produced by BrightScriptParser#ifSingleLineStatement.
+BrightScriptListener.prototype.enterIfSingleLineStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#ifSingleLineStatement.
+BrightScriptListener.prototype.exitIfSingleLineStatement = function(ctx) {
+};
+
+
 // Enter a parse tree produced by BrightScriptParser#ifBlockStatement.
 BrightScriptListener.prototype.enterIfBlockStatement = function(ctx) {
 };

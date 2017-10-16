@@ -76,6 +76,9 @@ sub Main()
   screen.addParagraph(bb["81191"])
   screen.Show()
 
+  _somePrivateFunction()
+  screen._somePrivateFunction()
+
   library "v30/bslCore.brs"
 
   while(true)
@@ -90,14 +93,16 @@ sub Main()
   end while
 end sub
 
-function foo() as string
+function foo(zzz) as string
   a = "foo"
   return
 end function
 
 function foo()
   a = "foo"
-  return
+  b = function()
+    c = "baz"
+  end function
 end function
 
 sub bar()
