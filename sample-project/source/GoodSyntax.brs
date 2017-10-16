@@ -21,3 +21,10 @@ sub DefaultMain()
         end if
     end while
 end sub
+
+function SomeFunc() as void
+    a = "foo"
+    b = "bar"
+
+    return
+end function

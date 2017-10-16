@@ -2,6 +2,7 @@
     "rules": {
         "no-stop": "warn",
         "no-print": "warn",
+        "no-void-func": "warn",
         "no-shorthand-if": "warn",
         "no-private-func": "warn",
         "function-return-statement": "error"
