@@ -2,6 +2,10 @@
     "rules": {
         "no-stop": "warn",
         "no-print": "warn",
-        "no-comma-separated-arrays": "warn"
+        "comma-separated-arrays": "warn",
+        "no-void-func": "warn",
+        "no-shorthand-if": "warn",
+        "no-private-func": "warn",
+        "function-return-statement": "error"
     }
 }
