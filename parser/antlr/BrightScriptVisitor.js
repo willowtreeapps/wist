@@ -96,6 +96,12 @@ BrightScriptVisitor.prototype.visitIfThenElseStatement = function(ctx) {
 };
 
 
+// Visit a parse tree produced by BrightScriptParser#ifSingleLineStatement.
+BrightScriptVisitor.prototype.visitIfSingleLineStatement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by BrightScriptParser#ifBlockStatement.
 BrightScriptVisitor.prototype.visitIfBlockStatement = function(ctx) {
   return this.visitChildren(ctx);
