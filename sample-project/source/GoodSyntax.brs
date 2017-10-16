@@ -13,6 +13,26 @@ sub DefaultMain()
 
     ? "some thing";"other thing"
 
+    a = ["foo", "bar", "baz"]
+
+    b = [
+        "foo"
+        "bar"
+        "baz"
+    ]
+
+    c = {
+        "foo": 1,
+        "bar": 2,
+        "baz": 3
+    }
+
+    c = {
+        "foo": 1
+        "bar": 2
+        "baz": 3
+    }
+
     while(true)
         msg = wait(0, m.port)
         msgType = type(msg)
