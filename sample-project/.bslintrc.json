@@ -6,6 +6,7 @@
         "no-void-func": "warn",
         "no-shorthand-if": "warn",
         "no-private-func": "warn",
-        "function-return-statement": "error"
+        "function-return-statement": "error",
+        "no-inferred-types": "warn"
     }
 }

@@ -48,16 +48,16 @@ class Parser {
     }
 }
 
-Parser.keyword = (() => {
-    let keywords = {};
+Parser.token = (() => {
+    let tokens = {};
 
     Object.getOwnPropertyNames(BrightScriptParser).forEach(prop => {
         if (prop.toUpperCase() === prop && !prop.startsWith('T__')) {
-            keywords[prop] = BrightScriptParser[prop];
+            tokens[prop] = BrightScriptParser[prop];
         }
     });
 
-    return keywords;
+    return tokens;
 })();
 
 Parser.rule = (() => {
