@@ -11,11 +11,11 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     enterComponent(context) {
         this.emitter.emit('component:enter', context);
     }
-    enterComponentBody(context) {
-        this.emitter.emit('componentBody:enter', context);
-    }
     enterComponentBodyElement(context) {
         this.emitter.emit('componentBodyElement:enter', context);
+    }
+    enterComponentBody(context) {
+        this.emitter.emit('componentBody:enter', context);
     }
     enterBlock(context) {
         this.emitter.emit('block:enter', context);
