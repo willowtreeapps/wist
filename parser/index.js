@@ -46,6 +46,16 @@ class Parser {
     traverse(ast) {
         antlr4.tree.ParseTreeWalker.DEFAULT.walk(this.eventListener, ast);
     }
+
+    static ruleNameByIndex(index) {
+        for (let prop in Parser.rule) {
+            if(Parser.rule.hasOwnProperty(prop) && Parser.rule[prop] === index) {
+                return prop;
+           }
+        }
+
+        return '';
+    }
 }
 
 Parser.token = (() => {
@@ -71,5 +81,33 @@ Parser.rule = (() => {
 
     return rules;
 })();
+
+
+Parser.type = {
+    String: {
+        description: 'string',
+        declarationCharacter: '$'
+    },
+    Integer: {
+        description: 'integer',
+        declarationCharacter: '%'
+    },
+    Float: {
+        description: 'float',
+        declarationCharacter: '!'
+    },
+    Double: {
+        description: 'double',
+        declarationCharacter: '#'
+    },
+    LongInteger: {
+        description: 'long integer',
+        declarationCharacter: '&'
+    },
+    Unknown: {
+        description: '',
+        declarationCharacter: ''
+    }
+};
 
 module.exports = Parser;

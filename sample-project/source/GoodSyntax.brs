@@ -53,7 +53,11 @@ sub DefaultMain()
 
     n = 2.345678987654
 
-    while(true)
+    if (a = 572) then
+        print "a is 572"
+    end if
+
+    while(true and (e = 255))
         msg = wait(0, m.port)
         msgType = type(msg)
         if msgType = "roSGScreenEvent"
