@@ -11,11 +11,11 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     enterComponent(context) {
         this.emitter.emit('component:enter', context);
     }
-    enterComponentBodyElement(context) {
-        this.emitter.emit('componentBodyElement:enter', context);
-    }
     enterComponentBody(context) {
         this.emitter.emit('componentBody:enter', context);
+    }
+    enterComponentBodyElement(context) {
+        this.emitter.emit('componentBodyElement:enter', context);
     }
     enterBlock(context) {
         this.emitter.emit('block:enter', context);
@@ -119,8 +119,8 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     enterAssignableExpression(context) {
         this.emitter.emit('assignableExpression:enter', context);
     }
-    enterNumberLiteral(context) {
-        this.emitter.emit('numberLiteral:enter', context);
+    enterNumericLiteral(context) {
+        this.emitter.emit('numericLiteral:enter', context);
     }
     enterStringLiteral(context) {
         this.emitter.emit('stringLiteral:enter', context);
@@ -263,8 +263,8 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     exitAssignableExpression(context) {
         this.emitter.emit('assignableExpression:exit', context);
     }
-    exitNumberLiteral(context) {
-        this.emitter.emit('numberLiteral:exit', context);
+    exitNumericLiteral(context) {
+        this.emitter.emit('numericLiteral:exit', context);
     }
     exitStringLiteral(context) {
         this.emitter.emit('stringLiteral:exit', context);

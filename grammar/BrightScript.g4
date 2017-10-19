@@ -188,7 +188,7 @@ primary
     ;
 
 literal
-    : numberLiteral
+    : numericLiteral
     | stringLiteral
     | booleanLiteral
     | invalidLiteral
@@ -202,9 +202,8 @@ assignableExpression
     | anonymousSubDeclaration
     ;
 
-numberLiteral
-    : INT_LITERAL
-    | FLOAT_LITERAL
+numericLiteral
+    : NUMERIC_LITERAL
     ;
 
 stringLiteral
@@ -518,14 +517,9 @@ STRING_LITERAL
     : '"' (~["\r\n] | '""')* '"'
     ;
 
-INT_LITERAL
-    : [0-9]+ '&'?
+NUMERIC_LITERAL
+    : [0-9]* '.'? [0-9]+ (((E | D) ('+' | '-') [0-9]+) ('!' | '#' | '&')? | ('!' | '#' |'&'))?
     | '&' H [0-9A-Fa-f]+ '&'?
-    ;
-
-FLOAT_LITERAL
-    : [0-9]* '.' [0-9]+ (((E | D) ('+' | '-') [0-9]+) ('!' | '#')? | ('!' | '#'))?
-    | [0-9]+ (((E | D) ('+' | '-') [0-9]+) ('!' | '#')? | ('!' | '#'))
     ;
 
 IDENTIFIER
