@@ -46,18 +46,81 @@ class Parser {
     traverse(ast) {
         antlr4.tree.ParseTreeWalker.DEFAULT.walk(this.eventListener, ast);
     }
+
+    static ruleNameByIndex(index) {
+        for (let prop in Parser.rule) {
+            if(Parser.rule.hasOwnProperty(prop) && Parser.rule[prop] === index) {
+                return prop;
+           }
+        }
+
+        return '';
+    }
+
+    static getType(node) {
+        if (node.start.type === Parser.token.STRING_LITERAL) {
+            return Parser.type.String;
+        }
+        
+        const value = node.getText();
+
+        if (node.start.type === Parser.token.NUMERIC_LITERAL) {
+            const typeDeclarationChar = value.charAt(value.length - 1);
+
+            switch (typeDeclarationChar) {
+                case '#':
+                    return Parser.type.Double;
+                    break;
+                case '!':
+                    return Parser.type.Float;
+                    break;
+                case '&':
+                    return Parser.type.LongInteger;
+                    break;
+                case '%':
+                    return Parser.type.Integer;
+                    break;
+                default:
+                    break;
+            }
+
+            const numberParts = value.split('.'),
+                integerValue = numberParts[0],
+                decimalValue = numberParts[1];
+
+            if (integerValue.length >= 10) {
+                if (decimalValue == null && typeDeclarationChar === '&') {
+                    return Parser.type.LongInteger;
+                }
+
+                return Parser.type.Double;
+            }
+
+            if (value.indexOf('D') > -1 || value.indexOf('d') > -1) {
+                return Parser.type.Double;
+            }
+
+            if (decimalValue != null || value.indexOf('E') > -1 || value.indexOf('e') > -1) {
+                return Parser.type.Float;
+            }
+
+            return Parser.type.Integer;
+        }
+
+        return Parser.type.Unknown;
+    }
 }
 
-Parser.keyword = (() => {
-    let keywords = {};
+Parser.token = (() => {
+    let tokens = {};
 
     Object.getOwnPropertyNames(BrightScriptParser).forEach(prop => {
         if (prop.toUpperCase() === prop && !prop.startsWith('T__')) {
-            keywords[prop] = BrightScriptParser[prop];
+            tokens[prop] = BrightScriptParser[prop];
         }
     });
 
-    return keywords;
+    return tokens;
 })();
 
 Parser.rule = (() => {
@@ -71,5 +134,33 @@ Parser.rule = (() => {
 
     return rules;
 })();
+
+
+Parser.type = {
+    String: {
+        description: 'string',
+        declarationCharacter: '$'
+    },
+    Integer: {
+        description: 'integer',
+        declarationCharacter: '%'
+    },
+    Float: {
+        description: 'float',
+        declarationCharacter: '!'
+    },
+    Double: {
+        description: 'double',
+        declarationCharacter: '#'
+    },
+    LongInteger: {
+        description: 'long integer',
+        declarationCharacter: '&'
+    },
+    Unknown: {
+        description: '',
+        declarationCharacter: ''
+    }
+};
 
 module.exports = Parser;

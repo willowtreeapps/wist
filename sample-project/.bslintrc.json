@@ -7,6 +7,7 @@
         "no-shorthand-if": "warn",
         "no-private-func": "warn",
         "function-return-statement": "error",
+        "no-inferred-types": "warn",
         "camel-case-func": "warn"
     }
 }

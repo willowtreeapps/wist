@@ -353,12 +353,12 @@ BrightScriptListener.prototype.exitAssignableExpression = function(ctx) {
 };
 
 
-// Enter a parse tree produced by BrightScriptParser#numberLiteral.
-BrightScriptListener.prototype.enterNumberLiteral = function(ctx) {
+// Enter a parse tree produced by BrightScriptParser#numericLiteral.
+BrightScriptListener.prototype.enterNumericLiteral = function(ctx) {
 };
 
-// Exit a parse tree produced by BrightScriptParser#numberLiteral.
-BrightScriptListener.prototype.exitNumberLiteral = function(ctx) {
+// Exit a parse tree produced by BrightScriptParser#numericLiteral.
+BrightScriptListener.prototype.exitNumericLiteral = function(ctx) {
 };
 
 

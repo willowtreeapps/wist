@@ -240,8 +240,8 @@ BrightScriptVisitor.prototype.visitAssignableExpression = function(ctx) {
 };
 
 
-// Visit a parse tree produced by BrightScriptParser#numberLiteral.
-BrightScriptVisitor.prototype.visitNumberLiteral = function(ctx) {
+// Visit a parse tree produced by BrightScriptParser#numericLiteral.
+BrightScriptVisitor.prototype.visitNumericLiteral = function(ctx) {
   return this.visitChildren(ctx);
 };
 
