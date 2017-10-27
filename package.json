@@ -6,6 +6,7 @@
     "bslint": "./bin/bslint.js"
   },
   "scripts": {
+    "compile": "npm run grammar && npm run event-generator",
     "docs": "./shell-scripts/run-docs.sh",
     "event-generator": "node ./bin/event-generator.js",
     "grammar": "./gradlew clean generateGrammarSource",
@@ -13,10 +14,7 @@
     "test:watch": "ava --watch",
     "version": "./shell-scripts/update-docs-version.sh"
   },
-  "pre-commit": [
-    "grammar",
-    "event-generator"
-  ],
+  "pre-commit": "compile",
   "main": "./lib/api.js",
   "repository": {
     "type": "git",

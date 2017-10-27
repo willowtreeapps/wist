@@ -536,7 +536,7 @@ IDENTIFIER_TYPE_DECLARATION
     ;
 
 COMMENT
-    :   (SINGLE_QUOTE | (REM WS)) ~[\r\n\u2028\u2029]* -> channel(HIDDEN)
+    :   (SINGLE_QUOTE | (REM (WS | NEWLINE))) ~[\r\n\u2028\u2029]* -> channel(HIDDEN)
     ;
 
 NEWLINE

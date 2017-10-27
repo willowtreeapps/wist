@@ -1,3 +1,9 @@
+' This is a sample file containing syntax that compiles properly
+
+REM Although the file compiles,
+REM
+REM Not all linting rules pass
+
 sub DefaultMain()
     print "in showChannelSGScreen"
     'Indicate this is a Roku SceneGraph application'
