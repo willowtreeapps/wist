@@ -88,15 +88,7 @@ class Parser {
                 integerValue = numberParts[0],
                 decimalValue = numberParts[1];
 
-            if (integerValue.length >= 10) {
-                if (decimalValue == null && typeDeclarationChar === '&') {
-                    return Parser.type.LongInteger;
-                }
-
-                return Parser.type.Double;
-            }
-
-            if (value.indexOf('D') > -1 || value.indexOf('d') > -1) {
+            if (integerValue.length >= 10 || value.indexOf('D') > -1 || value.indexOf('d') > -1) {
                 return Parser.type.Double;
             }
 
@@ -107,7 +99,19 @@ class Parser {
             return Parser.type.Integer;
         }
 
-        return Parser.type.Unknown;
+        if (node.ruleIndex === Parser.rule.assignableExpression) {
+            const childRule = node.children[0].ruleIndex;
+
+            if (childRule === Parser.rule.arrayInitializer) {
+                return Parser.type.Array;
+            }
+
+            if (childRule === Parser.rule.associativeArrayInitializer) {
+                return Parser.type.AssociativeArray;
+            }
+        }
+
+        return Parser.type.Indeterminate;
     }
 }
 
@@ -157,10 +161,34 @@ Parser.type = {
         description: 'long integer',
         declarationCharacter: '&'
     },
-    Unknown: {
-        description: '',
-        declarationCharacter: ''
+    Array: {
+        description: 'array',
+        declarationCharacter: null
+    },
+    AssociativeArray: {
+        description: 'associative array',
+        declarationCharacter: null
+    },
+    Indeterminate: {
+        description: null,
+        declarationCharacter: null
     }
 };
+
+Parser.typeDeclarations = (() => {
+    let typeDeclarations = [];
+
+    for (let prop in Parser.type) {
+        if (Parser.type.hasOwnProperty(prop)) {
+            const typeDeclaration = Parser.type[prop].declarationCharacter;
+
+            if (typeDeclaration != null) {
+                typeDeclarations.push(typeDeclaration);
+            }
+        }
+    }
+
+    return typeDeclarations;
+})();
 
 module.exports = Parser;
