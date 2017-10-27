@@ -1,8 +1,31 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
 ---
 
-@import "_custom";
+$white:     #fff;
+$blue:      #1c77c3;
+$teal:      #1bd9c4;
+$cyan:      #3f8b99;
+$gray-200:  #e9ecef;
+$gray-700:  #495057;
+$gray-900:  #212529;
+
+$primary:       $teal;
+$info:          $cyan;
+$dark:          $gray-700;
+
+$enable-rounded:    false;
+$enable-shadows:    true;
+$enable-gradients:  false;
+
+$dropdown-link-hover-color:   $white;
+$dropdown-link-hover-bg:      $primary;
+
+$dropdown-link-active-color:  $gray-900;
+$dropdown-link-active-bg:     $gray-200;
+
+$body-color:  $gray-700;
+$link-color:  $blue;
+
 @import "bootstrap";
 
 body {
