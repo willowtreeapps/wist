@@ -61,11 +61,11 @@ exitStatement
     ;
 
 forStatement
-    : FOR identifier EQUALS expression TO expression (STEP expression)? endOfLine+ block* nextStatement? (END FOR)?
+    : FOR identifier EQUALS expression TO expression (STEP expression)? endOfStatement+ block* nextStatement? (END FOR)?
     ;
 
 forEachStatement
-    : FOR EACH identifier IN expression endOfLine+ block* nextStatement? (END FOR)?
+    : FOR EACH identifier IN expression endOfStatement+ block* nextStatement? (END FOR)?
     ;
 
 gotoStatement
@@ -82,7 +82,7 @@ ifSingleLineStatement
     ;
 
 ifBlockStatement
-    : IF expression THEN? endOfStatement? endOfLine* block*
+    : IF expression THEN? endOfStatement+ block*
     ;
 
 ifElseIfBlockStatement
@@ -118,23 +118,23 @@ stopStatement
     ;
 
 whileStatement
-    : WHILE expression endOfLine+ block* (ENDWHILE | END WHILE)
+    : WHILE expression endOfStatement+ block* (ENDWHILE | END WHILE)
     ;
 
 anonymousFunctionDeclaration
-    : FUNCTION parameterList? (AS baseType)? endOfLine+ block* (ENDFUNCTION | END FUNCTION)
+    : FUNCTION parameterList? (AS baseType)? endOfStatement+ block* (ENDFUNCTION | END FUNCTION)
     ;
 
 functionDeclaration
-    : FUNCTION untypedIdentifier parameterList? (AS baseType)? endOfLine+ block* (ENDFUNCTION | END FUNCTION)
+    : FUNCTION untypedIdentifier parameterList? (AS baseType)? endOfStatement+ block* (ENDFUNCTION | END FUNCTION)
     ;
 
 anonymousSubDeclaration
-    : SUB parameterList? endOfLine+ block* (ENDSUB | END SUB)
+    : SUB parameterList? endOfStatement+ block* (ENDSUB | END SUB)
     ;
 
 subDeclaration
-    : SUB untypedIdentifier parameterList? endOfLine+ block* (ENDSUB | END SUB)
+    : SUB untypedIdentifier parameterList? endOfStatement+ block* (ENDSUB | END SUB)
     ;
 
 parameterList
