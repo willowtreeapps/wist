@@ -185,6 +185,7 @@ primary
     | literal
     | identifier
     | reservedWord '(' expression ')'
+    | identifier ATTRIBUTE_OPERATOR identifier
     ;
 
 literal
@@ -553,6 +554,10 @@ SINGLE_QUOTE
 
 QUESTION_MARK
     : '?'
+    ;
+
+ATTRIBUTE_OPERATOR
+    : '@'
     ;
 
 fragment A
