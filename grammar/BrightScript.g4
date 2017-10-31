@@ -28,6 +28,8 @@ blockStatement
     | forStatement
     | forEachStatement
     | ifThenElseStatement
+    | gotoStatement
+    | labelStatement
     | nextStatement
     | printStatement
     | returnStatement
@@ -37,37 +39,42 @@ blockStatement
     ;
 
 arrayInitializer
-    : '[' NEWLINE* ((expression | arrayInitializer | associativeArrayInitializer) ((',' | endOfLine) NEWLINE* (expression | arrayInitializer | associativeArrayInitializer))*)? NEWLINE* ']'
+    : OPEN_BRACKET NEWLINE* ((expression | arrayInitializer | associativeArrayInitializer) ((COMMA | endOfLine) NEWLINE* (expression | arrayInitializer | associativeArrayInitializer))*)? NEWLINE* CLOSE_BRACKET
     ;
 
 associativeArrayInitializer
-    : '{' NEWLINE* (associativeElementInitializer ((',' | endOfLine) NEWLINE* associativeElementInitializer)*)? NEWLINE* '}'
+    : OPEN_BRACE NEWLINE* (associativeElementInitializer ((COMMA | endOfLine) NEWLINE* associativeElementInitializer)*)? NEWLINE* CLOSE_BRACE
     ;
 
 associativeElementInitializer
-    : (identifier | reservedWord | stringLiteral) ':' assignableExpression
+    : (identifier | reservedWord | stringLiteral) COLON assignableExpression
     ;
 
 dimStatement
-    : DIM identifier '[' parameterList ']'
+    : DIM identifier OPEN_BRACKET parameterList CLOSE_BRACKET
     ;
 
 exitStatement
     : EXIT WHILE
+    | EXITWHILE
     | EXIT FOR
     ;
 
 forStatement
-    : FOR identifier '=' expression TO expression (STEP expression)? endOfLine+ block* nextStatement? (END FOR)?
+    : FOR identifier EQUALS expression TO expression (STEP expression)? endOfLine+ block* nextStatement? (END FOR)?
     ;
 
 forEachStatement
     : FOR EACH identifier IN expression endOfLine+ block* nextStatement? (END FOR)?
     ;
 
+gotoStatement
+    : GOTO IDENTIFIER
+    ;
+
 ifThenElseStatement
     : ifSingleLineStatement
-    | ifBlockStatement ifElseIfBlockStatement* ifElseBlockStatement? END IF
+    | ifBlockStatement ifElseIfBlockStatement* ifElseBlockStatement? (END IF | ENDIF)
     ;
 
 ifSingleLineStatement
@@ -75,15 +82,19 @@ ifSingleLineStatement
     ;
 
 ifBlockStatement
-    : IF expression THEN? endOfLine+ block*
+    : IF expression THEN? endOfStatement? endOfLine* block*
     ;
 
 ifElseIfBlockStatement
-    : ELSE IF expression THEN? endOfLine+ block*
+    : (ELSE IF | ELSEIF) expression THEN? endOfStatement+ block*
     ;
 
 ifElseBlockStatement
-    : ELSE endOfLine+ block*
+    : ELSE endOfStatement+ block*
+    ;
+
+labelStatement
+    : IDENTIFIER COLON
     ;
 
 libraryStatement
@@ -95,7 +106,7 @@ nextStatement
     ;
 
 printStatement
-    : (PRINT | QUESTION_MARK) (expression (';'? expression)* ';'?)?
+    : (PRINT | QUESTION_MARK) (expression (SEMICOLON? expression)* SEMICOLON?)?
     ;
 
 returnStatement
@@ -107,31 +118,31 @@ stopStatement
     ;
 
 whileStatement
-    : WHILE expression endOfLine+ block* END WHILE
+    : WHILE expression endOfLine+ block* (ENDWHILE | END WHILE)
     ;
 
 anonymousFunctionDeclaration
-    : FUNCTION parameterList? (AS baseType)? endOfLine+ block* END FUNCTION
+    : FUNCTION parameterList? (AS baseType)? endOfLine+ block* (ENDFUNCTION | END FUNCTION)
     ;
 
 functionDeclaration
-    : FUNCTION untypedIdentifier parameterList? (AS baseType)? endOfLine+ block* END FUNCTION
+    : FUNCTION untypedIdentifier parameterList? (AS baseType)? endOfLine+ block* (ENDFUNCTION | END FUNCTION)
     ;
 
 anonymousSubDeclaration
-    : SUB parameterList? endOfLine+ block* END SUB
+    : SUB parameterList? endOfLine+ block* (ENDSUB | END SUB)
     ;
 
 subDeclaration
-    : SUB untypedIdentifier parameterList? endOfLine+ block* END SUB
+    : SUB untypedIdentifier parameterList? endOfLine+ block* (ENDSUB | END SUB)
     ;
 
 parameterList
-    : '(' (parameter (',' parameter)*)? ')'
+    : OPEN_PARENTHESIS (parameter (COMMA parameter)*)? CLOSE_PARENTHESIS
     ;
 
 parameter
-    : (literal | identifier) ('=' assignableExpression)? (AS baseType)?
+    : (literal | identifier) (EQUALS assignableExpression)? (AS baseType)?
     ;
 
 baseType
@@ -147,11 +158,28 @@ baseType
     ;
 
 expressionList
-    : (expression | associativeArrayInitializer | arrayInitializer) (',' (expression | associativeArrayInitializer | arrayInitializer))*
+    : (expression | associativeArrayInitializer | arrayInitializer) (COMMA (expression | associativeArrayInitializer | arrayInitializer))*
+    ;
+
+expression
+    : primary
+    | globalFunctionInvocation
+    | expression (DOT | ATTRIBUTE_OPERATOR) (identifier | reservedWord)
+    | expression OPEN_BRACKET expression CLOSE_BRACKET
+    | expression OPEN_PARENTHESIS expressionList? CLOSE_PARENTHESIS
+    | (ADD|SUBTRACT) expression
+    | expression (INCREMENT|DECREMENT)
+    | expression (MULTIPLY|DIVIDE|MOD|DIVIDE_INTEGER) expression
+    | expression (ADD|SUBTRACT) expression
+    | expression (BITSHIFT_LEFT|BITSHIFT_RIGHT) expression
+    | expression (GREATER_THAN|LESS_THAN|EQUALS|NOT_EQUAL|GREATER_THAN_OR_EQUAL|LESS_THAN_OR_EQUAL) expression
+    | NOT expression
+    | expression (AND|OR) expression
+    | <assoc=right> expression (EQUALS|ASSIGNMENT_ADD|ASSIGNMENT_SUBTRACT|ASSIGNMENT_MULTIPLY|ASSIGNMENT_DIVIDE|ASSIGNMENT_DIVIDE_INTEGER|ASSIGNMENT_BITSHIFT_LEFT|ASSIGNMENT_BITSHIFT_RIGHT) assignableExpression
     ;
 
 globalFunctionInvocation
-    : globalFunction '(' expressionList ')'
+    : globalFunction OPEN_PARENTHESIS expressionList? CLOSE_PARENTHESIS
     ;
 
 globalFunction
@@ -161,31 +189,13 @@ globalFunction
     | GETLASTRUNRUNTIMEERROR
     | STRING
     | TAB
-    ;
-
-expression
-    : primary
-    | expression '.' (identifier | reservedWord)
-    | expression '[' expression ']'
-    | globalFunctionInvocation
-    | expression '(' expressionList? ')'
-    | ('+'|'-') expression
-    | expression ('++'|'--')
-    | expression ('*'|'/'|MOD|'\\') expression
-    | expression ('+'|'-') expression
-    | expression ('<<'|'>>') expression
-    | expression ('<'|'>'|'='|'<>'|'<='|'>=') expression
-    | NOT expression
-    | expression (AND|OR) expression
-    | <assoc=right> expression ('='|'+='|'-='|'*='|'/='|'\\='|'>>='|'<<='|'%=') assignableExpression
+    | TYPE
     ;
 
 primary
-    : '(' expression ')'
+    : OPEN_PARENTHESIS expression CLOSE_PARENTHESIS
     | literal
     | identifier
-    | reservedWord '(' expression ')'
-    | identifier ATTRIBUTE_OPERATOR identifier
     ;
 
 literal
@@ -285,7 +295,7 @@ endOfLine
     ;
 
 endOfStatement
-    : (endOfLine | ':') NEWLINE*
+    : (endOfLine | COLON) NEWLINE*
     ;
 
 AND
@@ -558,6 +568,134 @@ QUESTION_MARK
 
 ATTRIBUTE_OPERATOR
     : '@'
+    ;
+
+INCREMENT
+    : '++'
+    ;
+
+DECREMENT
+    : '--'
+    ;
+
+OPEN_BRACKET
+    : '['
+    ;
+
+CLOSE_BRACKET
+    : ']'
+    ;
+
+OPEN_BRACE
+    : '{'
+    ;
+
+CLOSE_BRACE
+    : '}'
+    ;
+
+OPEN_PARENTHESIS
+    : '('
+    ;
+
+CLOSE_PARENTHESIS
+    : ')'
+    ;
+
+COMMA
+    : ','
+    ;
+
+SEMICOLON
+    : ';'
+    ;
+
+COLON
+    : ':'
+    ;
+
+EQUALS
+    : '='
+    ;
+
+DOT
+    : '.'
+    ;
+
+ADD
+    : '+'
+    ;
+
+SUBTRACT
+    : '-'
+    ;
+
+MULTIPLY
+    : '*'
+    ;
+
+DIVIDE
+    : '/'
+    ;
+
+DIVIDE_INTEGER
+    : '\\'
+    ;
+
+BITSHIFT_LEFT
+    : '<<'
+    ;
+
+BITSHIFT_RIGHT
+    : '>>'
+    ;
+
+GREATER_THAN
+    : '>'
+    ;
+
+LESS_THAN
+    : '<'
+    ;
+
+GREATER_THAN_OR_EQUAL
+    : '>='
+    ;
+
+LESS_THAN_OR_EQUAL
+    : '<='
+    ;
+
+NOT_EQUAL
+    : '<>'
+    ;
+
+ASSIGNMENT_ADD
+    : '+='
+    ;
+
+ASSIGNMENT_SUBTRACT
+    : '-='
+    ;
+
+ASSIGNMENT_MULTIPLY
+    : '*='
+    ;
+
+ASSIGNMENT_DIVIDE
+    : '/='
+    ;
+
+ASSIGNMENT_DIVIDE_INTEGER
+    : '\\='
+    ;
+
+ASSIGNMENT_BITSHIFT_LEFT
+    : '<<='
+    ;
+
+ASSIGNMENT_BITSHIFT_RIGHT
+    : '>>='
     ;
 
 fragment A

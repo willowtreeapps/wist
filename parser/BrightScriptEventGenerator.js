@@ -44,6 +44,9 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     enterForEachStatement(context) {
         this.emitter.emit('forEachStatement:enter', context);
     }
+    enterGotoStatement(context) {
+        this.emitter.emit('gotoStatement:enter', context);
+    }
     enterIfThenElseStatement(context) {
         this.emitter.emit('ifThenElseStatement:enter', context);
     }
@@ -58,6 +61,9 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     }
     enterIfElseBlockStatement(context) {
         this.emitter.emit('ifElseBlockStatement:enter', context);
+    }
+    enterLabelStatement(context) {
+        this.emitter.emit('labelStatement:enter', context);
     }
     enterLibraryStatement(context) {
         this.emitter.emit('libraryStatement:enter', context);
@@ -101,14 +107,14 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     enterExpressionList(context) {
         this.emitter.emit('expressionList:enter', context);
     }
+    enterExpression(context) {
+        this.emitter.emit('expression:enter', context);
+    }
     enterGlobalFunctionInvocation(context) {
         this.emitter.emit('globalFunctionInvocation:enter', context);
     }
     enterGlobalFunction(context) {
         this.emitter.emit('globalFunction:enter', context);
-    }
-    enterExpression(context) {
-        this.emitter.emit('expression:enter', context);
     }
     enterPrimary(context) {
         this.emitter.emit('primary:enter', context);
@@ -188,6 +194,9 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     exitForEachStatement(context) {
         this.emitter.emit('forEachStatement:exit', context);
     }
+    exitGotoStatement(context) {
+        this.emitter.emit('gotoStatement:exit', context);
+    }
     exitIfThenElseStatement(context) {
         this.emitter.emit('ifThenElseStatement:exit', context);
     }
@@ -202,6 +211,9 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     }
     exitIfElseBlockStatement(context) {
         this.emitter.emit('ifElseBlockStatement:exit', context);
+    }
+    exitLabelStatement(context) {
+        this.emitter.emit('labelStatement:exit', context);
     }
     exitLibraryStatement(context) {
         this.emitter.emit('libraryStatement:exit', context);
@@ -245,14 +257,14 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     exitExpressionList(context) {
         this.emitter.emit('expressionList:exit', context);
     }
+    exitExpression(context) {
+        this.emitter.emit('expression:exit', context);
+    }
     exitGlobalFunctionInvocation(context) {
         this.emitter.emit('globalFunctionInvocation:exit', context);
     }
     exitGlobalFunction(context) {
         this.emitter.emit('globalFunction:exit', context);
-    }
-    exitExpression(context) {
-        this.emitter.emit('expression:exit', context);
     }
     exitPrimary(context) {
         this.emitter.emit('primary:exit', context);
