@@ -90,6 +90,12 @@ BrightScriptVisitor.prototype.visitForEachStatement = function(ctx) {
 };
 
 
+// Visit a parse tree produced by BrightScriptParser#gotoStatement.
+BrightScriptVisitor.prototype.visitGotoStatement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by BrightScriptParser#ifThenElseStatement.
 BrightScriptVisitor.prototype.visitIfThenElseStatement = function(ctx) {
   return this.visitChildren(ctx);
@@ -116,6 +122,12 @@ BrightScriptVisitor.prototype.visitIfElseIfBlockStatement = function(ctx) {
 
 // Visit a parse tree produced by BrightScriptParser#ifElseBlockStatement.
 BrightScriptVisitor.prototype.visitIfElseBlockStatement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by BrightScriptParser#labelStatement.
+BrightScriptVisitor.prototype.visitLabelStatement = function(ctx) {
   return this.visitChildren(ctx);
 };
 
@@ -204,6 +216,12 @@ BrightScriptVisitor.prototype.visitExpressionList = function(ctx) {
 };
 
 
+// Visit a parse tree produced by BrightScriptParser#expression.
+BrightScriptVisitor.prototype.visitExpression = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by BrightScriptParser#globalFunctionInvocation.
 BrightScriptVisitor.prototype.visitGlobalFunctionInvocation = function(ctx) {
   return this.visitChildren(ctx);
@@ -212,12 +230,6 @@ BrightScriptVisitor.prototype.visitGlobalFunctionInvocation = function(ctx) {
 
 // Visit a parse tree produced by BrightScriptParser#globalFunction.
 BrightScriptVisitor.prototype.visitGlobalFunction = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by BrightScriptParser#expression.
-BrightScriptVisitor.prototype.visitExpression = function(ctx) {
   return this.visitChildren(ctx);
 };
 

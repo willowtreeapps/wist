@@ -128,6 +128,15 @@ BrightScriptListener.prototype.exitForEachStatement = function(ctx) {
 };
 
 
+// Enter a parse tree produced by BrightScriptParser#gotoStatement.
+BrightScriptListener.prototype.enterGotoStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#gotoStatement.
+BrightScriptListener.prototype.exitGotoStatement = function(ctx) {
+};
+
+
 // Enter a parse tree produced by BrightScriptParser#ifThenElseStatement.
 BrightScriptListener.prototype.enterIfThenElseStatement = function(ctx) {
 };
@@ -170,6 +179,15 @@ BrightScriptListener.prototype.enterIfElseBlockStatement = function(ctx) {
 
 // Exit a parse tree produced by BrightScriptParser#ifElseBlockStatement.
 BrightScriptListener.prototype.exitIfElseBlockStatement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by BrightScriptParser#labelStatement.
+BrightScriptListener.prototype.enterLabelStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#labelStatement.
+BrightScriptListener.prototype.exitLabelStatement = function(ctx) {
 };
 
 
@@ -299,6 +317,15 @@ BrightScriptListener.prototype.exitExpressionList = function(ctx) {
 };
 
 
+// Enter a parse tree produced by BrightScriptParser#expression.
+BrightScriptListener.prototype.enterExpression = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#expression.
+BrightScriptListener.prototype.exitExpression = function(ctx) {
+};
+
+
 // Enter a parse tree produced by BrightScriptParser#globalFunctionInvocation.
 BrightScriptListener.prototype.enterGlobalFunctionInvocation = function(ctx) {
 };
@@ -314,15 +341,6 @@ BrightScriptListener.prototype.enterGlobalFunction = function(ctx) {
 
 // Exit a parse tree produced by BrightScriptParser#globalFunction.
 BrightScriptListener.prototype.exitGlobalFunction = function(ctx) {
-};
-
-
-// Enter a parse tree produced by BrightScriptParser#expression.
-BrightScriptListener.prototype.enterExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by BrightScriptParser#expression.
-BrightScriptListener.prototype.exitExpression = function(ctx) {
 };
 
 
