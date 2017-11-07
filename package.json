@@ -1,9 +1,9 @@
 {
-  "name": "bslint",
+  "name": "wist",
   "version": "1.0.0-beta.1",
   "description": "A linter for BrightScript",
   "bin": {
-    "bslint": "./bin/bslint.js"
+    "wist": "./bin/wist.js"
   },
   "scripts": {
     "compile": "npm run grammar && npm run event-generator",
@@ -18,7 +18,7 @@
   "main": "./lib/api.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/willowtreeapps/bslint.git"
+    "url": "git+https://github.com/willowtreeapps/wisteria.git"
   },
   "engines": {
     "node": ">=7.6.0",
@@ -27,9 +27,9 @@
   "author": "Matt VanNuys",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/willowtreeapps/bslint/issues"
+    "url": "https://github.com/willowtreeapps/wisteria/issues"
   },
-  "homepage": "https://github.com/willowtreeapps/bslint#readme",
+  "homepage": "https://github.com/willowtreeapps/wisteria#readme",
   "dependencies": {
     "antlr4": "4.7.0",
     "chalk": "2.1.0",
