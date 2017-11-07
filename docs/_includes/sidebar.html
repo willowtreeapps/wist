@@ -1,11 +1,11 @@
-<div class="col-12 col-md-4 col-xl-3 sidebar">
+<div class="col-12 col-md-4 col-xl-2 sidebar">
     <div class="sidebar-toggler bg-dark">
         <button class="d-md-none" type="button" data-toggle="collapse" data-target="#sidebar-nav" aria-controls="sidebar-nav" aria-expanded="false" aria-label="Toggle docs navigation">
             {% octicon three-bars height:32 %}
         </button>
     </div>
 
-    <nav id="sidebar-nav" class="collapse pl-0">
+    <nav id="sidebar-nav" class="collapse pr-0 pt-4">
         {% for heading in site.data.sidebar[page.sidebar] %}
             <div class="sidebar-nav-item">
                 <a href="{{ site.baseurl }}{{ heading.url }}">{{ heading.title }}</a>

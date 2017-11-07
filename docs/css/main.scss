@@ -178,7 +178,6 @@ ul > li:not(:last-child) {
 }
 
 #sidebar-nav {
-    padding: 1rem;
     border: 1px solid $gray-200;
     background-color: $gray-100;
 
@@ -219,13 +218,11 @@ ul > li:not(:last-child) {
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
 main {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 87px);
 }
 
 #integrations {
@@ -242,13 +239,12 @@ main {
     #sidebar-nav {
         display: block !important;
         border: 0;
-        padding: .5rem;
         background-color: transparent;
+        position: sticky;
+        top: 87px;
     }
 
     .sidebar {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
         border-right: 1px solid $gray-200;
     }
 
