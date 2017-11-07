@@ -218,11 +218,16 @@ ul > li:not(:last-child) {
 body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 main {
     display: flex;
     flex-direction: column;
+
+    &.full-height {
+        height: calc(100vh - 87px);
+    }
 }
 
 #integrations {
