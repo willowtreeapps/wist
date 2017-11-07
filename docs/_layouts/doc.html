@@ -5,13 +5,19 @@
   <body>
     {% include menu.html %}
 
-    <main class="container-fluid" aria-label="Content">
-        <div class="row justify-content-end">
-            {% include sidebar.html %}
-
-            <article class="col-12 col-md-8 col-xl-10 py-md-3 px-md-5 page-content">
-                {{ content }}
-            </article>
+    <main class="container" aria-label="Content">
+        <div class="row">
+            {% if page.sidebar != null %}
+                {% include sidebar.html %}
+                
+                <article class="col-12 col-md-8 col-xl-10 py-md-3 page-content">
+                    {{ content }}
+                </article>
+            {% else %}
+                <article class="col-12 py-md-3 page-content">
+                    {{ content }}
+                </article>
+            {%endif}
         </div>
     </main>
 

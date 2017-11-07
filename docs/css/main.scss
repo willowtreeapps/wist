@@ -1,15 +1,19 @@
 ---
 ---
 
-$white:     #fff;
-$blue:      #1c77c3;
-$teal:      #1bd9c4;
-$cyan:      #3f8b99;
-$gray-200:  #e9ecef;
-$gray-700:  #495057;
-$gray-900:  #212529;
+$white:             #fff;
+$off-white:         #f2f2f2;
+$blue:              #005adf;
+$teal:              #1bd9c4;
+$cyan:              #3f8b99;
+$gray-100:          #f9f9f9;
+$gray-200:          #e9ecef;
+$gray-500:          #bebebe;
+$gray-700:          #4a4a4a;
+$gray-900:          #212529;
+$wisteria-purple:   #7b00ff;
 
-$primary:       $teal;
+$primary:       $wisteria-purple;
 $info:          $cyan;
 $dark:          $gray-700;
 
@@ -24,19 +28,31 @@ $dropdown-link-active-color:  $gray-900;
 $dropdown-link-active-bg:     $gray-200;
 
 $body-color:  $gray-700;
-$link-color:  $blue;
+$link-color:  $wisteria-purple;
+
+$text-muted: $gray-500;
+
+$font-family-sans-serif:      "Source Sans Pro", Roboto, "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-weight-light:           300;
+$font-weight-base:            $font-weight-light;
+
+$headings-font-weight:        400;
+$display1-weight:             400;
+$display2-weight:             400;
+$display3-weight:             400;
+$display4-weight:             400;
 
 @import "bootstrap";
 
 body {
-    padding-top: 57px;
+    padding-top: 87px;
 }
 
 :target:before {
     content: "";
     display: block;
-    height: calc(57px + 1rem);
-    margin-top: calc(-57px - 1rem);
+    height: calc(87px + 1rem);
+    margin-top: calc(-87px - 1rem);
 }
 
 .page-content {
@@ -45,37 +61,90 @@ body {
     :target:before {
         content: "";
         display: block;
-        height: calc(109px + 1rem);
-        margin-top: calc(-109px - 1rem);
+        height: calc(139px + 1rem);
+        margin-top: calc(-139px - 1rem);
     }
 }
 
 .site-navigation {
-    border-bottom: 1px solid $gray-200;
+    &.navbar-light {
+        .navbar-brand {
+            @include hover-focus {
+                color: transparentize($primary, 0.3);
 
-    &.navbar-light .navbar-brand {
-        color: theme-color("primary");
+                svg g {
+                    fill: transparentize($primary, 0.3);
+                }
+            }
+        }
 
-        @include hover-focus {
-            color: theme-color("secondary");
+        .navbar-nav {
+            li.nav-item:not(:last-child) {
+                margin-bottom: 0;
+            }
+
+            .nav-item {
+                margin-left: 2.5rem;
+
+                &.active {
+                    .nav-link {
+                        color: $primary;
+
+                        &:after {
+                            content:''; 
+                            width: 50%; 
+                            height: 2px; 
+                            background-color: $primary;
+                            position: absolute; 
+                            bottom: calc(0.25rem - 2px);
+                            left: 25%;
+                        }
+
+                        @include hover-focus {
+                            color: transparentize($primary, 0.3);
+
+                            &:after {
+                                background-color: transparentize($primary, 0.3);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .nav-link {
+                color: $gray-700;
+                font-size: .9rem;
+                position: relative;
+                font-weight: normal;
+
+                @include hover-focus {
+                    color: transparentize($gray-700, 0.3);
+
+                    &:after {
+                        content:''; 
+                        width: 50%; 
+                        height: 2px; 
+                        background-color: transparentize($gray-700, 0.3);
+                        position: absolute; 
+                        bottom: calc(0.25rem - 2px);
+                        left: 25%;
+                    }
+                }
+            }
         }
     }
 }
 
-#bslint-navbar ul.navbar-nav > li:not(:last-child) {
-    margin-bottom: 0;
-}
-
 pre {
     padding: .5rem 1rem;
-    border: 1px solid $gray-300;
-    background-color: $gray-100;
+    background-color: $off-white;
+    border: 0;
 }
 
 code {
-    background-color: $gray-200;
+    background-color: $off-white;
     color: theme-color("dark");
-    border-radius: $border-radius;
+    border: 0;
 }
 
 ul > li:not(:last-child) {
@@ -96,12 +165,6 @@ ul > li:not(:last-child) {
     margin-right: .25rem;
 }
 
-.sidebar {
-    position: fixed;
-    top: 57px;
-    z-index: 1983; /* The Best Year (tm) */
-}
-
 .sidebar-toggler {
     display: block;
     text-align: right;
@@ -115,7 +178,6 @@ ul > li:not(:last-child) {
 }
 
 #sidebar-nav {
-    padding: 1rem;
     border: 1px solid $gray-200;
     background-color: $gray-100;
 
@@ -137,26 +199,58 @@ ul > li:not(:last-child) {
     }
 }
 
-#home-blurb a {
-    background: theme-color("dark");
-    color: $white;
-    padding: 0.1rem 0.25rem;
+#home-title {
+    small, .small {
+        font-size: 1rem;
+        margin-left: 1rem;
+        white-space: nowrap;
+    }
+}
+
+#home-blurb {
+    font-size: 1.5rem;
+
+    .get-started {
+        font-weight: normal;
+    }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+
+    &.full-height {
+        height: calc(100vh - 87px);
+    }
+}
+
+#integrations {
+    padding-top: 2rem;
+}
+
+.card-img-left {
+    float: left;
+    padding-right: 1em;
+    margin-bottom: -1.25em;
 }
 
 @include media-breakpoint-up(md) {
     #sidebar-nav {
         display: block !important;
         border: 0;
-        padding: .5rem;
         background-color: transparent;
+        position: sticky;
+        top: 87px;
     }
 
     .sidebar {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
         border-right: 1px solid $gray-200;
-        bottom: 0;
-        left: 0;
     }
 
     .sidebar-toggler {
@@ -165,14 +259,30 @@ ul > li:not(:last-child) {
     
     .page-content {
         :target:before {
-            height: calc(57px + 1rem);
-            margin-top: calc(-57px - 1rem);
+            height: calc(87px + 1rem);
+            margin-top: calc(-87px - 1rem);
+        }
+    }
+
+    #integrations {
+        padding-top: 4rem;
+        display: flex;
+        flex: 1;
+
+        .card-deck {
+            .card:first-child {
+                margin-right: 4rem;
+            }
+
+            .card:last-child {
+                margin-left: 4rem;
+            }
         }
     }
 }
 
 @include media-breakpoint-down(lg) {
-    #bslint-navbar {
+    #wisteria-navbar {
         max-width: 100%;
         height: 2.5rem;
         overflow: hidden;

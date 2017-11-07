@@ -1,13 +1,13 @@
 ---
 title: List of available rules
 layout: doc
-edit_link: https://github.com/willowtreeapps/bslint/edit/master/docs/user-guide/rules/index.md
+edit_link: https://github.com/willowtreeapps/wisteria/edit/master/docs/user-guide/rules/index.md
 sidebar: "user-guide"
 ---
 
 # Rules
 
-Rules in BSLint are grouped by category to help you understand their purpose.
+Rules in Wisteria are grouped by category to help you understand their purpose.
 
 No rules are enabled by default.
 

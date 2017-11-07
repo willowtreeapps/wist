@@ -1,21 +1,23 @@
 ---
-title: Getting Started Developing with BSLint
+title: Developer Guide
 layout: doc
-edit_link: https://github.com/willowtreeapps/bslint/edit/master/docs/developer-guide/getting-started.md
+edit_link: https://github.com/willowtreeapps/wisteria/edit/master/docs/developer-guide/getting-started.md
 sidebar: "developer-guide"
+navigation: true
+order: 2
 ---
 
-# Getting Started Developing with BSLint
+# Getting Started Developing with Wisteria
 
-BSLint is hosted at [GitHub](https://github.com/willowtreeapps/bslint) and uses [Git](http://git-scm.com/) for source control. In order to obtain the source code, you must first install Git on your system. Instructions for installing and setting up Git can be found at [http://help.github.com/set-up-git-redirect](http://help.github.com/set-up-git-redirect).
+Wisteria is hosted at [GitHub](https://github.com/willowtreeapps/wisteria) and uses [Git](http://git-scm.com/) for source control. In order to obtain the source code, you must first install Git on your system. Instructions for installing and setting up Git can be found at [http://help.github.com/set-up-git-redirect](http://help.github.com/set-up-git-redirect).
 
 If you simply want to create a local copy of the source to play with, you can clone the main repository using this command:
 
 ```
-git clone git://github.com/willowtreeapps/bslint.git
+$ git clone git://github.com/willowtreeapps/wisteria.git
 ```
 
-If you're planning on contributing to BSLint, then it's a good idea to fork the repository. You can find instructions for forking a repository at [http://help.github.com/fork-a-repo/](http://help.github.com/fork-a-repo/). After forking the BSLint repository, you'll want to create a local copy of your fork.
+If you're planning on contributing to Wisteria, then it's a good idea to fork the repository. You can find instructions for forking a repository at [http://help.github.com/fork-a-repo/](http://help.github.com/fork-a-repo/). After forking the Wisteria repository, you'll want to create a local copy of your fork.
 
 ## Prerequisites
 
@@ -24,14 +26,14 @@ Before you can get started developing, you'll need to have a couple of things in
 * [Node.JS](http://nodejs.org)
 * [npm](http://npmjs.org)
 
-Once you have a local copy and have Node.JS and npm installed, you'll need to install the BSLint dependencies:
+Once you have a local copy and have Node.JS and npm installed, you'll need to install the Wisteria dependencies:
 
 ```
-cd bslint
-npm install
+$ cd wisteria
+$ npm install
 ```
 
-Now when you run `bslint`, it will be running your local copy and showing your changes.
+Now when you run `wist`, it will be running your local copy and showing your changes.
 
 **Note:** It's a good idea to re-rerun `npm install` whenever you pull from the main repository to ensure you have the latest development dependencies.
 
@@ -45,13 +47,13 @@ In order to run the docs you will need these additional prerequisites:
 
 Now you can `npm run docs`.
 
-This command launches an instance of Jekyll that allows you to view a local copy of the docs, found at [http://localhost:4000/bslint/](http://localhost:4000/bslint/).
+This command launches an instance of Jekyll that allows you to view a local copy of the docs, found at [http://localhost:4000/wisteria/](http://localhost:4000/wisteria/).
 
 ## Directory Structure
 
-The BSLint directory and file structure is as follows:
+The Wisteria directory and file structure is as follows:
 
-* `bin` - executable files that are available when BSLint is installed
+* `bin` - executable files that are available when Wisteria is installed
 * `build` - build scripts that help with various parts of development
 * `docs` - documentation for the project
 * `lib` - contains the source code

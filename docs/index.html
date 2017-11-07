@@ -3,49 +3,39 @@ layout: default
 homepage: true
 ---
 
-<div class="jumbotron bg-primary">
+<div class="jumbotron bg-white container">
+    <h1 id="home-title" class="display-3">Wisteria <small class="text-right text-muted">v{{ site.current_version }}</small></h1>
+
+    <div id="home-blurb">
+        <p class="lead my-4">
+            An open source linting utility for BrightScript <br/>
+            for building awesome Roku experiences.
+        </p>
+
+        <p class="lead">
+            <a class="get-started" href="{{ site.baseurl }}/user-guide/getting-started">Get Started &rarr;</a>
+        </p>
+    </div>
+</div>
+
+<section id="integrations" class="bg-light">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="display-3">BSLint</h1>
-                <p id="home-blurb" class="lead mb-4">
-                    BSLint is an open source linting utility for BrighScript. Its goal is to provide a flexible linting toolkit that you can
-                    use to build awesome Roku experiences. <a href="#integrations-title">See how</a> BSLint is being used by us,
-                    and feel free to <a href="{{ site.baseurl }}/developer-guide/contributing">contribute your own ideas</a>.
-                </p>
+        <div class="card-deck px-2 px-md-0">
+            {% for integrator in site.data.integrators %}
+                <div class="card bg-light border-0 flex-row">
+                    <a href="{{ integrator.url }}" title="{{ integrator.name }}">
+                        {% octicon {{integrator.icon}} width:48 %}
+                    </a>
 
-                <hr class="my-4">
-                <p class="lead">
-                    <a href="{{ site.baseurl }}/user-guide/getting-started" class="btn btn-dark btn-lg" role="button">Get started</a>
-                </p>
-
-                <p class="mb-0">
-                    <small>Currently v{{ site.current_version }}</small>
-                </p>
-            </div>
+                    <div class="card-body pt-0">
+                        <h4 class="card-title">
+                            <a href="{{ integrator.url }}" title="{{ integrator.name }}">{{ integrator.name }}</a>
+                        </h4>
+        
+                        <p class="card-text">{{ integrator.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
-</div>
-
-<div class="container">
-    <h2 id="integrations-title" class="text-center">Projects Using BSLint</h2>
-    <hr class="my-4">
-
-    <div class="card-deck">
-        {% for integrator in site.data.integrators %}
-            <div class="card mb-3">
-                <a href="{{ integrator.url }}" title="{{ integrator.name }}" class="bg-dark text-white py-1">
-                    {% octicon package height:64 class:card-img-top %}
-                </a>
-    
-                <div class="card-body text-center">
-                    <h4 class="card-title ">
-                        <a class="text-dark" href="{{ integrator.url }}" title="{{ integrator.name }}">{{ integrator.name }}</a>
-                    </h4>
-    
-                    <p class="card-text">{{ integrator.description }}</p>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-</div>
+</section>

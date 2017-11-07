@@ -1,14 +1,23 @@
-<nav class="navbar navbar-expand navbar-light bg-light site-navigation fixed-top">
-  <a class="navbar-brand mr-2 mr-md-4" href="{{ site.baseurl }}/">
-    {% include logos/wt-logo.svg %}
-    BSLint
-  </a>
 
-  <div class="navbar-nav-scroll" id="bslint-navbar">
-    <ul class="navbar-nav flex-row">
-      {% for item in site.data.menu %}
-        <li class="nav-item"><a href="{{ site.baseurl }}{{ item.url }}" class="nav-link">{{ item.title }}</a></li>
-      {% endfor %}
-    </ul>
+<nav class="navbar navbar-light navbar-expand-lg bg-white site-navigation fixed-top">
+  <div class="container">
+    <a class="navbar-brand mr-2 mr-md-4" href="{{ site.baseurl }}/">
+      {% include logos/wisteria-logo.svg %}
+    </a>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+          {% assign sorted_pages = site.pages | sort:"order" %}
+          {% for node in sorted_pages %}
+            {% if node.navigation == true %}
+              {% if page.url == node.url %}
+                <li class="nav-item active"><a href="{{ site.baseurl }}{{ node.url }}" class="nav-link">{{ node.title }}</a></li>
+              {% else %}
+                <li class="nav-item"><a href="{{ site.baseurl }}{{ node.url }}" class="nav-link">{{ node.title }}</a></li>
+              {% endif %}
+            {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
   </div>
 </nav>
