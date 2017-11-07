@@ -51,7 +51,7 @@ $ wisteria yourfile.js
 
 ## Configuration
 
-After running `wisteria --init`, you'll have a `.wisteriarc.json` file in your directory. In it, you'll see some rules configured like this:
+After running `wisteria --init`, you'll have a `.wistrc.json` file in your directory. In it, you'll see some rules configured like this:
 
 ```json
 {
