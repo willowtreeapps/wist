@@ -2,7 +2,6 @@
 title: About
 layout: doc
 edit_link: https://github.com/willowtreeapps/wisteria/edit/master/docs/about.md
-sidebar: about
 navigation: true
 order: 3
 ---

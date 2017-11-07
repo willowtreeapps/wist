@@ -45,14 +45,14 @@ $display4-weight:             400;
 @import "bootstrap";
 
 body {
-    padding-top: 57px;
+    padding-top: 87px;
 }
 
 :target:before {
     content: "";
     display: block;
-    height: calc(57px + 1rem);
-    margin-top: calc(-57px - 1rem);
+    height: calc(87px + 1rem);
+    margin-top: calc(-87px - 1rem);
 }
 
 .page-content {
@@ -61,16 +61,14 @@ body {
     :target:before {
         content: "";
         display: block;
-        height: calc(109px + 1rem);
-        margin-top: calc(-109px - 1rem);
+        height: calc(139px + 1rem);
+        margin-top: calc(-139px - 1rem);
     }
 }
 
 .site-navigation {
     &.navbar-light {
         .navbar-brand {
-            color: color("teal");
-
             @include hover-focus {
                 color: transparentize($primary, 0.3);
 
@@ -206,6 +204,7 @@ ul > li:not(:last-child) {
     small, .small {
         font-size: 1rem;
         margin-left: 1rem;
+        white-space: nowrap;
     }
 }
 
@@ -226,7 +225,7 @@ body {
 main {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 57px);
+    height: calc(100vh - 87px);
 }
 
 #integrations {
@@ -259,8 +258,8 @@ main {
     
     .page-content {
         :target:before {
-            height: calc(57px + 1rem);
-            margin-top: calc(-57px - 1rem);
+            height: calc(87px + 1rem);
+            margin-top: calc(-87px - 1rem);
         }
     }
 

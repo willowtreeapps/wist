@@ -7,11 +7,17 @@
 
     <main class="container" aria-label="Content">
         <div class="row justify-content-end">
-            {% include sidebar.html %}
+            {% if page.sidebar != null %}
+                {% include sidebar.html %}
 
-            <article class="col-12 col-md-8 col-xl-9 py-md-3 px-md-5 page-content">
-                {{ content }}
-            </article>
+                <article class="col-12 col-md-8 col-xl-9 py-md-3 px-md-5 page-content">
+                    {{ content }}
+                </article>
+            {% else %}
+                <article class="col-12 py-md-3 page-content">
+                    {{ content }}
+                </article>
+            {%endif}
         </div>
     </main>
 
