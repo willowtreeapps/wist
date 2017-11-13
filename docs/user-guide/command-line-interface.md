@@ -1,19 +1,20 @@
 ---
 title: Command Line Interface
 layout: doc
-edit_link: https://github.com/willowtreeapps/wisteria/edit/master/docs/user-guide/command-line-interface.md
+edit_link: https://github.com/willowtreeapps/wist/edit/master/docs/user-guide/command-line-interface.md
 sidebar: "user-guide"
+grouping: "cli"
 ---
 
 # Command Line Interface
 
-To run Wisteria on Node.js, you must have npm installed. If npm is not installed, follow the instructions here: https://www.npmjs.com/
+To run Wist on Node.js, you must have npm installed. If npm is not installed, follow the instructions here: https://www.npmjs.com/
 
 Once npm is installed, run the following
 
     $ npm i -g wist
 
-This installs the Wisteria CLI from the npm repository. To run Wisteria, use the following format:
+This installs the Wist CLI from the npm repository. To run Wist, use the following format:
 
     $ wist [options] [file]*
 
@@ -68,4 +69,4 @@ This option outputs the help menu, displaying all of the available options. All 
 
 `-v`, `--verbose`
 
-This option outputs debugging information to the console. This information is useful when you're seeing a problem and having a hard time pinpointing it. The Wisteria team may ask for this debugging information to help solve bugs.
+This option outputs debugging information to the console. This information is useful when you're seeing a problem and having a hard time pinpointing it. The Wist team may ask for this debugging information to help solve bugs.

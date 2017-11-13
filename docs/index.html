@@ -4,7 +4,7 @@ homepage: true
 ---
 
 <div class="jumbotron bg-white container">
-    <h1 id="home-title" class="display-3">Wisteria <small class="text-right text-muted">v{{ site.current_version }}</small></h1>
+    <h1 id="home-title" class="display-3">Wist <small class="text-right text-muted">v{{ site.current_version }}</small></h1>
 
     <div id="home-blurb">
         <p class="lead my-4">
@@ -23,8 +23,8 @@ homepage: true
         <div class="card-deck px-2 px-md-0">
             {% for integrator in site.data.integrators %}
                 <div class="card bg-light border-0 flex-row">
-                    <a href="{{ integrator.url }}" title="{{ integrator.name }}">
-                        {% octicon {{integrator.icon}} width:48 %}
+                    <a class="integrator-logo" href="{{ integrator.url }}" title="{{ integrator.name }}">
+                        {% include logos/{{integrator.icon}}.svg %}
                     </a>
 
                     <div class="card-body pt-0">

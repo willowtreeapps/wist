@@ -1,6 +1,7 @@
 user-guide:
   - title: Getting Started
     url: /user-guide/getting-started
+    grouping: 'getting-started-user'
     children:
       - title: Installation and Usage
         url: /user-guide/getting-started#installation-and-usage
@@ -8,17 +9,20 @@ user-guide:
         url: /user-guide/getting-started#configuration
   - title: Command Line Interface
     url: /user-guide/command-line-interface
+    grouping: 'cli'
     children:
       - title: Options
         url: /user-guide/command-line-interface#options
   - title: Rules
     url: /user-guide/rules
+    grouping: 'rules'
     children:
       - title: Best Practices
         url: /user-guide/rules#best-practices
 developer-guide:
   - title: Getting Started
     url: /developer-guide/getting-started
+    grouping: 'getting-started-developer'
     children:
       - title: Prerequisites
         url: /developer-guide/getting-started#prerequisites
@@ -28,6 +32,7 @@ developer-guide:
         url: /developer-guide/getting-started#directory-structure
   - title: Contributing
     url: /developer-guide/contributing
+    grouping: 'contributing'
     children:
       - title: Code of Conduct
         url: /developer-guide/contributing/code-of-conduct
@@ -38,3 +43,4 @@ developer-guide:
 about:
   - title: About
     url: /about
+    grouping: 'about'
