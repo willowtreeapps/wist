@@ -1,9 +1,9 @@
 - name: Ukor
-  description: A build management tool to manage Roku channel builds. It has support for build flavors, automated unit test runs, and linting.
+  description: A build management tool for Roku channels. Ukor supports build flavors, automated unit test runs, and linting.
   url: https://github.com/willowtreeapps/ukor
   icon: ukor-logo
 
 - name: Hinoki
-  description: A <a href="http://langserver.org" title="Language Server Protocol">Language Server Protocol</a> implementation for BrightScript.
+  description: A <a href="http://langserver.org" title="Language Server Protocol">Language Server Protocol</a> implementation that provides features like autocomplete, go to definition, find all references, and more for BrightScript.
   url: https://github.com/willowtreeapps/hinoki
   icon: hinoki-logo
