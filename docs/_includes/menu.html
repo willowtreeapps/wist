@@ -2,11 +2,16 @@
 <nav class="navbar navbar-light navbar-expand-lg bg-white site-navigation fixed-top">
   <div class="container">
     <a class="navbar-brand mr-2 mr-md-4" href="{{ site.baseurl }}/">
-      {% include logos/wisteria-logo.svg %}
+      {% include logos/wist-logo.svg %}
     </a>
 
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ml-auto">
+    <span class="menu-icon">
+      <span></span>
+      <span></span>
+    </span>
+
+    <div class="navbar-collapse closed" id="main-nav-menu">
+      <ul class="navbar-nav">
           {% assign sorted_pages = site.pages | sort:"order" %}
           {% for node in sorted_pages %}
             {% if node.navigation == true %}

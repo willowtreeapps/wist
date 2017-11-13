@@ -1,22 +1,26 @@
-<div class="col-12 col-md-4 col-xl-2 sidebar">
-    <div class="sidebar-toggler bg-dark">
-        <button class="d-md-none" type="button" data-toggle="collapse" data-target="#sidebar-nav" aria-controls="sidebar-nav" aria-expanded="false" aria-label="Toggle docs navigation">
-            {% octicon three-bars height:32 %}
-        </button>
-    </div>
+<div class="col-12 col-md-4 col-xl-3 sidebar">
+    <nav id="sidebar-nav" class="collapse pr-0">
+        <ul class="nav flex-column">
+            {% for heading in site.data.sidebar[page.sidebar] %}
+                {% if page.grouping == heading.grouping %}
+                    <div class="sidebar-nav-item active">
+                {% else %}
+                    <div class="sidebar-nav-item">
+                {% endif %}
 
-    <nav id="sidebar-nav" class="collapse pr-0 pt-4">
-        {% for heading in site.data.sidebar[page.sidebar] %}
-            <div class="sidebar-nav-item">
-                <a href="{{ site.baseurl }}{{ heading.url }}">{{ heading.title }}</a>
-                <ul class="nav sidebar-subnav">
-                    {% for item in heading.children %}
-                        <li>
-                            <a class="sidebar-nav-item" href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endfor %}
+                    <span class="active-indicator">&mdash;</span>
+                    <a href="{{ site.baseurl }}{{ heading.url }}">{{ heading.title }}</a>
+
+                    <ul class="nav sidebar-subnav">
+                        {% for item in heading.children %}
+                            <li>
+                                <span class="active-indicator">&mdash;</span>
+                                <a class="sidebar-nav-item" href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div> 
+            {% endfor %}
+        </ul>
     </nav>
 </div>

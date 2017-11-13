@@ -10,17 +10,17 @@
             {% if page.sidebar != null %}
                 {% include sidebar.html %}
                 
-                <article class="col-12 col-md-8 col-xl-10 py-md-3 page-content">
+                <article class="col-12 col-md-8 col-xl-9 page-content docs-content">
                     {{ content }}
                 </article>
             {% else %}
-                <article class="col-12 py-md-3 page-content">
+                <article class="col-12 page-content">
                     {{ content }}
                 </article>
-            {%endif}
+            {% endif %}
         </div>
     </main>
-
+    
     {% include footer.html %}
   </body>
 </html>

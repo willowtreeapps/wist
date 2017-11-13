@@ -1,14 +1,12 @@
-title: Wisteria
+title: Wist
 description: A linter tool for identifying and reporting on patterns in BrightScript.
-baseurl: "/wisteria" # the subpath of your site, e.g. /blog
+baseurl: "/wist" # the subpath of your site, e.g. /blog
 url: https://willowtreeapps.github.io # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: willowtreeapps
 github_username:  willowtreeapps
 markdown: kramdown
 sass:
   sass_dir: _assets/stylesheets
-plugins:
-  - jekyll-octicons
 
 # Custom variables
 current_version: 1.0.0-beta.1

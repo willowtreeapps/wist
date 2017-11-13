@@ -11,9 +11,9 @@ $gray-200:          #e9ecef;
 $gray-500:          #bebebe;
 $gray-700:          #4a4a4a;
 $gray-900:          #212529;
-$wisteria-purple:   #7b00ff;
+$wist-purple:       #7b00ff;
 
-$primary:       $wisteria-purple;
+$primary:       $wist-purple;
 $info:          $cyan;
 $dark:          $gray-700;
 
@@ -28,7 +28,7 @@ $dropdown-link-active-color:  $gray-900;
 $dropdown-link-active-bg:     $gray-200;
 
 $body-color:  $gray-700;
-$link-color:  $wisteria-purple;
+$link-color:  $wist-purple;
 
 $text-muted: $gray-500;
 
@@ -42,7 +42,25 @@ $display2-weight:             400;
 $display3-weight:             400;
 $display4-weight:             400;
 
-@import "bootstrap";
+@import "functions";
+@import "variables";
+@import "mixins";
+@import "root";
+@import "print";
+@import "reboot";
+@import "type";
+@import "code";
+@import "grid";
+@import "transitions";
+@import "dropdown";
+@import "nav";
+@import "navbar";
+@import "card";
+@import "badge";
+@import "jumbotron";
+@import "media";
+@import "list-group";
+@import "utilities";
 
 body {
     padding-top: 87px;
@@ -56,8 +74,6 @@ body {
 }
 
 .page-content {
-    padding-top: 4rem;
-
     :target:before {
         content: "";
         display: block;
@@ -68,6 +84,8 @@ body {
 
 .site-navigation {
     &.navbar-light {
+        padding-bottom: 0;
+
         .navbar-brand {
             @include hover-focus {
                 color: transparentize($primary, 0.3);
@@ -84,55 +102,77 @@ body {
             }
 
             .nav-item {
-                margin-left: 2.5rem;
+                padding: .75rem 1.25rem;
+                border-top: 1px solid $off-white;
+
+                &:last-child {
+                    border-bottom: 1px solid $off-white;
+                }
 
                 &.active {
                     .nav-link {
                         color: $primary;
-
-                        &:after {
-                            content:''; 
-                            width: 50%; 
-                            height: 2px; 
-                            background-color: $primary;
-                            position: absolute; 
-                            bottom: calc(0.25rem - 2px);
-                            left: 25%;
-                        }
-
-                        @include hover-focus {
-                            color: transparentize($primary, 0.3);
-
-                            &:after {
-                                background-color: transparentize($primary, 0.3);
-                            }
-                        }
                     }
                 }
             }
 
             .nav-link {
-                color: $gray-700;
+                color: $gray-500;
                 font-size: .9rem;
                 position: relative;
                 font-weight: normal;
-
-                @include hover-focus {
-                    color: transparentize($gray-700, 0.3);
-
-                    &:after {
-                        content:''; 
-                        width: 50%; 
-                        height: 2px; 
-                        background-color: transparentize($gray-700, 0.3);
-                        position: absolute; 
-                        bottom: calc(0.25rem - 2px);
-                        left: 25%;
-                    }
-                }
             }
         }
     }
+}
+
+.menu-icon {
+    width: 20px;
+    height: 16px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+
+    span {
+        width: 100%;
+        height: 4px;
+        background-color: $primary;
+        display: block;
+        position: absolute;
+        left: 0;
+        transition: transform .2s ease-in-out;
+        
+        &:nth-child(1) {
+            top: 0;
+        }
+    
+        &:nth-child(2) {
+            bottom: 0;
+        }
+    }
+}
+
+.navbar-collapse.closed {
+    max-height: 0 !important;
+}
+
+.menu-icon.opened {
+    span {
+        &:nth-child(1) {
+            transform: translateY(6px) rotate(135deg);
+        }
+    
+        &:nth-child(2) {
+            transform: translateY(-6px) rotate(-135deg);
+        }
+    }
+}
+
+#main-nav-menu {
+    overflow-y: hidden;
+	max-height: 200px;
+    transition: max-height 300ms ease-out;
+    margin: 0 -1rem;
 }
 
 pre {
@@ -165,18 +205,6 @@ ul > li:not(:last-child) {
     margin-right: .25rem;
 }
 
-.sidebar-toggler {
-    display: block;
-    text-align: right;
-    padding: .25rem 1rem;
-    margin-right: -15px;
-    margin-left: -15px;
-
-    &.bg-dark .octicon {
-        fill: theme-color("primary");
-    }
-}
-
 #sidebar-nav {
     border: 1px solid $gray-200;
     background-color: $gray-100;
@@ -184,11 +212,31 @@ ul > li:not(:last-child) {
     & > .sidebar-nav-item:not(:last-child) {
         margin-bottom: 1rem;
     }
+
+    .active-indicator {
+        margin-left: -1.25rem;
+        padding-right: 0.25rem;
+        display: none;
+    }
+
+    .active {
+        & > .active-indicator {
+            display: inline;
+        }
+    }
+}
+
+.sidebar-nav-item {
+    & > a, & > .active-indicator {
+        color: theme-color("dark");
+        font-weight: normal;
+    }
 }
 
 .sidebar-subnav {
     color: theme-color("dark");
     display: block;
+    padding-left: 1rem;
 
     & > li:not(:last-child) {
         margin-bottom: .25rem;
@@ -232,6 +280,14 @@ main {
 
 #integrations {
     padding-top: 2rem;
+    display: flex;
+    flex: 1;
+}
+
+.integrator-logo {
+    svg {
+        width: 46px;
+    }
 }
 
 .card-img-left {
@@ -241,6 +297,10 @@ main {
 }
 
 @include media-breakpoint-up(md) {
+    .navbar-expand-md .menu-icon {
+        display: none;
+    }
+
     #sidebar-nav {
         display: block !important;
         border: 0;
@@ -252,10 +312,6 @@ main {
     .sidebar {
         border-right: 1px solid $gray-200;
     }
-
-    .sidebar-toggler {
-        display: none !important;
-    }
     
     .page-content {
         :target:before {
@@ -264,10 +320,12 @@ main {
         }
     }
 
+    .docs-content {
+        padding-left: 2rem;
+    }
+
     #integrations {
         padding-top: 4rem;
-        display: flex;
-        flex: 1;
 
         .card-deck {
             .card:first-child {
@@ -281,16 +339,75 @@ main {
     }
 }
 
-@include media-breakpoint-down(lg) {
-    #wisteria-navbar {
-        max-width: 100%;
-        height: 2.5rem;
-        overflow: hidden;
+@include media-breakpoint-up(lg) {
+    .navbar-expand-lg .menu-icon {
+        display: none;
+    }
 
-        .navbar-nav {
-            overflow-x: auto;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
+    .site-navigation {
+        &.navbar-light {
+            padding-bottom: 0.5rem;
+            
+            .navbar-nav {
+                margin-left: auto;
+                margin-right: 0;
+
+                .nav-link {
+                    color: $gray-700;
+
+                    @include hover-focus {
+                        color: transparentize($gray-700, 0.3);
+        
+                        &:after {
+                            content:''; 
+                            width: 50%; 
+                            height: 2px; 
+                            background-color: transparentize($gray-700, 0.3);
+                            position: absolute; 
+                            bottom: calc(0.25rem - 2px);
+                            left: 25%;
+                        }
+                    }
+                }
+
+                .nav-item {
+                    border-top: 0;
+
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+
+                    &.active {
+                        .nav-link {
+                            &:after {
+                                content:''; 
+                                width: 50%; 
+                                height: 2px; 
+                                background-color: $primary;
+                                position: absolute; 
+                                bottom: calc(0.25rem - 2px);
+                                left: 25%;
+                            }
+
+                            @include hover-focus {
+                                color: transparentize($primary, 0.3);
+
+                                &:after {
+                                    background-color: transparentize($primary, 0.3);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #main-nav-menu {
+        margin: 0 0 0 auto;
+
+        &.closed {
+            max-height: unset !important;
         }
     }
 }

@@ -1,9 +1,18 @@
-(function($) {
-    const $sidebarNav = $('#sidebar-nav');
+(function() {
+    const mainNav = document.querySelector('.site-navigation'),
+        menu = document.getElementById('main-nav-menu'),
+        icon = mainNav.querySelector('.menu-icon');
 
-    $sidebarNav.on('click', '.sidebar-nav-item', function() {
-        if ($sidebarNav.hasClass('collapse') && $sidebarNav.hasClass('show')) {
-            $sidebarNav.collapse('hide');
+    mainNav.addEventListener('click', (e) => {
+        if (e.target && e.target.closest('.menu-icon') != null) {
+            if (menu.classList.contains('closed')) {
+                menu.classList.remove('closed');
+                icon.classList.add('opened');
+            }
+            else {
+                menu.classList.add('closed');
+                icon.classList.remove('opened');
+            }
         }
     });
-})(jQuery);
+})();
