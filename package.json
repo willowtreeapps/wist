@@ -1,5 +1,5 @@
 {
-  "name": "wist",
+  "name": "@willowtreeapps/wist",
   "version": "1.0.0-beta.1",
   "description": "A linter for BrightScript",
   "bin": {
