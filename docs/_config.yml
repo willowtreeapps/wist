@@ -1,5 +1,5 @@
 title: Wist
-description: A linter tool for identifying and reporting on patterns in BrightScript.
+description: An open source linting utility for BrightScript for building awesome Roku experiences. 
 baseurl: "/wist"
 url: https://willowtreeapps.github.io
 twitter_username: willowtreeapps
@@ -10,7 +10,5 @@ layouts_dir: resources/_layouts
 sass:
   sass_dir: resources/_assets/stylesheets
   style: compressed
-
-# Custom variables
-current_version: 1.0.0-beta.1
 logo: wist-logo
+repository: willowtreeapps/wist
