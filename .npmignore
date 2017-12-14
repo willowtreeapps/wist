@@ -1,0 +1,17 @@
+/.github
+/config
+/docs
+/gradle
+/grammar
+/sample-project
+/shell-scripts
+/test
+/.npmignore
+/.npmrc
+/.gitmodules
+/build.gradle
+/gradlew
+/gradlew.bat
+/LICENSE
+/NOTICE
+/settings.gradle
