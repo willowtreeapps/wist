@@ -69,3 +69,9 @@ The names `"no-stop"` and `"no-print"` are the names of [rules](https://willowtr
 * `"error"` or `2` - turn the rule on as an error (exit code will be 1)
 
 The three error levels allow you fine-grained control over how Wist applies rules (for more configuration options and details, see the [configuration docs](https://willowtreeapps.github.io/wist/user-guide/configuring)).
+
+## Contributing to Wist
+
+Contributions are welcome. Please see the [Contributing guidelines](CONTRIBUTING.md).
+
+Wist has adopted a [code of conduct](CODE_OF_CONDUCT.md) defined by the [Contributor Covenant](http://contributor-covenant.org), the same used by the [Swift language](https://swift.org) and countless other open source software teams.
