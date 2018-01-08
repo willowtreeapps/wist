@@ -42,7 +42,7 @@ user-guide:
       - title: no-stop
         url: /user-guide/rules/no-stop
       - title: no-void-func
-        url: /user-guide/ruled/no-void-func
+        url: /user-guide/rules/no-void-func
 developer-guide:
   - title: Getting Started
     url: /developer-guide/getting-started
