@@ -6,7 +6,7 @@
 
 Wist is a linter for identifying and reporting errors in Brightscript code. It helps you identify errors before you upload code to your Roku.
 
-> For more details. Please see our user guide and developer documentation [here](https://willowtreeapps.github.io/wist/)
+**For full documentation, please see our user and developer guides [here](https://willowtreeapps.github.io/wist/)**
 
 ## How does it compare to other tools?
 
