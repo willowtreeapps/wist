@@ -22,7 +22,8 @@ Such as:
 
     $ wist file1.js file2.js
 
-## Options
+
+## Usage
 
 The command line utility has several options. You can view the options by running `wist -h`.
 
@@ -35,25 +36,16 @@ Basic configuration:
   -h, --help           Show help
 ```
 
-### Basic configuration
-
-`-f`, `--format`
-
-This option specifies the output format for the console. Possible formats are:
-
-* [compact](formatters/#compact)
-* [json](formatters/#json)
-* [stylish](formatters/#stylish) (the default)
-* [unix](formatters/#unix)
-* [visualstudio](formatters/#visualstudio)
-
 Example:
 
-    $ wist -f compact file.js
-
+```sh
+$ wist -f compact file.js
+```
 When specified, the given format is output to the console. If you'd like to save that output into a file, you can do so on the command line like so:
 
-    $ wist -f compact file.js > results.txt
+```
+$ wist -f compact file.js > results.txt
+```
 
 This saves the output into the `results.txt` file.
 
@@ -70,3 +62,15 @@ This option outputs the help menu, displaying all of the available options. All 
 `-v`, `--verbose`
 
 This option outputs debugging information to the console. This information is useful when you're seeing a problem and having a hard time pinpointing it. The Wist team may ask for this debugging information to help solve bugs.
+
+### Formatting options
+
+`-f`, `--format`
+
+This option specifies the output format for the console. Possible formats are:
+
+* compact
+* json
+* stylish
+* unix
+* visualstudio
