@@ -8,7 +8,6 @@ grouping: "rules"
 
 # no-print
 
-## Rule Details
 Disallow use of print and ? statements. This rule aims to eliminate the possibility of `print` statements being accidentally commited to production code.
 
 ## Version
