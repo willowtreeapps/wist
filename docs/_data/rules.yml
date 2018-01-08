@@ -4,5 +4,25 @@ categories:
     rules:
       - name: no-stop
         description: disallow `stop` statements
+        since: 1.0.0
       - name: no-print
         description: disallow `print` and `?` statements
+        since: 1.0.0
+      - name: comma-separated-arrays
+        description: require array elements be delimited using a comma `,`
+        since: 1.0.0
+      - name: no-void-func
+        description: disallow functions with `void` return type
+        since: 1.0.0
+      - name: no-shorthand-if
+        description: disallow `if` statements without `then` keyword
+        since: 1.0.0
+      - name: no-private-func
+        description: 
+        since: 1.0.0
+      - name: function-return-statement
+        description: 
+        since: 1.0.0
+      - name: camel-case-func
+        description: function names must be declared using camelCasing
+        since: 1.0.0

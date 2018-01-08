@@ -11,14 +11,38 @@ user-guide:
     url: /user-guide/command-line-interface
     grouping: cli
     children:
-      - title: Options
-        url: /user-guide/command-line-interface#options
+      - title: Usage
+        url: /user-guide/command-line-interface#usage
+      - title: Formatting options
+        url: /user-guide/command-line-interface#formatting-options
+  - title: Rules Engine
+    url: /user-guide/rules-engine
+    grouping: rules-engine
+    children:
+      - title: Setup
+        url: /user-guide/rules-engine#setup
+      - title: Configuring
+        url: /user-guide/rules-engine#configuring
   - title: Rules
     url: /user-guide/rules
     grouping: rules
     children:
-      - title: Best Practices
-        url: /user-guide/rules#best-practices
+      - title: camel-case-func
+        url: /user-guide/rules/camel-case-func  
+      - title: comma-separated-arrays
+        url: /user-guide/rules/comma-separated-arrays
+      - title: function-return-statement
+        url: /user-guide/rules/function-return-statement
+      - title: no-print
+        url: /user-guide/rules/no-print
+      - title: no-private-func
+        url: /user-guide/rules/no-private-func
+      - title: no-shorthand-if
+        url: /user-guide/rules/no-shorthand-if
+      - title: no-stop
+        url: /user-guide/rules/no-stop
+      - title: no-void-func
+        url: /user-guide/rules/no-void-func
 developer-guide:
   - title: Getting Started
     url: /developer-guide/getting-started

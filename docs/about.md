@@ -9,10 +9,7 @@ order: 3
 
 # About
 
-## History
-
-Wist was created at [WillowTree](https://willowtreeapps.com/careers), the mobile product agency.
-
+Wist was created at [WillowTree](https://willowtreeapps.com/), the mobile product agency. 
 It started in August 2017 as a way to bring the robust linting capabilities of other languages to the larger community of BrightScript developers.
 
 

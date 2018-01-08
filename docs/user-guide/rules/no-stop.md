@@ -6,7 +6,7 @@ sidebar: "user-guide"
 grouping: "rules"
 ---
 
-# Disallow use of stop statements. (no-stop)
+# no-stop
 The `stop` statement terminates execution of the current application.
 
 ## Rule Details

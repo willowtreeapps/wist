@@ -5,20 +5,17 @@ edit_link: https://github.com/willowtreeapps/wist/edit/master/docs/user-guide/ru
 sidebar: "user-guide"
 grouping: "rules"
 ---
-
 # Rules
 
-Rules in Wist are grouped by category to help you understand their purpose.
-
-No rules are enabled by default.
-
+Configurable rules available in Wist.
 {% for category in site.data.rules.categories %}
 
-## {{ category.name}}
-
-{{ category.description }}
-
 <table class="table table-striped table-sm table-responsive">
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Since</th>
+</tr>
 <tbody>
 {% assign rules = category.rules | sort: 'name' %}
 {% for rule in rules %}
@@ -26,6 +23,8 @@ No rules are enabled by default.
 <td markdown="1">[{{rule.name}}]({{rule.name}})
 </td>
 <td markdown="1">{{rule.description}}
+</td>
+<td markdown="1">{{rule.since}}
 </td>
 </tr>
 {% endfor %}

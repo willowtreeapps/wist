@@ -72,10 +72,10 @@ After running `wist --init`, you'll have a `.wistrc.json` file in your directory
 }
 ```
 
-The names `"no-stop"` and `"no-print"` are the names of [rules](https://willowtreeapps.github.io/wist/rules) in Wist. The first value is the error level of the rule and can be one of these values:
+The names `"no-stop"` and `"no-print"` are the names of [rules](/wist/user-guide/rules) in Wist. The first value is the error level of the rule and can be one of these values:
 
 * `"off"` or `0` - turn the rule off
 * `"warn"` or `1` - turn the rule on as a warning (doesn't affect exit code)
 * `"error"` or `2` - turn the rule on as an error (exit code will be 1)
 
-The three error levels allow you fine-grained control over how Wist applies rules (for more configuration options and details, see the [configuration docs](https://willowtreeapps.github.io/wist/user-guide/configuring)).
+The three error levels allow you fine-grained control over how Wist applies rules (for more configuration options and details, see the [configuration docs](/wist/user-guide/configuring)).
