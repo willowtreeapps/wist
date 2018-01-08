@@ -1,57 +1,70 @@
-# Getting Started with Wist
+# Wist
 
-Wist is a tool for identifying and reporting on patterns found in BrightScript code, with the goal of making code more consistent and avoiding bugs.
+<p align="center">
+  <img width= "200px" height = "200px" src="artwork/wist-logo.svg"/>
+</p>
 
-* Wist uses [ANTLR](https://www.antlr.org) for BrightScript parsing.
-* Wist uses an AST to evaluate patterns in code.
+Wist is a linter for identifying and reporting errors in Brightscript code. It helps you identify errors before you upload code to your Roku.
 
-## Installation and Usage
+## How does it compare to other tools?
 
-There are two ways to install Wist: globally and locally.
+Wist has one of the most accurate and complete implementations of the Brightscript grammer available right now. 
+It focuses reporting not just syntax violations, but reporting patterns that are likely to result in errors.
 
-### Local Installation and Usage
 
-If you want to include Wist as part of your project's build system, we recommend installing it locally. You can do so using npm:
+## Requirements
 
-```
-$ npm install wist --save-dev
-```
+* NodeJS
 
-You should then setup a configuration file:
+* (Optional) JDK8
 
-```
-$ ./node_modules/.bin/wist --init
-```
 
-After that, you can run Wist in your project's root directory like this:
+## Clients
 
-```
-$ ./node_modules/.bin/wist yourfile.js
-```
+The easiest and best way to use Wist, is through our editor clients.
 
-### Global Installation and Usage
+* [Atom IDE Brightscript](https://github.com/willowtreeapps/atom-ide-brightscript)
+* VSCode coming soon
 
-If you want to make Wist available to tools that run across all of your projects, we recommend installing Wist globally. You can do so using npm:
+You can install them through their respective package managers and work out of the box with a `.wistrc.json` in your root directory.
+
+## Standalone installation
+
+We recommend taking this approach if you if you want to include Wist as part of your project's build pipeline. Wist is available via as an NPM package and can be installed like so:
+
 
 ```
 $ npm install -g wist
 ```
 
-You should then setup a configuration file:
+It can be invoked directly using the `wist` command
+
+```
+$ wist yourfile.brs
+```
+
+Wist can also be installed locally to the project
+
+```
+$ npm install wist --save-dev
+```
+
+After that, you can run Wist in your project's root directory like this:
+
+```
+$ ./node_modules/.bin/wist yourfile.brs
+```
+
+
+## Usage
+
+To get started linting your Brightscript project, you should then setup a wist configuration file:
 
 ```
 $ wist --init
 ```
 
-After that, you can run Wist on any file or directory like this:
-
-```
-$ wist yourfile.js
-```
-
-## Configuration
-
-After running `wist --init`, you'll have a `.wistrc.json` file in your directory. In it, you'll see some rules configured like this:
+This will generate a `.wistrc.json` file in your directory. In it, you'll see some rules configured like this:
 
 ```json
 {
@@ -62,16 +75,16 @@ After running `wist --init`, you'll have a `.wistrc.json` file in your directory
 }
 ```
 
-The names `"no-stop"` and `"no-print"` are the names of [rules](https://willowtreeapps.github.io/wist/rules) in Wist. The first value is the error level of the rule and can be one of these values:
+These configures the sort of errors that the [rules engine](https://willowtreeapps.github.io/wist/rules-engine) reports back. There are several other [rules](https://willowtreeapps.github.io/wist/rules) that can be configured. See the documentation for the full list.
 
-* `"off"` or `0` - turn the rule off
-* `"warn"` or `1` - turn the rule on as a warning (doesn't affect exit code)
-* `"error"` or `2` - turn the rule on as an error (exit code will be 1)
+Once your `.wistrc.json` has been configured to your liking. Invoke wist on your Brightscript file.
 
-The three error levels allow you fine-grained control over how Wist applies rules (for more configuration options and details, see the [configuration docs](https://willowtreeapps.github.io/wist/user-guide/configuring)).
+```
+$ wist yourfile.brs
+```
 
 ## Contributing to Wist
 
 Contributions are welcome. Please see the [Contributing guidelines](CONTRIBUTING.md).
 
-Wist has adopted a [code of conduct](CODE_OF_CONDUCT.md) defined by the [Contributor Covenant](http://contributor-covenant.org), the same used by the [Swift language](https://swift.org) and countless other open source software teams.
+Wist has adopted a [Code of Conduct](CODE_OF_CONDUCT.md) defined by the [Contributor Covenant](http://contributor-covenant.org). Please see our [Code of Conduct](/CODE_OF_CONDUCT.md) as well as our [Contributing Guidelines ](/CONTRIBUTING.md) for more information.
