@@ -29,11 +29,11 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     enterAssociativeArrayInitializer(context) {
         this.emitter.emit('associativeArrayInitializer:enter', context);
     }
-    enterAssociativeElementInitializer(context) {
-        this.emitter.emit('associativeElementInitializer:enter', context);
-    }
     enterDimStatement(context) {
         this.emitter.emit('dimStatement:enter', context);
+    }
+    enterAssociativeElementInitializer(context) {
+        this.emitter.emit('associativeElementInitializer:enter', context);
     }
     enterExitStatement(context) {
         this.emitter.emit('exitStatement:enter', context);
