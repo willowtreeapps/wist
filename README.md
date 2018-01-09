@@ -1,6 +1,8 @@
 # Wist
 
-![Wist Logo](artwork/wist-logo.svg){:width="200px"}
+<p align="center">
+    <img width="200px" height="200px" src="artwork/wist-logo.svg"/>
+</p>
 
 Wist is a linter for identifying and reporting errors in Brightscript code. It helps you identify errors before you upload code to your Roku.
 
