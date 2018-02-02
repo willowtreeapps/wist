@@ -23,6 +23,7 @@ block
 
 blockStatement
     : comment
+    | conditionalCompilationStatement
     | dimStatement
     | exitStatement
     | forStatement
@@ -48,6 +49,15 @@ associativeArrayInitializer
 
 associativeElementInitializer
     : (identifier | reservedWord | stringLiteral) COLON assignableExpression
+    ;
+
+conditionalCompilationStatement
+    : CONDITIONAL_COMPILATION CONST untypedIdentifier EQUALS expression
+    | CONDITIONAL_COMPILATION ERROR .*?
+    | CONDITIONAL_COMPILATION IF expression
+    | CONDITIONAL_COMPILATION (ELSEIF | ELSE IF) expression
+    | CONDITIONAL_COMPILATION ELSE expression
+    | CONDITIONAL_COMPILATION (ENDIF | END IF)
     ;
 
 dimStatement
@@ -313,6 +323,10 @@ BOX
     : B O X
 	;
 
+CONST
+    : C O N S T
+    ;
+
 CREATEOBJECT
     : C R E A T E O B J E C T
     ;
@@ -360,6 +374,10 @@ ENDSUB
 ENDWHILE
     : E N D W H I L E
 	;
+
+ERROR
+    : E R R O R
+    ;
 
 EXIT
     : E X I T
@@ -547,7 +565,7 @@ IDENTIFIER_TYPE_DECLARATION
     ;
 
 COMMENT
-    :   (SINGLE_QUOTE | (REM (WS | NEWLINE))) ~[\r\n\u2028\u2029]* -> channel(HIDDEN)
+    : (SINGLE_QUOTE | (REM (WS | NEWLINE))) ~[\r\n\u2028\u2029]* -> channel(HIDDEN)
     ;
 
 NEWLINE
@@ -556,6 +574,10 @@ NEWLINE
 
 WS
     : [ \t]+ -> skip
+    ;
+
+CONDITIONAL_COMPILATION
+    : '#'
     ;
 
 SINGLE_QUOTE
