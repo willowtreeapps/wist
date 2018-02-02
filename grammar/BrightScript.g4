@@ -5,7 +5,7 @@ startRule
     ;
 
 component
-    : endOfLine* libraryStatement* endOfLine* componentBody
+    : endOfLine* (libraryStatement* | (conditionalCompilationStatement endOfLine)*) endOfLine* componentBody
     ;
 
 componentBody
@@ -52,12 +52,12 @@ associativeElementInitializer
     ;
 
 conditionalCompilationStatement
-    : CONDITIONAL_COMPILATION CONST untypedIdentifier EQUALS expression
-    | CONDITIONAL_COMPILATION ERROR .*?
-    | CONDITIONAL_COMPILATION IF expression
-    | CONDITIONAL_COMPILATION (ELSEIF | ELSE IF) expression
-    | CONDITIONAL_COMPILATION ELSE expression
-    | CONDITIONAL_COMPILATION (ENDIF | END IF)
+    : CONDITIONAL_CONST untypedIdentifier EQUALS expression
+    | CONDITIONAL_ERROR .*?
+    | CONDITIONAL_IF expression
+    | CONDITIONAL_ELSEIF expression
+    | CONDITIONAL_ELSE expression
+    | CONDITIONAL_ENDIF
     ;
 
 dimStatement
@@ -323,10 +323,6 @@ BOX
     : B O X
 	;
 
-CONST
-    : C O N S T
-    ;
-
 CREATEOBJECT
     : C R E A T E O B J E C T
     ;
@@ -374,10 +370,6 @@ ENDSUB
 ENDWHILE
     : E N D W H I L E
 	;
-
-ERROR
-    : E R R O R
-    ;
 
 EXIT
     : E X I T
@@ -576,8 +568,30 @@ WS
     : [ \t]+ -> skip
     ;
 
-CONDITIONAL_COMPILATION
-    : '#'
+CONDITIONAL_CONST
+    : '#' C O N S T
+    ;
+
+CONDITIONAL_ELSE
+    : '#' ELSE
+    ;
+
+CONDTIONAL_ELSEIF
+    : '#' ELSEIF
+    | '#' ELSE IF
+    ;
+
+CONDITIONAL_ENDIF
+    : '#' ENDIF
+    | '#' END IF
+    ;
+
+CONDITIONAL_ERROR
+    : '#' E R R O R
+    ;
+
+CONDITIONAL_IF
+    : '#' IF
     ;
 
 SINGLE_QUOTE
