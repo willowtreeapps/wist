@@ -1,11 +1,20 @@
 ' This is a sample file containing syntax that compiles properly
 
+#const debug = true
+
 REM Although the file compiles,
 REM
 REM Not all linting rules pass
 
 sub DefaultMain()
+    #if debug = true
+    print "debug mode enabled"
+    #else
+    print "debug mode disabled"
+    #end if
+    
     print "in showChannelSGScreen"
+
     'Indicate this is a Roku SceneGraph application'
     screen = CreateObject("roSGScreen")
     m.port = CreateObject("roMessagePort")

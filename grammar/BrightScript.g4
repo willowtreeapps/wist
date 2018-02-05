@@ -5,11 +5,21 @@ startRule
     ;
 
 component
-    : endOfLine* (libraryStatement* | (conditionalCompilationStatement endOfLine)*) endOfLine* componentBody
+    : componentHead componentBody
+    ;
+
+componentHead
+    : endOfLine* componentHeadElement (endOfLine+ componentHeadElement)* endOfLine*
+    ;
+
+componentHeadElement
+    : libraryStatement
+    | conditionalCompilationStatement
+    | comment
     ;
 
 componentBody
-    : componentBodyElement (endOfLine+ componentBodyElement)* endOfLine*
+    : endOfLine* componentBodyElement (endOfLine+ componentBodyElement)* endOfLine*
     ;
 
 componentBodyElement
@@ -56,7 +66,7 @@ conditionalCompilationStatement
     | CONDITIONAL_ERROR .*?
     | CONDITIONAL_IF expression
     | CONDITIONAL_ELSEIF expression
-    | CONDITIONAL_ELSE expression
+    | CONDITIONAL_ELSE
     | CONDITIONAL_ENDIF
     ;
 
@@ -576,14 +586,12 @@ CONDITIONAL_ELSE
     : '#' ELSE
     ;
 
-CONDTIONAL_ELSEIF
-    : '#' ELSEIF
-    | '#' ELSE IF
+CONDITIONAL_ELSEIF
+    : '#' (ELSE WS IF | ELSEIF)
     ;
 
 CONDITIONAL_ENDIF
-    : '#' ENDIF
-    | '#' END IF
+    : '#' (END WS IF | ENDIF)
     ;
 
 CONDITIONAL_ERROR
