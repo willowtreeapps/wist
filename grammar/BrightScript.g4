@@ -5,11 +5,21 @@ startRule
     ;
 
 component
-    : endOfLine* libraryStatement* endOfLine* componentBody
+    : componentHead componentBody
+    ;
+
+componentHead
+    : endOfLine* componentHeadElement (endOfLine+ componentHeadElement)* endOfLine*
+    ;
+
+componentHeadElement
+    : libraryStatement
+    | conditionalCompilationStatement
+    | comment
     ;
 
 componentBody
-    : componentBodyElement (endOfLine+ componentBodyElement)* endOfLine*
+    : endOfLine* componentBodyElement (endOfLine+ componentBodyElement)* endOfLine*
     ;
 
 componentBodyElement
@@ -23,6 +33,7 @@ block
 
 blockStatement
     : comment
+    | conditionalCompilationStatement
     | dimStatement
     | exitStatement
     | forStatement
@@ -48,6 +59,15 @@ associativeArrayInitializer
 
 associativeElementInitializer
     : (identifier | reservedWord | stringLiteral) COLON assignableExpression
+    ;
+
+conditionalCompilationStatement
+    : CONDITIONAL_CONST untypedIdentifier EQUALS expression
+    | CONDITIONAL_ERROR .*?
+    | CONDITIONAL_IF expression
+    | CONDITIONAL_ELSEIF expression
+    | CONDITIONAL_ELSE
+    | CONDITIONAL_ENDIF
     ;
 
 dimStatement
@@ -547,7 +567,7 @@ IDENTIFIER_TYPE_DECLARATION
     ;
 
 COMMENT
-    :   (SINGLE_QUOTE | (REM (WS | NEWLINE))) ~[\r\n\u2028\u2029]* -> channel(HIDDEN)
+    : (SINGLE_QUOTE | (REM (WS | NEWLINE))) ~[\r\n\u2028\u2029]* -> channel(HIDDEN)
     ;
 
 NEWLINE
@@ -556,6 +576,30 @@ NEWLINE
 
 WS
     : [ \t]+ -> skip
+    ;
+
+CONDITIONAL_CONST
+    : '#' C O N S T
+    ;
+
+CONDITIONAL_ELSE
+    : '#' ELSE
+    ;
+
+CONDITIONAL_ELSEIF
+    : '#' (ELSE WS IF | ELSEIF)
+    ;
+
+CONDITIONAL_ENDIF
+    : '#' (END WS IF | ENDIF)
+    ;
+
+CONDITIONAL_ERROR
+    : '#' E R R O R
+    ;
+
+CONDITIONAL_IF
+    : '#' IF
     ;
 
 SINGLE_QUOTE
