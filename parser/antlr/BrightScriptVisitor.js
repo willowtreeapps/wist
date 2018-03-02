@@ -24,6 +24,18 @@ BrightScriptVisitor.prototype.visitComponent = function(ctx) {
 };
 
 
+// Visit a parse tree produced by BrightScriptParser#componentHead.
+BrightScriptVisitor.prototype.visitComponentHead = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by BrightScriptParser#componentHeadElement.
+BrightScriptVisitor.prototype.visitComponentHeadElement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by BrightScriptParser#componentBody.
 BrightScriptVisitor.prototype.visitComponentBody = function(ctx) {
   return this.visitChildren(ctx);
@@ -62,6 +74,12 @@ BrightScriptVisitor.prototype.visitAssociativeArrayInitializer = function(ctx) {
 
 // Visit a parse tree produced by BrightScriptParser#associativeElementInitializer.
 BrightScriptVisitor.prototype.visitAssociativeElementInitializer = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by BrightScriptParser#conditionalCompilationStatement.
+BrightScriptVisitor.prototype.visitConditionalCompilationStatement = function(ctx) {
   return this.visitChildren(ctx);
 };
 

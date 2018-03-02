@@ -5,7 +5,7 @@ startRule
     ;
 
 component
-    : componentHead componentBody
+    : componentHead* componentBody
     ;
 
 componentHead
@@ -16,6 +16,7 @@ componentHeadElement
     : libraryStatement
     | conditionalCompilationStatement
     | comment
+    | componentBody
     ;
 
 componentBody
@@ -54,7 +55,7 @@ arrayInitializer
     ;
 
 associativeArrayInitializer
-    : OPEN_BRACE NEWLINE* (associativeElementInitializer ((COMMA | endOfLine) NEWLINE* associativeElementInitializer)*)? NEWLINE* CLOSE_BRACE
+    : OPEN_BRACE NEWLINE* (associativeElementInitializer ((COMMA | endOfLine) NEWLINE* associativeElementInitializer)*)? COMMA? NEWLINE* CLOSE_BRACE
     ;
 
 associativeElementInitializer
@@ -452,7 +453,7 @@ LET
 LIBRARY
     : L I B R A R Y
     ;
-    
+
 LINE_NUM
     : L I N E '_' N U M
     ;

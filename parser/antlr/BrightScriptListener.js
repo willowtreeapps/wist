@@ -29,6 +29,24 @@ BrightScriptListener.prototype.exitComponent = function(ctx) {
 };
 
 
+// Enter a parse tree produced by BrightScriptParser#componentHead.
+BrightScriptListener.prototype.enterComponentHead = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#componentHead.
+BrightScriptListener.prototype.exitComponentHead = function(ctx) {
+};
+
+
+// Enter a parse tree produced by BrightScriptParser#componentHeadElement.
+BrightScriptListener.prototype.enterComponentHeadElement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#componentHeadElement.
+BrightScriptListener.prototype.exitComponentHeadElement = function(ctx) {
+};
+
+
 // Enter a parse tree produced by BrightScriptParser#componentBody.
 BrightScriptListener.prototype.enterComponentBody = function(ctx) {
 };
@@ -89,6 +107,15 @@ BrightScriptListener.prototype.enterAssociativeElementInitializer = function(ctx
 
 // Exit a parse tree produced by BrightScriptParser#associativeElementInitializer.
 BrightScriptListener.prototype.exitAssociativeElementInitializer = function(ctx) {
+};
+
+
+// Enter a parse tree produced by BrightScriptParser#conditionalCompilationStatement.
+BrightScriptListener.prototype.enterConditionalCompilationStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#conditionalCompilationStatement.
+BrightScriptListener.prototype.exitConditionalCompilationStatement = function(ctx) {
 };
 
 
