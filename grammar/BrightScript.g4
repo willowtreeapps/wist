@@ -63,12 +63,33 @@ associativeElementInitializer
     ;
 
 conditionalCompilationStatement
+    : conditionalCompilationConstStatement
+    | conditionalCompilationErrorStatement
+    | conditionalCompilationIfThenElseStatement
+    ;
+
+conditionalCompilationConstStatement
     : CONDITIONAL_CONST untypedIdentifier EQUALS expression
-    | CONDITIONAL_ERROR .*?
-    | CONDITIONAL_IF expression
-    | CONDITIONAL_ELSEIF expression
-    | CONDITIONAL_ELSE
-    | CONDITIONAL_ENDIF
+    ;
+
+conditionalCompilationErrorStatement
+    : CONDITIONAL_ERROR .*?
+    ;
+
+conditionalCompilationIfThenElseStatement
+    : conditionalCompilationIfBlockStatement conditionalCompilationIfElseIfBlockStatement* conditionalCompilationIfElseBlockStatement? CONDITIONAL_ENDIF
+    ;
+
+conditionalCompilationIfBlockStatement
+    : CONDITIONAL_IF expression THEN? endOfStatement+ (block+ | componentBody+)*
+    ;
+
+conditionalCompilationIfElseIfBlockStatement
+    : CONDITIONAL_ELSEIF expression THEN? endOfStatement+ (block+ | componentBody+)*
+    ;
+
+conditionalCompilationIfElseBlockStatement
+    : CONDITIONAL_ELSE endOfStatement+ (block+ | componentBody+)*
     ;
 
 dimStatement

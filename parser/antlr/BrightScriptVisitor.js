@@ -84,6 +84,42 @@ BrightScriptVisitor.prototype.visitConditionalCompilationStatement = function(ct
 };
 
 
+// Visit a parse tree produced by BrightScriptParser#conditionalCompilationConstStatement.
+BrightScriptVisitor.prototype.visitConditionalCompilationConstStatement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by BrightScriptParser#conditionalCompilationErrorStatement.
+BrightScriptVisitor.prototype.visitConditionalCompilationErrorStatement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by BrightScriptParser#conditionalCompilationIfThenElseStatement.
+BrightScriptVisitor.prototype.visitConditionalCompilationIfThenElseStatement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by BrightScriptParser#conditionalCompilationIfBlockStatement.
+BrightScriptVisitor.prototype.visitConditionalCompilationIfBlockStatement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by BrightScriptParser#conditionalCompilationIfElseIfBlockStatement.
+BrightScriptVisitor.prototype.visitConditionalCompilationIfElseIfBlockStatement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by BrightScriptParser#conditionalCompilationIfElseBlockStatement.
+BrightScriptVisitor.prototype.visitConditionalCompilationIfElseBlockStatement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by BrightScriptParser#dimStatement.
 BrightScriptVisitor.prototype.visitDimStatement = function(ctx) {
   return this.visitChildren(ctx);
