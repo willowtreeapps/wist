@@ -11,6 +11,12 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     enterComponent(context) {
         this.emitter.emit('component:enter', context);
     }
+    enterComponentHead(context) {
+        this.emitter.emit('componentHead:enter', context);
+    }
+    enterComponentHeadElement(context) {
+        this.emitter.emit('componentHeadElement:enter', context);
+    }
     enterComponentBody(context) {
         this.emitter.emit('componentBody:enter', context);
     }
@@ -29,11 +35,14 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     enterAssociativeArrayInitializer(context) {
         this.emitter.emit('associativeArrayInitializer:enter', context);
     }
-    enterDimStatement(context) {
-        this.emitter.emit('dimStatement:enter', context);
-    }
     enterAssociativeElementInitializer(context) {
         this.emitter.emit('associativeElementInitializer:enter', context);
+    }
+    enterConditionalCompilationStatement(context) {
+        this.emitter.emit('conditionalCompilationStatement:enter', context);
+    }
+    enterDimStatement(context) {
+        this.emitter.emit('dimStatement:enter', context);
     }
     enterExitStatement(context) {
         this.emitter.emit('exitStatement:enter', context);
@@ -161,6 +170,12 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     exitComponent(context) {
         this.emitter.emit('component:exit', context);
     }
+    exitComponentHead(context) {
+        this.emitter.emit('componentHead:exit', context);
+    }
+    exitComponentHeadElement(context) {
+        this.emitter.emit('componentHeadElement:exit', context);
+    }
     exitComponentBody(context) {
         this.emitter.emit('componentBody:exit', context);
     }
@@ -181,6 +196,9 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     }
     exitAssociativeElementInitializer(context) {
         this.emitter.emit('associativeElementInitializer:exit', context);
+    }
+    exitConditionalCompilationStatement(context) {
+        this.emitter.emit('conditionalCompilationStatement:exit', context);
     }
     exitDimStatement(context) {
         this.emitter.emit('dimStatement:exit', context);
