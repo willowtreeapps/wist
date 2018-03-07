@@ -21,7 +21,7 @@
     "test": "ava",
     "test:watch": "ava --watch"
   },
-  "pre-commit": "compile",
+  "pre-commit": ["compile", "test"],
   "main": "./lib/api.js",
   "repository": {
     "type": "git",
@@ -50,7 +50,8 @@
   },
   "devDependencies": {
     "ava": "0.22.0",
-    "fs-extra": "4.0.1"
+    "fs-extra": "4.0.1",
+    "pre-commit": "1.2.2"
   },
   "ava": {
     "files": [

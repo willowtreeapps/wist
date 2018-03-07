@@ -28,7 +28,7 @@ Such as:
 The command line utility has several options. You can view the options by running `wist -h`.
 
 ```text
-wist [options] file.js [file.js]
+wist [options] file.brs [file.brs]
 
 Basic configuration:
   -f, --format String  Output format - default: stylish
@@ -39,12 +39,12 @@ Basic configuration:
 Example:
 
 ```sh
-$ wist -f compact file.js
+$ wist -f compact file.brs
 ```
 When specified, the given format is output to the console. If you'd like to save that output into a file, you can do so on the command line like so:
 
 ```
-$ wist -f compact file.js > results.txt
+$ wist -f compact file.brs > results.txt
 ```
 
 This saves the output into the `results.txt` file.

@@ -1,0 +1,1 @@
+node ../bin/wist.js $1

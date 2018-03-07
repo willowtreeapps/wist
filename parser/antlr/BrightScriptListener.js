@@ -29,6 +29,24 @@ BrightScriptListener.prototype.exitComponent = function(ctx) {
 };
 
 
+// Enter a parse tree produced by BrightScriptParser#componentHead.
+BrightScriptListener.prototype.enterComponentHead = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#componentHead.
+BrightScriptListener.prototype.exitComponentHead = function(ctx) {
+};
+
+
+// Enter a parse tree produced by BrightScriptParser#componentHeadElement.
+BrightScriptListener.prototype.enterComponentHeadElement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#componentHeadElement.
+BrightScriptListener.prototype.exitComponentHeadElement = function(ctx) {
+};
+
+
 // Enter a parse tree produced by BrightScriptParser#componentBody.
 BrightScriptListener.prototype.enterComponentBody = function(ctx) {
 };
@@ -89,6 +107,69 @@ BrightScriptListener.prototype.enterAssociativeElementInitializer = function(ctx
 
 // Exit a parse tree produced by BrightScriptParser#associativeElementInitializer.
 BrightScriptListener.prototype.exitAssociativeElementInitializer = function(ctx) {
+};
+
+
+// Enter a parse tree produced by BrightScriptParser#conditionalCompilationStatement.
+BrightScriptListener.prototype.enterConditionalCompilationStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#conditionalCompilationStatement.
+BrightScriptListener.prototype.exitConditionalCompilationStatement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by BrightScriptParser#conditionalCompilationConstStatement.
+BrightScriptListener.prototype.enterConditionalCompilationConstStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#conditionalCompilationConstStatement.
+BrightScriptListener.prototype.exitConditionalCompilationConstStatement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by BrightScriptParser#conditionalCompilationErrorStatement.
+BrightScriptListener.prototype.enterConditionalCompilationErrorStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#conditionalCompilationErrorStatement.
+BrightScriptListener.prototype.exitConditionalCompilationErrorStatement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by BrightScriptParser#conditionalCompilationIfThenElseStatement.
+BrightScriptListener.prototype.enterConditionalCompilationIfThenElseStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#conditionalCompilationIfThenElseStatement.
+BrightScriptListener.prototype.exitConditionalCompilationIfThenElseStatement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by BrightScriptParser#conditionalCompilationIfBlockStatement.
+BrightScriptListener.prototype.enterConditionalCompilationIfBlockStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#conditionalCompilationIfBlockStatement.
+BrightScriptListener.prototype.exitConditionalCompilationIfBlockStatement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by BrightScriptParser#conditionalCompilationIfElseIfBlockStatement.
+BrightScriptListener.prototype.enterConditionalCompilationIfElseIfBlockStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#conditionalCompilationIfElseIfBlockStatement.
+BrightScriptListener.prototype.exitConditionalCompilationIfElseIfBlockStatement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by BrightScriptParser#conditionalCompilationIfElseBlockStatement.
+BrightScriptListener.prototype.enterConditionalCompilationIfElseBlockStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#conditionalCompilationIfElseBlockStatement.
+BrightScriptListener.prototype.exitConditionalCompilationIfElseBlockStatement = function(ctx) {
 };
 
 
