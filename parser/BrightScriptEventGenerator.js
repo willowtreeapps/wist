@@ -41,6 +41,24 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     enterConditionalCompilationStatement(context) {
         this.emitter.emit('conditionalCompilationStatement:enter', context);
     }
+    enterConditionalCompilationConstStatement(context) {
+        this.emitter.emit('conditionalCompilationConstStatement:enter', context);
+    }
+    enterConditionalCompilationErrorStatement(context) {
+        this.emitter.emit('conditionalCompilationErrorStatement:enter', context);
+    }
+    enterConditionalCompilationIfThenElseStatement(context) {
+        this.emitter.emit('conditionalCompilationIfThenElseStatement:enter', context);
+    }
+    enterConditionalCompilationIfBlockStatement(context) {
+        this.emitter.emit('conditionalCompilationIfBlockStatement:enter', context);
+    }
+    enterConditionalCompilationIfElseIfBlockStatement(context) {
+        this.emitter.emit('conditionalCompilationIfElseIfBlockStatement:enter', context);
+    }
+    enterConditionalCompilationIfElseBlockStatement(context) {
+        this.emitter.emit('conditionalCompilationIfElseBlockStatement:enter', context);
+    }
     enterDimStatement(context) {
         this.emitter.emit('dimStatement:enter', context);
     }
@@ -199,6 +217,24 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     }
     exitConditionalCompilationStatement(context) {
         this.emitter.emit('conditionalCompilationStatement:exit', context);
+    }
+    exitConditionalCompilationConstStatement(context) {
+        this.emitter.emit('conditionalCompilationConstStatement:exit', context);
+    }
+    exitConditionalCompilationErrorStatement(context) {
+        this.emitter.emit('conditionalCompilationErrorStatement:exit', context);
+    }
+    exitConditionalCompilationIfThenElseStatement(context) {
+        this.emitter.emit('conditionalCompilationIfThenElseStatement:exit', context);
+    }
+    exitConditionalCompilationIfBlockStatement(context) {
+        this.emitter.emit('conditionalCompilationIfBlockStatement:exit', context);
+    }
+    exitConditionalCompilationIfElseIfBlockStatement(context) {
+        this.emitter.emit('conditionalCompilationIfElseIfBlockStatement:exit', context);
+    }
+    exitConditionalCompilationIfElseBlockStatement(context) {
+        this.emitter.emit('conditionalCompilationIfElseBlockStatement:exit', context);
     }
     exitDimStatement(context) {
         this.emitter.emit('dimStatement:exit', context);
