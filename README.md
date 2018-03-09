@@ -36,7 +36,7 @@ We recommend taking this approach if you if you want to include Wist as part of 
 
 
 ```
-$ npm install -g wist
+$ npm install -g @willowtreeapps/wist
 ```
 
 It can be invoked directly using the `wist` command
@@ -48,7 +48,7 @@ $ wist yourfile.brs
 Wist can also be installed locally to the project
 
 ```
-$ npm install wist --save-dev
+$ npm install @willowtreeapps/wist --save-dev
 ```
 
 After that, you can run Wist in your project's root directory like this:
