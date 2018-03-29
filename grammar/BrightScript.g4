@@ -47,6 +47,7 @@ blockStatement
     | returnStatement
     | stopStatement
     | whileStatement
+    | endStatement
     | expression
     ;
 
@@ -94,6 +95,10 @@ conditionalCompilationIfElseBlockStatement
 
 dimStatement
     : DIM identifier OPEN_BRACKET parameterList CLOSE_BRACKET
+    ;
+
+endStatement
+    : END
     ;
 
 exitStatement
