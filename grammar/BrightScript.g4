@@ -226,9 +226,11 @@ globalFunctionInvocation
 
 globalFunction
     : CREATEOBJECT
+    | EVAL
     | GETLASTRUNCOMPILEERROR
     | GETGLOBALAA
     | GETLASTRUNRUNTIMEERROR
+    | RUN
     | STRING
     | TAB
     | TYPE
