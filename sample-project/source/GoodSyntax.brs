@@ -60,6 +60,10 @@ sub DefaultMain()
             if msg.isScreenClosed() then return
         end if
     end while
+
+    ' Statement for early exit the application
+    end
+
 end sub
 
 function SomeFunc() as void
