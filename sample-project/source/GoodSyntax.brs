@@ -48,6 +48,11 @@ sub DefaultMain()
         "baz": 3
     }
 
+
+    Run("pkg:/source/Missing.brs")
+
+    Eval("d = 1")
+
     while(true)
         msg = wait(0, m.port)
         msgType = type(msg)
