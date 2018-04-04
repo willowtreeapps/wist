@@ -62,6 +62,9 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     enterDimStatement(context) {
         this.emitter.emit('dimStatement:enter', context);
     }
+    enterEndStatement(context) {
+        this.emitter.emit('endStatement:enter', context);
+    }
     enterExitStatement(context) {
         this.emitter.emit('exitStatement:enter', context);
     }
@@ -238,6 +241,9 @@ class BrightScriptEventGenerator extends BrightScriptListener {
     }
     exitDimStatement(context) {
         this.emitter.emit('dimStatement:exit', context);
+    }
+    exitEndStatement(context) {
+        this.emitter.emit('endStatement:exit', context);
     }
     exitExitStatement(context) {
         this.emitter.emit('exitStatement:exit', context);

@@ -182,6 +182,15 @@ BrightScriptListener.prototype.exitDimStatement = function(ctx) {
 };
 
 
+// Enter a parse tree produced by BrightScriptParser#endStatement.
+BrightScriptListener.prototype.enterEndStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by BrightScriptParser#endStatement.
+BrightScriptListener.prototype.exitEndStatement = function(ctx) {
+};
+
+
 // Enter a parse tree produced by BrightScriptParser#exitStatement.
 BrightScriptListener.prototype.enterExitStatement = function(ctx) {
 };

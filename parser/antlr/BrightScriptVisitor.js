@@ -126,6 +126,12 @@ BrightScriptVisitor.prototype.visitDimStatement = function(ctx) {
 };
 
 
+// Visit a parse tree produced by BrightScriptParser#endStatement.
+BrightScriptVisitor.prototype.visitEndStatement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by BrightScriptParser#exitStatement.
 BrightScriptVisitor.prototype.visitExitStatement = function(ctx) {
   return this.visitChildren(ctx);
