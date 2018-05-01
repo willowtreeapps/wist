@@ -16,7 +16,7 @@ module.exports = optionator({
             option: "init",
             alias: "i",
             type: "Boolean",
-            description: "Initialize Wist"
+            description: "Initialize wist with a .wistrc.json"
         },
         {
             option: "config",

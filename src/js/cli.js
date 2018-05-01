@@ -51,8 +51,6 @@ const cli = {
 
         if (currentOptions.init) {
             return handleInitialize(currentOptions);
-        } else if (currentOptions.config) {
-            return handleConfiguration(currentOptions.config);
         } else if (currentOptions.help || !files.length) {
             log.info(options.generateHelp());
         } else {
@@ -105,7 +103,6 @@ function handleConfiguration(filePath) {
     }
     return setupConfigurationFile(filePath);
 }
-
 
 /**
  * Creates the .wistrc.json file from the contents of the specified file.
