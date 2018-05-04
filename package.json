@@ -21,10 +21,6 @@
     "test": "ava",
     "test:watch": "ava --watch"
   },
-  "pre-commit": [
-    "compile",
-    "test"
-  ],
   "main": "./lib/api.js",
   "repository": {
     "type": "git",
@@ -55,14 +51,9 @@
   "devDependencies": {
     "ava": "0.22.0",
     "fs-extra": "4.0.1",
-    "pre-commit": "1.2.2"
-  },
-  "ava": {
-    "files": [
-      "test/**/*.js"
-    ],
-    "source": [
-      "lib/**/*.js"
-    ]
+    "ts-loader": "^4.2.0",
+    "typescript": "^2.8.3",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
   }
 }

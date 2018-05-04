@@ -7,14 +7,14 @@ repositories {
 sourceSets {
     main {
         antlr {
-            srcDirs = ['grammar']
+            srcDirs = ['src/antlr']
         }
     }
 }
 
 generateGrammarSource {
-    outputDirectory = file("parser/antlr") 
-    arguments += ["-visitor", "-Dlanguage=JavaScript", "-long-messages"]
+    outputDirectory = file("src/cpp/parser") 
+    arguments += ["-visitor", "-Dlanguage=Cpp", "-long-messages"]
 }
 
 dependencies {
