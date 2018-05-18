@@ -1,7 +1,7 @@
 'use strict';
 
-const Parser = require('../parser'),
-    EventEmitter = require('events').EventEmitter,
+//const Parser = require('../parser'),
+const EventEmitter = require('events').EventEmitter,
     Rules = require('./rules'),
     ConfigOps = require('./config/config-ops');
 
@@ -102,7 +102,7 @@ class Linter extends EventEmitter {
     }
 
     verify(text, filename, config) {
-        const parser = new Parser(this);
+        const parser = null;//new Parser(this);
 
         let ast,
             parseResult;
