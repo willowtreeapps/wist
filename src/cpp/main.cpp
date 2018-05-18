@@ -12,34 +12,58 @@ using namespace antlr4;
 using namespace std;
 using namespace emscripten;
 
-EMSCRIPTEN_KEEPALIVE vector<SyntaxError> parseWithEmitter(string source, val emitter)
-{
-    vector<SyntaxError> errors = {};
-    ANTLRInputStream input(source);
+/*
+TODO: We need to figure out how to codegen the
+BrightScriptEventGenerator class so that we can
+create a BrightScriptEventListener that can be
+injected here for parsing
+*/
 
-    BrightScriptLexer lexer(&input);
-    lexer.removeErrorListeners();
+class Parser {
+public:
+    Parser(val emitter) : emitter(emitter) {}
 
-    SyntaxErrorListener errorListener(&errors);
-    lexer.addErrorListener(&errorListener);
+    vector<SyntaxError> parseText(string text)
+    {
+        ANTLRInputStream input(text);
+        return parseStream(input);
+    }
 
-    CommonTokenStream tokens(&lexer);
+    vector<SyntaxError> parseFile(string path)
+    {
+        ANTLRFileStream fileName(path);
+        return parseStream(fileName);
+    }
 
-    BrightScriptParser parser(&tokens);
-    parser.removeErrorListeners();
-    parser.addErrorListener(&errorListener);
+    void traverse(::tree::ParseTree &ast)
+    {
+        tree::ParseTreeWalker::DEFAULT.walk(NULL, &ast);
+    }
 
-    tree::ParseTree *tree = parser.startRule();
+private:
+    val emitter;
+    vector<SyntaxError> parse(ANTLRInputStream stream) {
+        vector<SyntaxError> errors = {};
 
-    BrightscriptEventListener listener(&parser, &emitter);
-    tree::ParseTreeWalker::DEFAULT.walk(&listener, tree);
+        BrightScriptLexer lexer(&stream);
+        lexer.removeErrorListeners();
 
-    return errors;
-}
+        SyntaxErrorListener errorListener(&errors);
+        lexer.addErrorListener(&errorListener);
 
-EMSCRIPTEN_KEEPALIVE vector<SyntaxError> parse(string source)
-{
-    return parseWithEmitter(source, val::null());
+        CommonTokenStream tokens(&lexer);
+
+        BrightScriptParser parser(&tokens);
+        parser.removeErrorListeners();
+        parser.addErrorListener(&errorListener);
+
+        tree::ParseTree *tree = parser.startRule();
+
+        BrightscriptEventListener listener(&parser, NULL);
+        tree::ParseTreeWalker::DEFAULT.walk(&listener, tree);
+
+        return errors;
+    }
 }
 
 int main()
@@ -50,10 +74,12 @@ int main()
     return 0;
 }
 
+// TODO: Update bindings to export the Parser class
 EMSCRIPTEN_BINDINGS(wist_module)
 {
-    emscripten::function("parse", &parse);
-    emscripten::function("parseWithEmitter", &parseWithEmitter);
+    emscripten::function("parseFile", &parseFile);
+    emscripten::function("parseText", &parseText);
+    emscripten::function("traverse", &traverse);
 
     emscripten::value_object<SyntaxError>("SyntaxError")
         .field("message", &SyntaxError::message)
