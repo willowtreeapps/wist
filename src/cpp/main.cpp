@@ -19,20 +19,20 @@ create a BrightScriptEventListener that can be
 injected here for parsing
 */
 
-class Parser {
+class ParserModule {
 public:
-    Parser(val emitter) : emitter(emitter) {}
+    ParserModule(val emitter) : emitter(emitter) {}
 
     vector<SyntaxError> parseText(string text)
     {
         ANTLRInputStream input(text);
-        return parseStream(input);
+        return this->parse(input);
     }
 
     vector<SyntaxError> parseFile(string path)
     {
         ANTLRFileStream fileName(path);
-        return parseStream(fileName);
+        return this->parse(fileName);
     }
 
     void traverse(::tree::ParseTree &ast)
@@ -64,7 +64,7 @@ private:
 
         return errors;
     }
-}
+};
 
 int main()
 {
@@ -74,12 +74,13 @@ int main()
     return 0;
 }
 
-// TODO: Update bindings to export the Parser class
 EMSCRIPTEN_BINDINGS(wist_module)
 {
-    emscripten::function("parseFile", &parseFile);
-    emscripten::function("parseText", &parseText);
-    emscripten::function("traverse", &traverse);
+    class_<ParserModule>("Parser")
+        .constructor<val>()
+        .function("parseText", &ParserModule::parseText)
+        .function("parseFile", &ParserModule::parseFile)
+        .function("traverse", &ParserModule::traverse);
 
     emscripten::value_object<SyntaxError>("SyntaxError")
         .field("message", &SyntaxError::message)
