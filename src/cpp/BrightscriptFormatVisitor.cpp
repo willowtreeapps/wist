@@ -4,6 +4,8 @@
 
 using namespace std;
 using namespace antlr4;
+using namespace antlr4::tree;
+using namespace antlrcpp;
 
 string noSpaceBeforeTokens[] = {".", ",", "(", ")", ":", "[", "]"};
 bool noSpaceBeforeTokensContainsString(string token)
@@ -31,7 +33,7 @@ bool noSpaceAfterTokensContainsString(string token)
   return false;
 }
 
-antlrcpp::Any BrightscriptFormatVisitor::visitBlock(BrightScriptParser::BlockContext *ctx)
+Any BrightscriptFormatVisitor::visitBlock(BrightScriptParser::BlockContext *ctx)
 {
   currentIndent++;
   visitChildren(ctx);
@@ -39,33 +41,127 @@ antlrcpp::Any BrightscriptFormatVisitor::visitBlock(BrightScriptParser::BlockCon
   return nullptr;
 }
 
-antlrcpp::Any BrightscriptFormatVisitor::visitFunctionDeclaration(BrightScriptParser::FunctionDeclarationContext *ctx)
+Any BrightscriptFormatVisitor::visitFunctionDeclaration(BrightScriptParser::FunctionDeclarationContext *ctx)
 {
   setContext(ctx);
   return nullptr;
 }
 
-antlrcpp::Any BrightscriptFormatVisitor::visitAssociativeArrayInitializer(BrightScriptParser::AssociativeArrayInitializerContext *ctx)
+Any BrightscriptFormatVisitor::visitAssociativeArrayInitializer(BrightScriptParser::AssociativeArrayInitializerContext *ctx)
 {
+  for (int i = 0; i < ctx->children.size() - 1; i++)
+  {
+    auto current = ctx->children[i];
+    auto next = ctx->children[i + 1];
+
+    if (auto *node = dynamic_cast<TerminalNode *>(current))
+    {
+      if (node->getSymbol()->getType() == BrightScriptParser::OPEN_BRACE)
+      {
+        currentIndent++;
+        writeNode(node);
+        writeCarriageReturn();
+      }
+      else if (node->getSymbol()->getType() == BrightScriptParser::CLOSE_BRACE)
+      {
+        currentIndent--;
+        writeNode(node);
+      }
+    }
+    else if (auto *endOfLineCtx = dynamic_cast<BrightScriptParser::EndOfLineContext *>(current))
+    {
+      visitChildren(endOfLineCtx);
+    }
+    else
+    {
+      visitChildren(current);
+      // Write the next token if it's a comma
+      if (TerminalNode *node = dynamic_cast<TerminalNode *>(next))
+      {
+        if (node->getSymbol()->getType() == BrightScriptParser::COMMA)
+        {
+          writeNode(node);
+        }
+      }
+      writeCarriageReturn();
+    }
+
+    // Write next node if it's a closing brace
+    if (TerminalNode *node = dynamic_cast<TerminalNode *>(next))
+    {
+      if (node->getSymbol()->getType() == BrightScriptParser::CLOSE_BRACE)
+      {
+        currentIndent--;
+        writeNode(node);
+      }
+    }
+  }
   return nullptr;
 }
 
-antlrcpp::Any BrightscriptFormatVisitor::visitArrayInitializer(BrightScriptParser::ArrayInitializerContext *ctx)
+Any BrightscriptFormatVisitor::visitArrayInitializer(BrightScriptParser::ArrayInitializerContext *ctx)
 {
+    for (int i = 0; i < ctx->children.size() - 1; i++)
+  {
+    auto current = ctx->children[i];
+    auto next = ctx->children[i + 1];
+
+    if (auto *node = dynamic_cast<TerminalNode *>(current))
+    {
+      if (node->getSymbol()->getType() == BrightScriptParser::OPEN_BRACKET)
+      {
+        currentIndent++;
+        writeNode(node);
+        writeCarriageReturn();
+      }
+      else if (node->getSymbol()->getType() == BrightScriptParser::CLOSE_BRACKET)
+      {
+        currentIndent--;
+        writeNode(node);
+      }
+    }
+    else if (auto *endOfLineCtx = dynamic_cast<BrightScriptParser::EndOfLineContext *>(current))
+    {
+      visitChildren(endOfLineCtx);
+    }
+    else
+    {
+      visitChildren(current);
+      // Write the next token if it's a comma
+      if (TerminalNode *node = dynamic_cast<TerminalNode *>(next))
+      {
+        if (node->getSymbol()->getType() == BrightScriptParser::COMMA)
+        {
+          writeNode(node);
+        }
+      }
+      writeCarriageReturn();
+    }
+
+    // Write next node if it's a closing brace
+    if (TerminalNode *node = dynamic_cast<TerminalNode *>(next))
+    {
+      if (node->getSymbol()->getType() == BrightScriptParser::CLOSE_BRACKET)
+      {
+        currentIndent--;
+        writeNode(node);
+      }
+    }
+  }
   return nullptr;
 }
 
-antlrcpp::Any BrightscriptFormatVisitor::visitEndOfLine(BrightScriptParser::EndOfLineContext *ctx)
+Any BrightscriptFormatVisitor::visitEndOfLine(BrightScriptParser::EndOfLineContext *ctx)
 {
   for (auto child : ctx->children)
   {
-    if (antlr4::tree::TerminalNode *node = dynamic_cast<antlr4::tree::TerminalNode *>(child))
+    if (TerminalNode *node = dynamic_cast<TerminalNode *>(child))
     {
       auto tokenPos = node->getSymbol()->getTokenIndex();
       if (tokenPos > hiddenTokenPosition)
       {
         auto ref = tokens->getHiddenTokensToLeft(tokenPos);
-                       hiddenTokenPosition = tokenPos;
+        hiddenTokenPosition = tokenPos;
         if (ref.size() > 0)
         {
           for (auto token : ref)
@@ -85,7 +181,7 @@ antlrcpp::Any BrightscriptFormatVisitor::visitEndOfLine(BrightScriptParser::EndO
   return nullptr;
 }
 
-antlrcpp::Any BrightscriptFormatVisitor::visitTerminal(antlr4::tree::TerminalNode *node)
+Any BrightscriptFormatVisitor::visitTerminal(TerminalNode *node)
 {
   if (node->getSymbol()->getType() != BrightScriptParser::EOF)
   {
@@ -125,8 +221,8 @@ void BrightscriptFormatVisitor::writeNode(tree::TerminalNode *terminalNode)
   }
 
   if (!newLine &&
-      !noSpaceBeforeTokensContainsString(previousToken->getText()) &&
-      !noSpaceAfterTokensContainsString(text))
+      !noSpaceAfterTokensContainsString(previousToken->getText()) &&
+      !noSpaceBeforeTokensContainsString(text))
   {
     source.append(" ");
   }
