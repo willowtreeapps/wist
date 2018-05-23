@@ -1,4 +1,4 @@
-#include "BrightscriptEventListener.h"
+#include "BrightScriptEventListener.h"
 #include "Node.h"
 
 using namespace std;
@@ -18,55 +18,32 @@ static inline string string_upper(const string &str)
     return strcopy;
 }
 
-bool isSub(ParserRuleContext *context)
+bool isSub(ParserRuleContext *ctx)
 {
-    return context->getRuleIndex() == BrightScriptParser::RuleAnonymousSubDeclaration ||
-           context->getRuleIndex() == BrightScriptParser::RuleSubDeclaration;
+    return ctx->getRuleIndex() == BrightScriptParser::RuleAnonymousSubDeclaration ||
+           ctx->getRuleIndex() == BrightScriptParser::RuleSubDeclaration;
 }
 
-TreeNode buildTreeFromContext(ParserRuleContext *context, BrightScriptParser *parser)
+TreeNode buildTreeFromContext(ParserRuleContext *ctx, BrightScriptParser *parser)
 {
     vector<TreeNode> children = {};
-    for (auto child : context->children)
+    for (auto child : ctx->children)
     {
-        if (ParserRuleContext *childContext = dynamic_cast<ParserRuleContext *>(child))
+        if (ParserRuleContext *childCtx = dynamic_cast<ParserRuleContext *>(child))
         {
-            children.push_back(buildTreeFromContext(childContext, parser));
+            children.push_back(buildTreeFromContext(childCtx, parser));
         }
     }
     return TreeNode{
-        Node{parser->getRuleNames()[context->getRuleIndex()], context->getText()},
+        Node{parser->getRuleNames()[ctx->getRuleIndex()], ctx->getText()},
         children};
 }
 
-bool isFunction(ParserRuleContext *context)
+bool isFunction(ParserRuleContext *ctx)
 {
-    return isSub(context) ||
-           context->getRuleIndex() == BrightScriptParser::RuleAnonymousFunctionDeclaration ||
-           context->getRuleIndex() == BrightScriptParser::RuleFunctionDeclaration;
-}
-
-BrightscriptEventListener::BrightscriptEventListener(BrightScriptParser *_parser) : parser(_parser) {}
-
-BrightscriptEventListener::BrightscriptEventListener(BrightScriptParser *_parser, emscripten::val *_emitter)
-{
-    parser = _parser;
-    emitter = _emitter;
-}
-
-void BrightscriptEventListener::enterFunctionDeclaration(BrightScriptParser::FunctionDeclarationContext *ctx)
-{
-    if (emitter != nullptr && !emitter->isNull() && !emitter->isUndefined())
-    {
-        TreeNode tree = buildTreeFromContext(ctx, parser);
-        emitter->call<val>("enterFunctionDeclaration", tree);
-    }
-    checkDeclaration(ctx->untypedIdentifier());
-}
-
-void BrightscriptEventListener::enterSubDeclaration(BrightScriptParser::SubDeclarationContext *ctx)
-{
-    checkDeclaration(ctx->untypedIdentifier());
+    return isSub(ctx) ||
+           ctx->getRuleIndex() == BrightScriptParser::RuleAnonymousFunctionDeclaration ||
+           ctx->getRuleIndex() == BrightScriptParser::RuleFunctionDeclaration;
 }
 
 ParserRuleContext *getParentFunctionContext(ParserRuleContext *ctx)
@@ -78,7 +55,17 @@ ParserRuleContext *getParentFunctionContext(ParserRuleContext *ctx)
     return nullptr;
 }
 
-void BrightscriptEventListener::exitReturnStatement(BrightScriptParser::ReturnStatementContext *ctx)
+void BrightScriptEventListener::enterFunctionDeclaration(BrightScriptParser::FunctionDeclarationContext *ctx)
+{
+    checkDeclaration(ctx->untypedIdentifier());
+}
+
+void BrightScriptEventListener::enterSubDeclaration(BrightScriptParser::SubDeclarationContext *ctx)
+{
+    checkDeclaration(ctx->untypedIdentifier());
+}
+
+void BrightScriptEventListener::exitReturnStatement(BrightScriptParser::ReturnStatementContext *ctx)
 {
     auto functionParent = getParentFunctionContext(ctx);
     if (functionParent == nullptr)
@@ -108,15 +95,16 @@ void BrightscriptEventListener::exitReturnStatement(BrightScriptParser::ReturnSt
     bool hasExpression = ctx->children.size() > 1;
     if (type == "VOID" && hasExpression)
     {
-        parser->notifyErrorListeners(ctx->start, "Unexpected return value for function with return type " + type, nullptr);
+        // Parser instance isn't available on context in C++ target. Need to figure out a different way to do this.
+        //ctx->parser->notifyErrorListeners(ctx->start, "Unexpected return value for function with return type " + type, nullptr);
     }
     else if (type != "VOID" && !hasExpression)
     {
-        parser->notifyErrorListeners(ctx->start, "Expected return value for function with return type " + type, nullptr);
+        //ctx->parser->notifyErrorListeners(ctx->start, "Expected return value for function with return type " + type, nullptr);
     }
 }
 
-bool BrightscriptEventListener::functionNameExists(string nameToCheck)
+bool BrightScriptEventListener::functionNameExists(string nameToCheck)
 {
     for (auto name : functionNames)
     {
@@ -128,12 +116,12 @@ bool BrightscriptEventListener::functionNameExists(string nameToCheck)
     return false;
 }
 
-void BrightscriptEventListener::checkDeclaration(BrightScriptParser::UntypedIdentifierContext *context)
+void BrightScriptEventListener::checkDeclaration(BrightScriptParser::UntypedIdentifierContext *ctx)
 {
-    auto name = string_upper(context->getText());
+    auto name = string_upper(ctx->getText());
     if (functionNameExists(name))
     {
-        parser->notifyErrorListeners(context->start, "function \"" + name + "\" is declared multiple times", nullptr);
+        //ctx->parser->notifyErrorListeners(ctx->start, "function \"" + name + "\" is declared multiple times", nullptr);
     }
     else
     {
