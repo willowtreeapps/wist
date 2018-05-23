@@ -16,7 +16,7 @@
   "scripts": {
     "compile": "npm run grammar && npm run event-generator",
     "docs": "./build/run-docs.sh",
-    "event-generator": "node ./bin/event-generator.js",
+    "event-generator": "node ./scripts/event-generator.js",
     "grammar": "./gradlew clean generateGrammarSource",
     "test": "ava",
     "test:watch": "ava --watch"

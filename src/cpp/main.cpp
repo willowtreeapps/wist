@@ -2,7 +2,7 @@
 #include "BrightScriptLexer.h"
 #include "SyntaxErrorListener.h"
 #include "Node.h"
-#include "BrightscriptEventListener.h"
+#include "BrightScriptEventListener.h"
 
 #include <emscripten/emscripten.h>
 #include <emscripten/bind.h>
@@ -12,16 +12,9 @@ using namespace antlr4;
 using namespace std;
 using namespace emscripten;
 
-/*
-TODO: We need to figure out how to codegen the
-BrightScriptEventGenerator class so that we can
-create a BrightScriptEventListener that can be
-injected here for parsing
-*/
-
 class ParserModule {
 public:
-    ParserModule(val emitter) : emitter(emitter) {}
+    ParserModule(EventEmitter emitter) : listener(emitter) {}
 
     vector<SyntaxError> parseText(string text)
     {
@@ -37,11 +30,11 @@ public:
 
     void traverse(::tree::ParseTree &ast)
     {
-        tree::ParseTreeWalker::DEFAULT.walk(NULL, &ast);
+        tree::ParseTreeWalker::DEFAULT.walk(&listener, &ast);
     }
 
 private:
-    val emitter;
+    BrightScriptEventListener listener;
     vector<SyntaxError> parse(ANTLRInputStream stream) {
         vector<SyntaxError> errors = {};
 
@@ -59,7 +52,6 @@ private:
 
         tree::ParseTree *tree = parser.startRule();
 
-        BrightscriptEventListener listener(&parser, NULL);
         tree::ParseTreeWalker::DEFAULT.walk(&listener, tree);
 
         return errors;
@@ -77,7 +69,7 @@ int main()
 EMSCRIPTEN_BINDINGS(wist_module)
 {
     class_<ParserModule>("Parser")
-        .constructor<val>()
+        .constructor<EventEmitter>()
         .function("parseText", &ParserModule::parseText)
         .function("parseFile", &ParserModule::parseFile)
         .function("traverse", &ParserModule::traverse);

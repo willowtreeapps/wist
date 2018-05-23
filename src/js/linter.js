@@ -1,7 +1,7 @@
 'use strict';
 
-//const Parser = require('../parser'),
-const EventEmitter = require('events').EventEmitter,
+const Parser = require('../../dist/libwist'),
+    EventEmitter = require('events').EventEmitter,
     Rules = require('./rules'),
     ConfigOps = require('./config/config-ops');
 
