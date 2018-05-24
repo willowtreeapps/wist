@@ -29,7 +29,7 @@ Join us in the #tooling channel on the [Roku Developers Slack](https://join.slac
 The easiest and best way to use Wist, is through our editor clients.
 
 * [Atom IDE Brightscript](https://github.com/willowtreeapps/atom-ide-brightscript)
-* VSCode coming soon
+* [VSCode IDE Brightscript](https://github.com/willowtreeapps/vscode-ide-brightscript)
 
 You can install them through their respective package managers and work out of the box with a `.wistrc.json` in your root directory.
 
