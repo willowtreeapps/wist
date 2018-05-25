@@ -11,7 +11,7 @@ using namespace antlr4;
 class BrightScriptEventListener : public BrightScriptEventGenerator
 {
 public:
-  BrightScriptEventListener(EventEmitter emitter) : BrightScriptEventGenerator(emitter) {}
+  BrightScriptEventListener(val *emitter) : BrightScriptEventGenerator(emitter) {}
   virtual void enterFunctionDeclaration(BrightScriptParser::FunctionDeclarationContext *ctx) override;
   virtual void enterSubDeclaration(BrightScriptParser::SubDeclarationContext *ctx) override;
   virtual void exitReturnStatement(BrightScriptParser::ReturnStatementContext *ctx) override;
