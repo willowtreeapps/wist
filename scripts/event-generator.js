@@ -5,8 +5,7 @@
 const fs = require('fs-extra'),
     path = require('path'),
     endOfLine = require('os').EOL,
-    readline = require('readline'),
-    promisify = require('util').promisify;
+    readline = require('readline');
 
 async function execute() {
     try {
@@ -28,9 +27,7 @@ async function execute() {
 }
 
 async function generateImports(fd) {
-    let text = `#include "parser/BrightScriptBaseListener.h"
-#include "EventEmitter.h"
-${endOfLine}
+    let text = `#include "parser/BrightScriptBaseListener.h"${endOfLine}
 #include <emscripten/emscripten.h>
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
@@ -47,7 +44,7 @@ async function generateClassBegin(fd) {
 }
 
 async function generateConstructor(fd) {
-    let text = `    BrightScriptEventGenerator(EventEmitter emitter) : emitter(emitter) {}${endOfLine}`;
+    let text = `    BrightScriptEventGenerator(val *emitter) : emitter(emitter) {}${endOfLine}`;
 
     await fs.write(fd, text);
 }
@@ -81,18 +78,18 @@ async function generateMethods(fd) {
 
 async function generateClassEnd(fd) {
     let text = `private:
-        EventEmitter emitter;
+        val *emitter;
     };`;
     await fs.write(fd, text);
 }
 
 async function generateEmitterMethod(fd, line, eventSuffix) {
     const methodName = line.substring(line.indexOf(eventSuffix) + eventSuffix.length, line.indexOf('('));
-    const methodDeclaration = line.substring(line.indexOf('void'), line.indexOf('*'));
+    const methodDeclaration = line.substring(line.indexOf('void'), line.indexOf('*')).trim();
     const eventName = normalize(methodName);
     
-    const text = `    ${methodDeclaration}* ctx) override {
-        this->emitter.emit("${eventName}:${eventSuffix}", ctx);
+    const text = `    ${methodDeclaration} *ctx) override {
+        emitter->call("emit", "${eventName}:${eventSuffix}", ctx);
     }${endOfLine}`;
 
     await fs.write(fd, text);

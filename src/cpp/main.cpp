@@ -14,7 +14,7 @@ using namespace emscripten;
 
 class ParserModule {
 public:
-    ParserModule(EventEmitter emitter) : listener(emitter) {}
+    ParserModule(val emitter) : listener(emitter) {}
 
     vector<SyntaxError> parseText(string text)
     {
@@ -69,7 +69,7 @@ int main()
 EMSCRIPTEN_BINDINGS(wist_module)
 {
     class_<ParserModule>("Parser")
-        .constructor<EventEmitter>()
+        .constructor<val>()
         .function("parseText", &ParserModule::parseText)
         .function("parseFile", &ParserModule::parseFile)
         .function("traverse", &ParserModule::traverse);

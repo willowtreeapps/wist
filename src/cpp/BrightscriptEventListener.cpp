@@ -24,21 +24,6 @@ bool isSub(ParserRuleContext *ctx)
            ctx->getRuleIndex() == BrightScriptParser::RuleSubDeclaration;
 }
 
-TreeNode buildTreeFromContext(ParserRuleContext *ctx, BrightScriptParser *parser)
-{
-    vector<TreeNode> children = {};
-    for (auto child : ctx->children)
-    {
-        if (ParserRuleContext *childCtx = dynamic_cast<ParserRuleContext *>(child))
-        {
-            children.push_back(buildTreeFromContext(childCtx, parser));
-        }
-    }
-    return TreeNode{
-        Node{parser->getRuleNames()[ctx->getRuleIndex()], ctx->getText()},
-        children};
-}
-
 bool isFunction(ParserRuleContext *ctx)
 {
     return isSub(ctx) ||
