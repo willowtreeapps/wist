@@ -1,11 +1,11 @@
 'use strict';
 
-const fs = require('fs'),
-    path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = function(rulesDir, cwd) {
     if (!rulesDir) {
-        rulesDir = path.join(__dirname, 'rules');
+        rulesDir = path.join(__dirname, '../rules');
     }
     else {
         path.resolve(cwd, rulesDir);

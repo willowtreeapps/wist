@@ -27,24 +27,37 @@ async function execute() {
 }
 
 async function generateImports(fd) {
-    let text = `#include "parser/BrightScriptBaseListener.h"${endOfLine}
+    let text = `
+/*
+* GENERATED FILE - DO NOT MODIFY
+*/
 #include <emscripten/emscripten.h>
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
+#include "parser/BrightScriptBaseListener.h"
+#include "Node.h"
+
 using namespace std;
-using namespace emscripten;${endOfLine}${endOfLine}`;
+using namespace antlr4;
+using namespace emscripten;
+`;
     await fs.write(fd, text);
 }
 
 async function generateClassBegin(fd) {
-    let text = `class BrightScriptEventGenerator : public BrightScriptBaseListener {${endOfLine}
+    let text = `class BrightScriptEventGenerator : public BrightScriptBaseListener 
+{${endOfLine}
     public:${endOfLine}${endOfLine}`;
     await fs.write(fd, text);
 }
 
 async function generateConstructor(fd) {
-    let text = `    BrightScriptEventGenerator(val *emitter) : emitter(emitter) {}${endOfLine}`;
+    let text = `        BrightScriptEventGenerator(val *emitter, BrightScriptParser *parser)
+        {
+            _emitter = emitter;
+            _parser = parser;
+        }${endOfLine}`;
 
     await fs.write(fd, text);
 }
@@ -57,7 +70,7 @@ async function generateMethods(fd) {
 
     reader.on('line', async line => {
         let key, index;
-        
+
         index = line.indexOf('virtual void enter');
         if (index > -1) {
             await generateEmitterMethod(fd, line, 'enter');
@@ -77,9 +90,26 @@ async function generateMethods(fd) {
 }
 
 async function generateClassEnd(fd) {
-    let text = `private:
-        val *emitter;
-    };`;
+    let text = `  
+    private:
+    val *_emitter;
+    BrightScriptParser *_parser;
+
+    TreeNode buildTreeFromContext(ParserRuleContext *ctx)
+    {
+        vector<TreeNode> children = {};
+        for (auto child : ctx->children)
+        {
+            if (ParserRuleContext *childCtx = dynamic_cast<ParserRuleContext *>(child))
+            {
+                children.push_back(buildTreeFromContext(childCtx));
+            }
+        }
+        return TreeNode{
+            Node{_parser->getRuleNames()[ctx->getRuleIndex()], ctx->getText()},
+            children};
+    }
+};`;
     await fs.write(fd, text);
 }
 
@@ -87,9 +117,13 @@ async function generateEmitterMethod(fd, line, eventSuffix) {
     const methodName = line.substring(line.indexOf(eventSuffix) + eventSuffix.length, line.indexOf('('));
     const methodDeclaration = line.substring(line.indexOf('void'), line.indexOf('*')).trim();
     const eventName = normalize(methodName);
-    
-    const text = `    ${methodDeclaration} *ctx) override {
-        emitter->call("emit", "${eventName}:${eventSuffix}", ctx);
+
+    const text = `    ${methodDeclaration} *ctx) override 
+    {
+        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
+        {
+            _emitter->call<val, string, TreeNode>("emit", "${eventName}:${eventSuffix}", buildTreeFromContext(ruleContext));
+        }
     }${endOfLine}`;
 
     await fs.write(fd, text);

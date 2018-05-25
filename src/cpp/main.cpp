@@ -1,62 +1,46 @@
-#include "antlr4-runtime.h"
-#include "BrightScriptLexer.h"
-#include "SyntaxErrorListener.h"
-#include "Node.h"
-#include "BrightScriptEventListener.h"
-
 #include <emscripten/emscripten.h>
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
+
+#include "antlr4-runtime.h"
+#include "BrightScriptLexer.h"
+#include "SyntaxErrorListener.h"
+#include "BrightScriptEventListener.h"
 
 using namespace antlr4;
 using namespace std;
 using namespace emscripten;
 
-class ParserModule {
-public:
-    ParserModule(val emitter) : listener(emitter) {}
+vector<SyntaxError> parse(ANTLRInputStream *stream, val *emitter)
+{
+    vector<SyntaxError> errors = {};
 
-    vector<SyntaxError> parseText(string text)
-    {
-        ANTLRInputStream input(text);
-        return this->parse(input);
-    }
+    BrightScriptLexer lexer(stream);
+    lexer.removeErrorListeners();
 
-    vector<SyntaxError> parseFile(string path)
-    {
-        ANTLRFileStream fileName(path);
-        return this->parse(fileName);
-    }
+    SyntaxErrorListener errorListener(&errors);
+    lexer.addErrorListener(&errorListener);
 
-    void traverse(::tree::ParseTree &ast)
-    {
-        tree::ParseTreeWalker::DEFAULT.walk(&listener, &ast);
-    }
+    CommonTokenStream tokens(&lexer);
 
-private:
-    BrightScriptEventListener listener;
-    vector<SyntaxError> parse(ANTLRInputStream stream) {
-        vector<SyntaxError> errors = {};
+    BrightScriptParser parser(&tokens);
+    parser.removeErrorListeners();
+    parser.addErrorListener(&errorListener);
 
-        BrightScriptLexer lexer(&stream);
-        lexer.removeErrorListeners();
+    BrightScriptEventListener listener(emitter, &parser);
 
-        SyntaxErrorListener errorListener(&errors);
-        lexer.addErrorListener(&errorListener);
+    tree::ParseTree *tree = parser.startRule();
 
-        CommonTokenStream tokens(&lexer);
+    tree::ParseTreeWalker::DEFAULT.walk(&listener, tree);
 
-        BrightScriptParser parser(&tokens);
-        parser.removeErrorListeners();
-        parser.addErrorListener(&errorListener);
+    return errors;
+}
 
-        tree::ParseTree *tree = parser.startRule();
-
-        tree::ParseTreeWalker::DEFAULT.walk(&listener, tree);
-
-        return errors;
-    }
-};
+vector<SyntaxError> parseText(string text, val emitter)
+{
+    ANTLRInputStream input(text);
+    return parse(&input, &emitter);
+}
 
 int main()
 {
@@ -68,25 +52,21 @@ int main()
 
 EMSCRIPTEN_BINDINGS(wist_module)
 {
-    class_<ParserModule>("Parser")
-        .constructor<val>()
-        .function("parseText", &ParserModule::parseText)
-        .function("parseFile", &ParserModule::parseFile)
-        .function("traverse", &ParserModule::traverse);
+    emscripten::function("parseText", &parseText);
 
-    emscripten::value_object<SyntaxError>("SyntaxError")
+    value_object<SyntaxError>("SyntaxError")
         .field("message", &SyntaxError::message)
         .field("line", &SyntaxError::line)
         .field("column", &SyntaxError::column);
 
-    emscripten::value_object<Node>("Node")
+    value_object<Node>("Node")
         .field("ruleName", &Node::ruleName)
         .field("text", &Node::text);
 
-    emscripten::value_object<TreeNode>("TreeNode")
+    value_object<TreeNode>("TreeNode")
         .field("node", &TreeNode::node)
         .field("children", &TreeNode::children);
 
-    emscripten::register_vector<TreeNode>("TreeNodeList");
-    emscripten::register_vector<SyntaxError>("SyntaxErrorList");
+    register_vector<TreeNode>("TreeNodeList");
+    register_vector<SyntaxError>("SyntaxErrorList");
 };
