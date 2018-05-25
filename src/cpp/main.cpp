@@ -12,9 +12,10 @@ using namespace antlr4;
 using namespace std;
 using namespace emscripten;
 
-class ParserModule {
-public:
-    ParserModule(val emitter) : listener(emitter) {}
+class ParserModule
+{
+  public:
+    ParserModule(val emitter) : _emitter(emitter) {}
 
     vector<SyntaxError> parseText(string text)
     {
@@ -28,14 +29,11 @@ public:
         return this->parse(fileName);
     }
 
-    void traverse(::tree::ParseTree &ast)
-    {
-        tree::ParseTreeWalker::DEFAULT.walk(&listener, &ast);
-    }
+  private:
+    val _emitter;
 
-private:
-    BrightScriptEventListener listener;
-    vector<SyntaxError> parse(ANTLRInputStream stream) {
+    vector<SyntaxError> parse(ANTLRInputStream stream)
+    {
         vector<SyntaxError> errors = {};
 
         BrightScriptLexer lexer(&stream);
@@ -49,6 +47,8 @@ private:
         BrightScriptParser parser(&tokens);
         parser.removeErrorListeners();
         parser.addErrorListener(&errorListener);
+
+        BrightScriptEventListener listener(&_emitter, &parser);
 
         tree::ParseTree *tree = parser.startRule();
 
@@ -71,8 +71,7 @@ EMSCRIPTEN_BINDINGS(wist_module)
     class_<ParserModule>("Parser")
         .constructor<val>()
         .function("parseText", &ParserModule::parseText)
-        .function("parseFile", &ParserModule::parseFile)
-        .function("traverse", &ParserModule::traverse);
+        .function("parseFile", &ParserModule::parseFile);
 
     emscripten::value_object<SyntaxError>("SyntaxError")
         .field("message", &SyntaxError::message)
