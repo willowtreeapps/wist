@@ -53,7 +53,7 @@ async function generateClassBegin(fd) {
 }
 
 async function generateConstructor(fd) {
-    let text = `        BrightScriptEventGenerator(val *emitter, BrightScriptParser *parser) :
+    let text = `        BrightScriptEventGenerator(val *emitter, BrightScriptParser *parser)
         {
             _emitter = emitter;
             _parser = parser;
