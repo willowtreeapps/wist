@@ -73,9 +73,6 @@ function parseMessages(parseErrors, filename) {
                 column: error.column
             });
         }
-
-
-
     }
     catch (ex) {
         messages.push({
@@ -111,6 +108,8 @@ class Linter extends EventEmitter {
         if (text == null || text.trim().length === 0) {
             return this.messages;
         }
+        ConfigOps.normalize(config);
+        
         const parseResult = core.parseText(text, this);
         const formattedMessages = parseMessages(parseResult, this.currentFilename);
         this.messages.push(...formattedMessages);

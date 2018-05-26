@@ -5,6 +5,7 @@ const Parser = require('../../parser');
 module.exports = {
     create(context) {
         const report = (node) => {
+            console.log(node);
             const funcName = node.children[1].getText();
             if (funcName == null) {
                 return;

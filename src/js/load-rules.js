@@ -5,7 +5,7 @@ const path = require('path');
 
 module.exports = function(rulesDir, cwd) {
     if (!rulesDir) {
-        rulesDir = path.join(__dirname, '../rules');
+        rulesDir = path.join(__dirname, '../../rules');
     }
     else {
         path.resolve(cwd, rulesDir);
@@ -17,7 +17,6 @@ module.exports = function(rulesDir, cwd) {
         if (path.extname(file) !== '.js') {
             return;
         }
-
         rules[file.slice(0, -3)] = path.join(rulesDir, file);
     });
 
