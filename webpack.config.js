@@ -9,6 +9,10 @@ module.exports = {
     },
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        library: '',
+        libraryTarget: 'commonjs',
+    },
+    node: {
+        __dirname: false
     }
 };

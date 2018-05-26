@@ -1,9 +1,9 @@
 'use strict';
 
-const Parser = require('../../dist/libwist'),
-    EventEmitter = require('events').EventEmitter,
-    Rules = require('./rules'),
-    ConfigOps = require('./config/config-ops');
+const core = require('../../dist/libwist');
+const EventEmitter = require('events').EventEmitter;
+const Rules = require('./rules');
+const ConfigOps = require('./config/config-ops');
 
 function captureErrors(cb) {
     const errors = [],
@@ -82,7 +82,7 @@ function parse(text, filename, parser) {
             column: ex.column
         });
     }
-    
+
     return {
         messages,
         ast: parseResult && parseResult.ast ? parseResult.ast : null
@@ -102,10 +102,10 @@ class Linter extends EventEmitter {
     }
 
     verify(text, filename, config) {
-        const parser = null;//new Parser(this);
+        
+        const parser = core.parseText(text, this);
 
-        let ast,
-            parseResult;
+        let ast, parseResult;
 
         config = Object.assign({}, config);
 
@@ -115,7 +115,7 @@ class Linter extends EventEmitter {
 
         parseResult = parse(text, this.currentFilename, parser);
         ast = parseResult.ast;
-        
+
         this.messages.push(...parseResult.messages);
 
         if (!ast) {
@@ -155,7 +155,7 @@ class Linter extends EventEmitter {
         });
 
         parser.traverse(ast);
-        
+
         this.messages.sort((a, b) => {
             const lineDiff = a.line - b.line;
 
@@ -165,7 +165,7 @@ class Linter extends EventEmitter {
 
             return lineDiff;
         });
-        
+
         return this.messages;
     }
 }

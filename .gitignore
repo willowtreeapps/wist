@@ -69,3 +69,6 @@ typings/
 # IntelliJ IDEA
 .idea/
 *.iml
+
+#Vagrant
+.vagrant/
