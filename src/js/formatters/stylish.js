@@ -1,14 +1,14 @@
 'use strict';
 
-const chalk = require('chalk'),
-    stripAnsi = require('strip-ansi'),
-    table = require('text-table');
+const chalk = require('chalk');
+const stripAnsi = require('strip-ansi');
+const table = require('text-table');
 
 function pluralize(word, count) {
     return (count === 1 ? word : `${word}s`);
 }
 
-module.exports = function(results) {
+module.exports = function (results) {
 
     let output = '\n',
         errorCount = 0,
