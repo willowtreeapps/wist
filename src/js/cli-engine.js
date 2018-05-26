@@ -16,9 +16,9 @@ function calculateStatsPerFile(messages) {
 
         return stat;
     }, {
-        errorCount: 0,
-        warningCount: 0
-    });
+            errorCount: 0,
+            warningCount: 0
+        });
 }
 
 function calculateStatsPerRun(results) {
@@ -28,9 +28,9 @@ function calculateStatsPerRun(results) {
 
         return stat;
     }, {
-        errorCount: 0,
-        warningCount: 0
-    });
+            errorCount: 0,
+            warningCount: 0
+        });
 }
 
 function processText(text, filename, linter, configHelper) {
@@ -123,13 +123,13 @@ class CLIEngine {
         };
     }
 
-     /**
-     * Returns the formatter representing the given format or null if no formatter
-     * with the given name can be found.
-     * @param {string} [format] The name of the format to load or the path to a
-     *      custom formatter.
-     * @returns {Function} The formatter function or null if not found.
-     */
+    /**
+    * Returns the formatter representing the given format or null if no formatter
+    * with the given name can be found.
+    * @param {string} [format] The name of the format to load or the path to a
+    *      custom formatter.
+    * @returns {Function} The formatter function or null if not found.
+    */
     getFormatter(format) {
         // default is stylish
         format = format || 'stylish';
@@ -139,14 +139,21 @@ class CLIEngine {
             return null;
         }
 
-        const formatterPath = `./formatters/${format}`;
-
-        try {
-            return require(formatterPath);
-        }
-        catch (e) {
-            e.message = `There was a problem loading formatter: ${formatterPath}\nError: ${e.message}`;
-            throw e;
+        var formatter;
+        switch (format) {
+            case "compact":
+                return require("./formatters/compact");
+            case "compact":
+                return require("./formatters/json");
+            case "stylish":
+                return require("./formatters/stylish");
+            case "unix":
+                return require("./formatters/unix");
+            case "visualstudio":
+                return require("./formatters/visualstudio");
+            default:
+                e.message = `There was a problem loading formatter: ${formatterPath}\nError: ${e.message}`;
+                throw e;
         }
     }
 }

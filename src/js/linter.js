@@ -50,26 +50,32 @@ function createProblemFromDescriptor(descriptor, ruleId, severity) {
     return problem;
 }
 
-function parse(text, filename, parser) {
-    let parseResult,
-        messages = [];
+function parseMessages(parseErrors, filename) {
+    let parseResult, messages = [];
 
     try {
-        parseResult = parser.parseText(text);
 
-        if (parseResult.errors.length > 0) {
-            parseResult.errors.forEach(error => {
-                messages.push({
-                    ruleId: null,
-                    fatal: true,
-                    severity: 2,
-                    source: null,
-                    message: `Parsing error: ${error.message}`,
-                    line: error.line,
-                    column: error.column
-                });
+        // The vector that comes out of the wasm module doesn't have a length property defined.
+        // It also doesn't have an iterator so we need to loop until we find something
+        // that's undefined and then bail out.
+        for (let i = 0; i < 99; i++) {
+            let error = parseErrors.get(i);
+            if (error == undefined) {
+                break;
+            }
+            messages.push({
+                ruleId: null,
+                fatal: true,
+                severity: 2,
+                source: null,
+                message: `Parsing error: ${error.message}`,
+                line: error.line,
+                column: error.column
             });
         }
+
+
+
     }
     catch (ex) {
         messages.push({
@@ -83,10 +89,7 @@ function parse(text, filename, parser) {
         });
     }
 
-    return {
-        messages,
-        ast: parseResult && parseResult.ast ? parseResult.ast : null
-    };
+    return messages;
 }
 
 class Linter extends EventEmitter {
@@ -102,59 +105,15 @@ class Linter extends EventEmitter {
     }
 
     verify(text, filename, config) {
-        
-        const parser = core.parseText(text, this);
-
-        let ast, parseResult;
 
         config = Object.assign({}, config);
 
         if (text == null || text.trim().length === 0) {
             return this.messages;
         }
-
-        parseResult = parse(text, this.currentFilename, parser);
-        ast = parseResult.ast;
-
-        this.messages.push(...parseResult.messages);
-
-        if (!ast) {
-            return this.messages;
-        }
-
-        ConfigOps.normalize(config);
-
-        Object.keys(config.rules).filter(ruleId => getRuleSeverity(config.rules[ruleId]) > 0).forEach(ruleId => {
-            const ruleCreator = this.rules.get(ruleId);
-
-            if (!ruleCreator) {
-                return;
-            }
-
-            const severity = getRuleSeverity(config.rules[ruleId]);
-
-            const ruleContext = Object.freeze(Object.assign(Object.create(null), {
-                id: ruleId,
-                report: descriptor => {
-                    const problem = createProblemFromDescriptor(descriptor, ruleId, severity);
-                    this.messages.push(problem);
-                }
-            }));
-
-            try {
-                const rule = ruleCreator.create(ruleContext);
-
-                Object.keys(rule).forEach(selector => {
-                    this.on(selector, rule[selector]);
-                });
-            }
-            catch (ex) {
-                ex.message = `Error while loading rule '${ruleId}': ${ex.message}`;
-                throw ex;
-            }
-        });
-
-        parser.traverse(ast);
+        const parseResult = core.parseText(text, this);
+        const formattedMessages = parseMessages(parseResult, this.currentFilename);
+        this.messages.push(...formattedMessages);
 
         this.messages.sort((a, b) => {
             const lineDiff = a.line - b.line;
