@@ -30,9 +30,8 @@ vector<SyntaxError> parse(ANTLRInputStream *stream, val *emitter)
     BrightScriptEventListener listener(emitter, &parser);
 
     tree::ParseTree *tree = parser.startRule();
-
     tree::ParseTreeWalker::DEFAULT.walk(&listener, tree);
-
+    
     return errors;
 }
 
