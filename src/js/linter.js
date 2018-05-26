@@ -109,7 +109,37 @@ class Linter extends EventEmitter {
             return this.messages;
         }
         ConfigOps.normalize(config);
-        
+
+        Object.keys(config.rules).filter(ruleId => getRuleSeverity(config.rules[ruleId]) > 0).forEach(ruleId => {
+            const ruleCreator = this.rules.get(ruleId);
+
+            if (!ruleCreator) {
+                return;
+            }
+
+            const severity = getRuleSeverity(config.rules[ruleId]);
+
+            const ruleContext = Object.freeze(Object.assign(Object.create(null), {
+                id: ruleId,
+                report: descriptor => {
+                    const problem = createProblemFromDescriptor(descriptor, ruleId, severity);
+                    this.messages.push(problem);
+                }
+            }));
+
+            try {
+                const rule = ruleCreator.create(ruleContext);
+
+                Object.keys(rule).forEach(selector => {
+                    this.on(selector, rule[selector]);
+                });
+            }
+            catch (ex) {
+                ex.message = `Error while loading rule '${ruleId}': ${ex.message}`;
+                throw ex;
+            }
+        });
+
         const parseResult = core.parseText(text, this);
         const formattedMessages = parseMessages(parseResult, this.currentFilename);
         this.messages.push(...formattedMessages);
