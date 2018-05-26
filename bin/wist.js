@@ -2,7 +2,7 @@
 
 'use strict';
 
-const CLI = require('../dist/bundle');
+const CLI = require('../src/js/cli');
 
 process.once('uncaughtException', err => {
     console.error(err.message);
