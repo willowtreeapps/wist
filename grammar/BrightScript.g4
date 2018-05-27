@@ -216,7 +216,7 @@ expression
     | expression OPEN_PARENTHESIS expressionList? CLOSE_PARENTHESIS
     | (ADD|SUBTRACT) expression
     | expression (INCREMENT|DECREMENT)
-    | expression (MULTIPLY|DIVIDE|MOD|DIVIDE_INTEGER) expression
+    | expression (MULTIPLY|DIVIDE|MOD|DIVIDE_INTEGER|EXPONENT) expression
     | expression (ADD|SUBTRACT) expression
     | expression (BITSHIFT_LEFT|BITSHIFT_RIGHT) expression
     | expression (GREATER_THAN|LESS_THAN|EQUALS|NOT_EQUAL|GREATER_THAN_OR_EQUAL|LESS_THAN_OR_EQUAL) expression
@@ -709,6 +709,10 @@ MULTIPLY
 
 DIVIDE
     : '/'
+    ;
+
+EXPONENT
+    : '^'
     ;
 
 DIVIDE_INTEGER
