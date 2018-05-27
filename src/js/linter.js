@@ -138,7 +138,7 @@ class Linter extends EventEmitter {
             }
         });
 
-        const parseResult = parser.parse(text, this);
+        const parseResult = parser.parseText(text, this);
         const formattedMessages = parseMessages(parseResult, this.currentFilename);
         this.messages.push(...formattedMessages);
 
