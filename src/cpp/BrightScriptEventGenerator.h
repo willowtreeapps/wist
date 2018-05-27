@@ -890,8 +890,15 @@ class BrightScriptEventGenerator : public BrightScriptBaseListener
                 children.push_back(buildTreeFromContext(childCtx));
             }
         }
-        return TreeNode{
-            Node{_parser->getRuleNames()[ctx->getRuleIndex()], ctx->getText()},
-            children};
+        
+        string ruleName = _parser->getRuleNames()[ctx->getRuleIndex()];
+        string ruleText = ctx->getText();
+        int startLine = ctx->getStart()->getLine();
+        int startCol = ctx->getStart()->getCharPositionInLine();
+
+        int stopLine = ctx->getStop()->getLine();
+        int stopCol = ctx->getStop()->getCharPositionInLine();
+
+        return TreeNode{Node{ruleName, ruleText, Location{startLine, startCol}, Location{stopLine, stopCol}}, children};
     }
 };

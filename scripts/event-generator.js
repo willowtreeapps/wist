@@ -95,6 +95,7 @@ async function generateClassEnd(fd) {
     val *_emitter;
     BrightScriptParser *_parser;
 
+
     TreeNode buildTreeFromContext(ParserRuleContext *ctx)
     {
         vector<TreeNode> children = {};
@@ -105,9 +106,16 @@ async function generateClassEnd(fd) {
                 children.push_back(buildTreeFromContext(childCtx));
             }
         }
-        return TreeNode{
-            Node{_parser->getRuleNames()[ctx->getRuleIndex()], ctx->getText()},
-            children};
+        
+        string ruleName = _parser->getRuleNames()[ctx->getRuleIndex()];
+        string ruleText = ctx->getText();
+        int startLine = ctx->getStart()->getLine();
+        int startCol = ctx->getStart()->getCharPositionInLine();
+
+        int stopLine = ctx->getStop()->getLine();
+        int stopCol = ctx->getStop()->getCharPositionInLine();
+
+        return TreeNode{Node{ruleName, ruleText, Location{startLine, startCol}, Location{stopLine, stopCol}}, children};
     }
 };`;
     await fs.write(fd, text);

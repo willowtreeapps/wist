@@ -31,7 +31,7 @@ vector<SyntaxError> parse(ANTLRInputStream *stream, val *emitter)
 
     tree::ParseTree *tree = parser.startRule();
     tree::ParseTreeWalker::DEFAULT.walk(&listener, tree);
-    
+
     return errors;
 }
 
@@ -59,8 +59,14 @@ EMSCRIPTEN_BINDINGS(wist_module)
         .field("column", &SyntaxError::column);
 
     value_object<Node>("Node")
-        .field("ruleName", &Node::ruleName)
+        .field("context", &Node::context)
+        .field("start", &Node::start)
+        .field("stop", &Node::stop)
         .field("text", &Node::text);
+
+    value_object<Location>("Location")
+        .field("line", &Location::line)
+        .field("column", &Location::column);
 
     value_object<TreeNode>("TreeNode")
         .field("node", &TreeNode::node)
