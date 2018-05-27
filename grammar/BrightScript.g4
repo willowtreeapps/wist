@@ -16,7 +16,6 @@ componentHeadElement
     : libraryStatement
     | conditionalCompilationStatement
     | comment
-    | componentBody
     ;
 
 componentBody
