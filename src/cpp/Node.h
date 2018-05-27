@@ -4,10 +4,17 @@
 
 using namespace std;
 
+struct Location {
+    int line;
+    int column;
+};
+
 struct Node
 {
-    string ruleName;
+    string context;
     string text;
+    Location start;
+    Location stop;
 };
 
 struct TreeNode

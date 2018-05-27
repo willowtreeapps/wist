@@ -3,9 +3,9 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = function(rulesDir, cwd) {
+module.exports = function (rulesDir, cwd) {
     if (!rulesDir) {
-        rulesDir = path.join(__dirname, '../../rules');
+        rulesDir = path.join(__dirname, '/rules');
     }
     else {
         path.resolve(cwd, rulesDir);

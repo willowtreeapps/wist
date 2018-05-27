@@ -1,6 +1,6 @@
 'use strict';
 
-const core = require('../../dist/libwist');
+const parser = require('../../dist/libwist');
 const EventEmitter = require('events').EventEmitter;
 const Rules = require('./rules');
 const ConfigOps = require('./config/config-ops');
@@ -54,15 +54,11 @@ function parseMessages(parseErrors, filename) {
     let parseResult, messages = [];
 
     try {
-
         // The vector that comes out of the wasm module doesn't have a length property defined.
-        // It also doesn't have an iterator so we need to loop until we find something
-        // that's undefined and then bail out.
-        for (let i = 0; i < 99; i++) {
-            let error = parseErrors.get(i);
-            if (error == undefined) {
-                break;
-            }
+        // It also doesn't have an iterator so we need to loop this way.
+        let i = 0;
+        let error;
+        while ((error = parseErrors.get(i)) != null) {
             messages.push({
                 ruleId: null,
                 fatal: true,
@@ -72,6 +68,8 @@ function parseMessages(parseErrors, filename) {
                 line: error.line,
                 column: error.column
             });
+
+            i++;
         }
     }
     catch (ex) {
@@ -140,7 +138,7 @@ class Linter extends EventEmitter {
             }
         });
 
-        const parseResult = core.parseText(text, this);
+        const parseResult = parser.parseText(text, this);
         const formattedMessages = parseMessages(parseResult, this.currentFilename);
         this.messages.push(...formattedMessages);
 
