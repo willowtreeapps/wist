@@ -70,5 +70,8 @@ typings/
 .idea/
 *.iml
 
-#Vagrant
+# Vagrant
 .vagrant/
+
+# Web Assembly
+*.bc
