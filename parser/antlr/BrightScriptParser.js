@@ -7,7 +7,7 @@ var BrightScriptVisitor = require('./BrightScriptVisitor').BrightScriptVisitor;
 var grammarFileName = "BrightScript.g4";
 
 var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
-    "\u0003l\u035a\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
+    "\u0003m\u035a\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
     "\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007\u0004",
     "\b\t\b\u0004\t\t\t\u0004\n\t\n\u0004\u000b\t\u000b\u0004\f\t\f\u0004",
     "\r\t\r\u0004\u000e\t\u000e\u0004\u000f\t\u000f\u0004\u0010\t\u0010\u0004",
@@ -129,9 +129,9 @@ var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
     "\u0003Z>\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018",
     "\u001a\u001c\u001e \"$&(*,.02468:<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtvx\u0002",
     "\u0010\u0004\u0002--KK\n\u0002\u0005\u0005\t\n\u0017\u0017\u0019\u0019",
-    "  ))3399\u0003\u0002Z[\u0004\u0002&&\\^\u0003\u0002_`\u0004\u0002XX",
-    "ae\u0004\u0002\u0003\u0003++\u0004\u0002LLYY\u0003\u0002MN\u0004\u0002",
-    "XXfl\t\u0002\u0007\u0007\u0015\u0015\u001a\u001c003355::\u0003\u0002",
+    "  ))3399\u0003\u0002Z[\u0004\u0002&&\\_\u0003\u0002`a\u0004\u0002XX",
+    "bf\u0004\u0002\u0003\u0003++\u0004\u0002LLYY\u0003\u0002MN\u0004\u0002",
+    "XXgm\t\u0002\u0007\u0007\u0015\u0015\u001a\u001c003355::\u0003\u0002",
     "=>\u0004\u0002\u0016\u001688\f\u0002\u0003\u0003\u0006\b\u000b\u0016",
     "\u0018\u001e\"#%%\'(*248:;\u0002\u03c0\u0002z\u0003\u0002\u0002\u0002",
     "\u0004\u0080\u0003\u0002\u0002\u0002\u0006\u0088\u0003\u0002\u0002\u0002",
@@ -622,7 +622,7 @@ var literalNames = [ null, null, null, null, null, null, null, null, null,
                      null, null, null, null, null, null, null, null, null, 
                      "'''", "'?'", "'@'", "'++'", "'--'", "'['", "']'", 
                      "'{'", "'}'", "'('", "')'", "','", "';'", "':'", "'='", 
-                     "'.'", "'+'", "'-'", "'*'", "'/'", "'\\'", "'<<'", 
+                     "'.'", "'+'", "'-'", "'*'", "'/'", "'^'", "'\\'", "'<<'", 
                      "'>>'", "'>'", "'<'", "'>='", "'<='", "'<>'", "'+='", 
                      "'-='", "'*='", "'/='", "'\\='", "'<<='", "'>>='" ];
 
@@ -645,7 +645,7 @@ var symbolicNames = [ null, "AND", "AS", "BOOLEAN", "BOX", "CREATEOBJECT",
                       "CLOSE_BRACKET", "OPEN_BRACE", "CLOSE_BRACE", "OPEN_PARENTHESIS", 
                       "CLOSE_PARENTHESIS", "COMMA", "SEMICOLON", "COLON", 
                       "EQUALS", "DOT", "ADD", "SUBTRACT", "MULTIPLY", "DIVIDE", 
-                      "DIVIDE_INTEGER", "BITSHIFT_LEFT", "BITSHIFT_RIGHT", 
+                      "EXPONENT", "DIVIDE_INTEGER", "BITSHIFT_LEFT", "BITSHIFT_RIGHT", 
                       "GREATER_THAN", "LESS_THAN", "GREATER_THAN_OR_EQUAL", 
                       "LESS_THAN_OR_EQUAL", "NOT_EQUAL", "ASSIGNMENT_ADD", 
                       "ASSIGNMENT_SUBTRACT", "ASSIGNMENT_MULTIPLY", "ASSIGNMENT_DIVIDE", 
@@ -782,21 +782,22 @@ BrightScriptParser.ADD = 88;
 BrightScriptParser.SUBTRACT = 89;
 BrightScriptParser.MULTIPLY = 90;
 BrightScriptParser.DIVIDE = 91;
-BrightScriptParser.DIVIDE_INTEGER = 92;
-BrightScriptParser.BITSHIFT_LEFT = 93;
-BrightScriptParser.BITSHIFT_RIGHT = 94;
-BrightScriptParser.GREATER_THAN = 95;
-BrightScriptParser.LESS_THAN = 96;
-BrightScriptParser.GREATER_THAN_OR_EQUAL = 97;
-BrightScriptParser.LESS_THAN_OR_EQUAL = 98;
-BrightScriptParser.NOT_EQUAL = 99;
-BrightScriptParser.ASSIGNMENT_ADD = 100;
-BrightScriptParser.ASSIGNMENT_SUBTRACT = 101;
-BrightScriptParser.ASSIGNMENT_MULTIPLY = 102;
-BrightScriptParser.ASSIGNMENT_DIVIDE = 103;
-BrightScriptParser.ASSIGNMENT_DIVIDE_INTEGER = 104;
-BrightScriptParser.ASSIGNMENT_BITSHIFT_LEFT = 105;
-BrightScriptParser.ASSIGNMENT_BITSHIFT_RIGHT = 106;
+BrightScriptParser.EXPONENT = 92;
+BrightScriptParser.DIVIDE_INTEGER = 93;
+BrightScriptParser.BITSHIFT_LEFT = 94;
+BrightScriptParser.BITSHIFT_RIGHT = 95;
+BrightScriptParser.GREATER_THAN = 96;
+BrightScriptParser.LESS_THAN = 97;
+BrightScriptParser.GREATER_THAN_OR_EQUAL = 98;
+BrightScriptParser.LESS_THAN_OR_EQUAL = 99;
+BrightScriptParser.NOT_EQUAL = 100;
+BrightScriptParser.ASSIGNMENT_ADD = 101;
+BrightScriptParser.ASSIGNMENT_SUBTRACT = 102;
+BrightScriptParser.ASSIGNMENT_MULTIPLY = 103;
+BrightScriptParser.ASSIGNMENT_DIVIDE = 104;
+BrightScriptParser.ASSIGNMENT_DIVIDE_INTEGER = 105;
+BrightScriptParser.ASSIGNMENT_BITSHIFT_LEFT = 106;
+BrightScriptParser.ASSIGNMENT_BITSHIFT_RIGHT = 107;
 
 BrightScriptParser.RULE_startRule = 0;
 BrightScriptParser.RULE_component = 1;
@@ -6700,6 +6701,10 @@ ExpressionContext.prototype.DIVIDE_INTEGER = function() {
     return this.getToken(BrightScriptParser.DIVIDE_INTEGER, 0);
 };
 
+ExpressionContext.prototype.EXPONENT = function() {
+    return this.getToken(BrightScriptParser.EXPONENT, 0);
+};
+
 ExpressionContext.prototype.BITSHIFT_LEFT = function() {
     return this.getToken(BrightScriptParser.BITSHIFT_LEFT, 0);
 };
@@ -6923,7 +6928,7 @@ BrightScriptParser.prototype.expression = function(_p) {
                     }
                     this.state = 746;
                     _la = this._input.LA(1);
-                    if(!(_la===BrightScriptParser.MOD || ((((_la - 90)) & ~0x1f) == 0 && ((1 << (_la - 90)) & ((1 << (BrightScriptParser.MULTIPLY - 90)) | (1 << (BrightScriptParser.DIVIDE - 90)) | (1 << (BrightScriptParser.DIVIDE_INTEGER - 90)))) !== 0))) {
+                    if(!(_la===BrightScriptParser.MOD || ((((_la - 90)) & ~0x1f) == 0 && ((1 << (_la - 90)) & ((1 << (BrightScriptParser.MULTIPLY - 90)) | (1 << (BrightScriptParser.DIVIDE - 90)) | (1 << (BrightScriptParser.EXPONENT - 90)) | (1 << (BrightScriptParser.DIVIDE_INTEGER - 90)))) !== 0))) {
                     this._errHandler.recoverInline(this);
                     }
                     else {
