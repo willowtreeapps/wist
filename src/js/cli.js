@@ -51,14 +51,10 @@ const cli = {
 
         if (currentOptions.init) {
             return handleInitialize(currentOptions);
-
         } else if (currentOptions.config) {
             return handleConfiguration(currentOptions.config);
-        }
-
-        else if (currentOptions.help || !files.length) {
+        } else if (currentOptions.help || !files.length) {
             log.info(options.generateHelp());
-
         } else {
             var hrstart = process.hrtime();
             const engine = new CLIEngine(currentOptions);
@@ -66,7 +62,7 @@ const cli = {
 
             if (printResults(engine, report.results, currentOptions.format)) {
                 var hrend = process.hrtime(hrstart);
-                log.info(`Finished in ${(hrend[0] + (hrend[1] /1e9)).toFixed(2)}s\n`);
+                log.info(`Finished in ${(hrend[0] + (hrend[1] / 1e9)).toFixed(2)}s\n`);
                 return report.errorCount ? 1 : 0;
             }
 
@@ -83,7 +79,7 @@ const cli = {
  * @private
  */
 function handleInitialize(currentOptions) {
-    const recommendedFilePath = '../config/wist-recommended.json';
+    const recommendedFilePath = '../../config/wist-recommended.json';
     let result = 0;
     if (currentOptions.config) {
         result = handleConfiguration(currentOptions.config);
