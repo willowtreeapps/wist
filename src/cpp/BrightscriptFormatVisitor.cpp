@@ -101,7 +101,7 @@ Any BrightscriptFormatVisitor::visitAssociativeArrayInitializer(BrightScriptPars
 
 Any BrightscriptFormatVisitor::visitArrayInitializer(BrightScriptParser::ArrayInitializerContext *ctx)
 {
-    for (int i = 0; i < ctx->children.size() - 1; i++)
+  for (int i = 0; i < ctx->children.size() - 1; i++)
   {
     auto current = ctx->children[i];
     auto next = ctx->children[i + 1];
@@ -153,6 +153,7 @@ Any BrightscriptFormatVisitor::visitArrayInitializer(BrightScriptParser::ArrayIn
 
 Any BrightscriptFormatVisitor::visitEndOfLine(BrightScriptParser::EndOfLineContext *ctx)
 {
+
   for (auto child : ctx->children)
   {
     if (TerminalNode *node = dynamic_cast<TerminalNode *>(child))
@@ -160,15 +161,30 @@ Any BrightscriptFormatVisitor::visitEndOfLine(BrightScriptParser::EndOfLineConte
       auto tokenPos = node->getSymbol()->getTokenIndex();
       if (tokenPos > hiddenTokenPosition)
       {
-        auto ref = tokens->getHiddenTokensToLeft(tokenPos);
         hiddenTokenPosition = tokenPos;
-        if (ref.size() > 0)
+
+        // auto ref = tokens->getHiddenTokensToLeft(tokenPos);
+        // This doesn't work for some reason.
+        // This leaves us with no choice but to search for the previous
+        // token in the default channel ourselves
+        std::vector<Token *> hidden;
+        for (ssize_t i = tokenPos - 1; i >= 0; i--)
         {
-          for (auto token : ref)
+          Token *token = tokens->get(i);
+          if (token->getType() == Token::EOF || token->getChannel() == Lexer::DEFAULT_TOKEN_CHANNEL)
           {
-            writeIndent();
-            writeToken(token);
+            break;
           }
+          else
+          {
+            hidden.push_back(token);
+          }
+        }
+
+        for (auto token : hidden)
+        {
+          writeIndent();
+          writeToken(token);
         }
       }
       string text = node->getText();

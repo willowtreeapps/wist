@@ -15,7 +15,7 @@ public:
   {
     tokens = _tokens;
     indentSize = _indentSize;
-    int hiddenTokenPosition = -1;
+    hiddenTokenPosition = 0;
 
     source = "";
     currentIndent = 0;
@@ -39,7 +39,7 @@ private:
 
   int indentSize;
   int currentIndent;
-  int hiddenTokenPosition;
+  size_t hiddenTokenPosition;
 
   string source;
   bool newLine;
