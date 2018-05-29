@@ -6,10 +6,25 @@
 #include "BrightScriptLexer.h"
 #include "SyntaxErrorListener.h"
 #include "BrightScriptEventListener.h"
+#include "BrightscriptFormatVisitor.h"
 
 using namespace antlr4;
 using namespace std;
 using namespace emscripten;
+
+string formatText(string text, int indent)
+{
+    ANTLRInputStream input(text);
+    BrightScriptLexer lexer(&input);
+    lexer.removeErrorListeners();
+    CommonTokenStream tokens(&lexer);
+    BrightScriptParser parser(&tokens);
+    parser.removeErrorListeners();
+
+    BrightscriptFormatVisitor formatter(&tokens, indent);
+    formatter.visit(parser.startRule());
+    return formatter.getFormattedSource();
+}
 
 vector<SyntaxError> parse(ANTLRInputStream *stream, val *emitter)
 {
@@ -52,6 +67,7 @@ int main()
 EMSCRIPTEN_BINDINGS(wist_module)
 {
     emscripten::function("parseText", &parseText);
+    emscripten::function("formatText", &formatText);
 
     value_object<SyntaxError>("SyntaxError")
         .field("message", &SyntaxError::message)
