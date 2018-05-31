@@ -43,3 +43,18 @@ if (parser.TreeNodeList.prototype.zipWithNext == null) {
         };
     }
 }
+
+if (parser.TreeNodeList.prototype.find == null) {
+    parser.TreeNodeList.prototype.find = function (predicate) {
+        let i = 0;
+        while (true) {
+            let node = this.get(i);
+            if (node == null) {
+                return null;
+            } else if (predicate(node)) {
+                return node;
+            }
+            i++;
+        };
+    }
+}
