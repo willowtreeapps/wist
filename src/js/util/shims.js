@@ -58,3 +58,20 @@ if (parser.TreeNodeList.prototype.find == null) {
         };
     }
 }
+
+if (parser.TreeNodeList.prototype.count == null) {
+    parser.TreeNodeList.prototype.count = function (predicate) {
+        let i = 0;
+        let count = 0;
+        while (true) {
+            let node = this.get(i);
+            if (node == null) {
+                return count;
+            } else if (predicate(node)) {
+                console.log(node);
+                count++;
+            }
+            i++;
+        };
+    }
+}
