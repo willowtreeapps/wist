@@ -11,7 +11,8 @@
     "syntax"
   ],
   "bin": {
-    "wist": "./bin/wist.js"
+    "wist": "./bin/wist.js",
+    "wist-fmt": "./bin/wist-fmt.js"
   },
   "scripts": {
     "compile": "npm run grammar && npm run event-generator",
