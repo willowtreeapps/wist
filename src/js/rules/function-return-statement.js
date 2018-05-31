@@ -1,5 +1,7 @@
 'use strict';
 
+const shims = require('../util/shims');
+
 module.exports = {
     create(context) {
         return {
@@ -29,7 +31,6 @@ module.exports = {
                     }
                 });
 
-                console.log(hasReturnStatement)
                 if (baseType.toUpperCase() == 'VOID' || hasReturnStatement) {
                     return
                 }
