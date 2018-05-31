@@ -58,9 +58,6 @@ vector<SyntaxError> parseText(string text, val emitter)
 
 int main()
 {
-    EM_ASM(
-        FS.mkdir('/working');
-        FS.mount(NODEFS, {root : '.'}, '/working'););
     return 0;
 }
 
