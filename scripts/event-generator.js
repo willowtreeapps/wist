@@ -105,6 +105,10 @@ async function generateClassEnd(fd) {
             {
                 children.push_back(buildTreeFromContext(childCtx));
             }
+            else if (tree::TerminalNode *terminalNode = dynamic_cast<tree::TerminalNode *>(child))
+            {
+                children.push_back(buildTerminalNodeFromContext(terminalNode));
+            }
         }
         
         string ruleName = _parser->getRuleNames()[ctx->getRuleIndex()];
@@ -116,6 +120,20 @@ async function generateClassEnd(fd) {
         int stopCol = ctx->getStop()->getCharPositionInLine();
 
         return TreeNode{Node{ruleName, ruleText, Location{startLine, startCol}, Location{stopLine, stopCol}}, children};
+    }
+
+    TreeNode buildTerminalNodeFromContext(tree::TerminalNode *node)
+    {
+
+        string ruleName = "terminalNode";
+        string ruleText = node->getText();
+        int startLine = node->getSymbol()->getLine();
+        int startCol = node->getSymbol()->getCharPositionInLine();
+
+        int stopLine = node->getSymbol()->getLine();
+        int stopCol = node->getSymbol()->getCharPositionInLine();
+
+        return TreeNode{Node{ruleName, ruleText, Location{startLine, startCol}, Location{stopLine, stopCol}}, {}};
     }
 };`;
     await fs.write(fd, text);
