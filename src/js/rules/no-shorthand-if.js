@@ -5,7 +5,7 @@ const shims = require('../util/shims');
 module.exports = {
     create(context) {
         const checkThen = (astNode) => {
-            let then = astNode.children.find((element) => {
+            let then = astNode.children.findFirst((element) => {
                 let node = element.node;
                 return node.context == 'terminalNode' && node.text.toLowerCase() == 'then'
             });

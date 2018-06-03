@@ -44,8 +44,8 @@ if (parser.TreeNodeList.prototype.zipWithNext == null) {
     }
 }
 
-if (parser.TreeNodeList.prototype.find == null) {
-    parser.TreeNodeList.prototype.find = function (predicate) {
+if (parser.TreeNodeList.prototype.findFirst == null) {
+    parser.TreeNodeList.prototype.findFirst = function (predicate) {
         let i = 0;
         while (true) {
             let node = this.get(i);
@@ -53,6 +53,22 @@ if (parser.TreeNodeList.prototype.find == null) {
                 return null;
             } else if (predicate(node)) {
                 return node;
+            }
+            i++;
+        };
+    }
+}
+
+if (parser.TreeNodeList.prototype.find == null) {
+    parser.TreeNodeList.prototype.find = function (predicate) {
+        let results = [];
+        let i = 0;
+        while (true) {
+            let node = this.get(i);
+            if (node == null) {
+                return results;
+            } else if (predicate(node)) {
+                results.push(node);
             }
             i++;
         };
