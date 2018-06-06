@@ -51,10 +51,6 @@
   },
   "devDependencies": {
     "ava": "0.22.0",
-    "fs-extra": "4.0.1",
-    "ts-loader": "^4.2.0",
-    "typescript": "^2.8.3",
-    "webpack": "^4.6.0",
-    "webpack-cli": "^2.0.15"
+    "fs-extra": "4.0.1"
   }
 }
