@@ -139,21 +139,12 @@ class CLIEngine {
             return null;
         }
 
-        var formatter;
-        switch (format) {
-            case "compact":
-                return require("./formatters/compact");
-            case "compact":
-                return require("./formatters/json");
-            case "stylish":
-                return require("./formatters/stylish");
-            case "unix":
-                return require("./formatters/unix");
-            case "visualstudio":
-                return require("./formatters/visualstudio");
-            default:
-                e.message = `There was a problem loading formatter: ${formatterPath}\nError: ${e.message}`;
-                throw e;
+        const formatterPath = `./formatters/${format}`;
+        try {
+            return require(formatterPath);
+        } catch (e) {
+            e.message = `There was a problem loading formatter: ${formatterPath}\nError: ${e.message}`;
+            throw e;
         }
     }
 }
