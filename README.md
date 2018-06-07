@@ -84,7 +84,7 @@ This will generate a `.wistrc.json` file in your directory. In it, you'll see so
 }
 ```
 
-These configures the sort of errors that the [rules engine](https://willowtreeapps.github.io/wist/rules-engine) reports back. There are several other [rules](https://willowtreeapps.github.io/wist/rules) that can be configured. See the documentation for the full list.
+These configures the sort of errors that the [rules engine](https://willowtreeapps.github.io/wist/user-guide/rules-engine) reports back. There are several other [rules](https://willowtreeapps.github.io/wist/user-guide/rules/) that can be configured. See the documentation for the full list.
 
 Once your `.wistrc.json` has been configured to your liking. Invoke wist on your Brightscript file.
 
