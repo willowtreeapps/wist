@@ -5,22 +5,20 @@ const shims = require('../util/shims');
 module.exports = {
     create(context) {
         const report = (astNode) => {
-            astNode.children.forEach(element => {
-                let node = element.node;
-                if (node.context == 'untypedIdentifier') {
-                    const funcName = node.text;
-                    const firstChar = funcName.charAt(0);
-                    if (firstChar !== firstChar.toLowerCase()) {
-                        context.report({
-                            message: `function '${funcName}' is not camel case`,
-                            loc: {
-                                start: node.start,
-                                end: node.stop
-                            }
-                        });
-                    }
+            let functionIdentNode = astNode.children.findFirst(element => element.node.context == 'untypedIdentifier');
+            if (functionIdentNode != null) {
+                const funcName = functionIdentNode.node.text;
+                const firstChar = funcName.charAt(0);
+                if (firstChar !== firstChar.toLowerCase()) {
+                    context.report({
+                        message: `Function '${funcName}' is not camel case`,
+                        loc: {
+                            start: functionIdentNode.node.start,
+                            end: functionIdentNode.node.stop
+                        }
+                    });
                 }
-            });
+            }
         };
 
         return {
