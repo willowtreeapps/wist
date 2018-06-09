@@ -1,5 +1,5 @@
 const path = require('path'),
-    Rules = require('../../lib/rules'),
+    Rules = require('../../src/js/rules'),
     test = require('ava');
 
 const VALID_DIR = path.resolve(`${__dirname}/../fixtures/rules`),

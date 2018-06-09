@@ -1,5 +1,5 @@
 import test from 'ava';
-import cli from '../../lib/cli';
+import cli from '../../src/js/cli';
 import fs from 'fs';
 import path from 'path';
 
