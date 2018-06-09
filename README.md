@@ -67,6 +67,17 @@ $ ./node_modules/.bin/wist yourfile.brs
 
 ## Usage
 
+```
+wist [options] file.brs [file.brs] [dir]
+
+Basic configuration:
+  -i, --init           Initialize Wist
+  -c, --config String  Use specified configuration file
+  -f, --format String  Output format - either: compact, json, stylish, unix, or visualstudio - default: stylish
+  -v, --verbose        Verbose logging
+  -h, --help           Show help
+```
+
 To get started linting your Brightscript project, you should then setup a wist configuration file:
 
 ```
@@ -90,6 +101,30 @@ Once your `.wistrc.json` has been configured to your liking. Invoke wist on your
 
 ```
 $ wist yourfile.brs
+```
+
+## Wist format
+
+Wist format is a code formatter built into Wist.
+
+```
+Usage: wist-fmt [options] [file.brs]
+
+  -i, --indent Int  Number of tokens to indent
+  -h, --help        Show help
+  -v, --version     Show version information
+```
+
+You can invoke the formatter in the terminal using the `wist-fmt` command.
+
+```
+wist-fmt yourfile.brs
+```
+
+You can specify the number of spaces used to indent your code using the `-i` flag.
+
+```
+wist-fmt -i 2 yourfile.brs
 ```
 
 ## Contributing to Wist
