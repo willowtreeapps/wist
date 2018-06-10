@@ -1,3 +1,7 @@
+/**
+* @description Disallow `if` statements without `then` keyword
+* @since 1.0.0
+*/
 'use strict';
 
 const shims = require('../util/shims');

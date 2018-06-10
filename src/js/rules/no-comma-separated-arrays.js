@@ -1,3 +1,7 @@
+/**
+* @description Array elements must NOT be delimited by a comma
+* @since 1.0.0
+*/
 'use strict';
 
 const shims = require('../util/shims');

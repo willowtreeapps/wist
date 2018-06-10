@@ -8,5 +8,7 @@ grouping: "rules"
 
 # camel-case-func
 
+Function names must be declared using camelCasing
+
 ## Version
 This rule was introduced in Wist 1.0.0.

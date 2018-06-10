@@ -1,28 +1,37 @@
 categories:
   - name: Best Practices
-    description: 'These rules relate to better ways of doing things to help you avoid problems:'
+    description: Better ways of doing things to help you avoid common problems
     rules:
-      - name: no-stop
-        description: disallow `stop` statements
-        since: 1.0.0
-      - name: no-print
-        description: disallow `print` and `?` statements
+      - name: camel-case-func
+        description: Function names must be declared using camelCasing
         since: 1.0.0
       - name: comma-separated-arrays
-        description: require array elements be delimited using a comma `,`
-        since: 1.0.0
-      - name: no-void-func
-        description: disallow functions with `void` return type
-        since: 1.0.0
-      - name: no-shorthand-if
-        description: disallow `if` statements without `then` keyword
-        since: 1.0.0
-      - name: no-private-func
-        description: 
+        description: Array elements must be delimited by a comma
         since: 1.0.0
       - name: function-return-statement
-        description: 
+        description: Functions that declare a type must return a value
         since: 1.0.0
-      - name: camel-case-func
-        description: function names must be declared using camelCasing
+      - name: function-return-type
+        description: Functions that declare a type must return a value
+        since: 1.0.0
+      - name: invalid-associative-array-keys
+        description: Associative array keys must not collide with global function names
+        since: 2.0.0
+      - name: no-comma-separated-arrays
+        description: Array elements must NOT be delimited by a comma
+        since: 1.0.0
+      - name: no-print
+        description: Disallow `print` and `?` statements
+        since: 1.0.0
+      - name: no-private-func
+        description: Disallow functions with `void` return type
+        since: 1.0.0
+      - name: no-shorthand-if
+        description: Disallow `if` statements without `then` keyword
+        since: 1.0.0
+      - name: no-stop
+        description: Disallow `stop` statements
+        since: 1.0.0
+      - name: no-void-func
+        description: Disallow functions with `void` return type
         since: 1.0.0
