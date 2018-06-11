@@ -1,10 +1,10 @@
 'use strict';
 
-const options = require('./options'),
-    CLIEngine = require("./cli-engine"),
-    log = require('./logging'),
-    fs = require('fs'),
-    path = require('path');
+const options = require('./options')
+const CLIEngine = require("./cli-engine")
+const log = require('./logging')
+const fs = require('fs')
+const path = require('path');
 
 
 /**
@@ -79,7 +79,7 @@ const cli = {
  * @private
  */
 function handleInitialize(currentOptions) {
-    const recommendedFilePath = '../../config/wist-recommended.json';
+    const recommendedFilePath = path.resolve(__dirname, '../../config/wist-recommended.json');
     let result = 0;
     if (currentOptions.config) {
         result = handleConfiguration(currentOptions.config);
@@ -119,6 +119,7 @@ function setupConfigurationFile(configFilePath) {
     try {
         let contents = require(configFilePath);
         fs.writeFileSync(fileName, JSON.stringify(contents, null, 2));
+        log.info(`Initialized directory with a ${fileName}`)
     } catch (e) {
         console.error(e.message);
         return 1;
