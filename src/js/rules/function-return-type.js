@@ -1,3 +1,7 @@
+/**
+* @description Functions that declare a type must return a value
+* @since 1.0.0
+*/
 'use strict';
 
 const shims = require('../util/shims');

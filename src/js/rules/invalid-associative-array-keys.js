@@ -1,3 +1,7 @@
+/**
+* @description Associative array keys must not collide with global function names
+* @since 2.0.0
+*/
 'use strict';
 
 const invalidKeys = [
@@ -20,7 +24,7 @@ module.exports = {
         return {
             'associativeElementInitializer:exit': function (astNode) {
                 let key = astNode.children.get(0).node;
-                let match = invalidKeys.find((element) => element.toLowerCase() == key.text.toLowerCase() )
+                let match = invalidKeys.find((element) => element.toLowerCase() == key.text.toLowerCase())
                 if (match != null) {
                     context.report({
                         message: `Associative array key '${key.text}' collides with a global function name.`,

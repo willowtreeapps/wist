@@ -1,3 +1,7 @@
+/**
+* @description Disallow `print` and `?` statements
+* @since 1.0.0
+*/
 'use strict';
 
 module.exports = {

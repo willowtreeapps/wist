@@ -8,5 +8,7 @@ grouping: "rules"
 
 # no-private-func
 
+Disallow functions with `void` return type
+
 ## Version
 This rule was introduced in Wist 1.0.0.

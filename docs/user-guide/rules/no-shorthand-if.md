@@ -8,5 +8,7 @@ grouping: "rules"
 
 # no-shorthand-if
 
+Disallow `if` statements without `then` keyword
+
 ## Version
 This rule was introduced in Wist 1.0.0.

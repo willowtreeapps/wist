@@ -28,11 +28,17 @@ user-guide:
     grouping: rules
     children:
       - title: camel-case-func
-        url: /user-guide/rules/camel-case-func  
+        url: /user-guide/rules/camel-case-func
       - title: comma-separated-arrays
         url: /user-guide/rules/comma-separated-arrays
       - title: function-return-statement
         url: /user-guide/rules/function-return-statement
+      - title: function-return-type
+        url: /user-guide/rules/function-return-type
+      - title: invalid-associative-array-keys
+        url: /user-guide/rules/invalid-associative-array-keys
+      - title: no-comma-separated-arrays
+        url: /user-guide/rules/no-comma-separated-arrays
       - title: no-print
         url: /user-guide/rules/no-print
       - title: no-private-func
