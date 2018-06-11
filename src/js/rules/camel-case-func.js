@@ -1,3 +1,7 @@
+/**
+* @description Function names must be declared using camelCasing
+* @since 1.0.0
+*/
 'use strict';
 
 const shims = require('../util/shims');

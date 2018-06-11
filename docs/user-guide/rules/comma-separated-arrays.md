@@ -8,5 +8,7 @@ grouping: "rules"
 
 # comma-separated-arrays
 
+Array elements must be delimited by a comma
+
 ## Version
 This rule was introduced in Wist 1.0.0.

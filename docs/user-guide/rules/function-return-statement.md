@@ -8,5 +8,7 @@ grouping: "rules"
 
 # function-return-statement
 
+Functions that declare a type must return a value
+
 ## Version
 This rule was introduced in Wist 1.0.0.

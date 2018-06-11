@@ -1,3 +1,7 @@
+/**
+* @description Disallow `stop` statements
+* @since 1.0.0
+*/
 'use strict';
 
 module.exports = {

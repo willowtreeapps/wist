@@ -51,6 +51,9 @@
   },
   "devDependencies": {
     "ava": "0.22.0",
-    "fs-extra": "4.0.1"
+    "doctrine": "2.1.0",
+    "fs-extra": "4.0.1",
+    "jsdoc-parse": "3.0.1",
+    "write-yaml": "1.0.0"
   }
 }

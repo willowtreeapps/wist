@@ -1,3 +1,7 @@
+/**
+* @description Disallow functions with `void` return type
+* @since 1.0.0
+*/
 'use strict';
 
 const shims = require('../util/shims');
