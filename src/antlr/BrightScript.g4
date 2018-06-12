@@ -204,12 +204,14 @@ baseType
     ;
 
 expressionList
-    : (expression | associativeArrayInitializer | arrayInitializer) (COMMA (expression | associativeArrayInitializer | arrayInitializer))*
+    : expression (COMMA expression)*
     ;
 
 expression
     : primary
     | globalFunctionInvocation
+    | associativeArrayInitializer
+    | arrayInitializer
     | expression (DOT | ATTRIBUTE_OPERATOR) (identifier | reservedWord)
     | expression OPEN_BRACKET expression CLOSE_BRACKET
     | expression OPEN_PARENTHESIS expressionList? CLOSE_PARENTHESIS

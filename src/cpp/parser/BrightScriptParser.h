@@ -1003,10 +1003,6 @@ public:
     virtual size_t getRuleIndex() const override;
     std::vector<ExpressionContext *> expression();
     ExpressionContext* expression(size_t i);
-    std::vector<AssociativeArrayInitializerContext *> associativeArrayInitializer();
-    AssociativeArrayInitializerContext* associativeArrayInitializer(size_t i);
-    std::vector<ArrayInitializerContext *> arrayInitializer();
-    ArrayInitializerContext* arrayInitializer(size_t i);
     std::vector<antlr4::tree::TerminalNode *> COMMA();
     antlr4::tree::TerminalNode* COMMA(size_t i);
 
@@ -1025,6 +1021,8 @@ public:
     virtual size_t getRuleIndex() const override;
     PrimaryContext *primary();
     GlobalFunctionInvocationContext *globalFunctionInvocation();
+    AssociativeArrayInitializerContext *associativeArrayInitializer();
+    ArrayInitializerContext *arrayInitializer();
     std::vector<ExpressionContext *> expression();
     ExpressionContext* expression(size_t i);
     antlr4::tree::TerminalNode *ADD();
