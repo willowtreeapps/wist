@@ -7,6 +7,7 @@
 [![node](https://img.shields.io/node/v/@willowtreeapps/wist.svg?style=flat-square)](https://www.npmjs.com/package/@willowtreeapps/wist)
 [![npm](https://img.shields.io/npm/v/@willowtreeapps/wist.svg?style=flat-square)](https://www.npmjs.com/package/@willowtreeapps/wist)
 [![npm](https://img.shields.io/npm/dt/@willowtreeapps/wist.svg?style=flat-square)](https://www.npmjs.com/package/@willowtreeapps/wist)
+[![Travis branch](https://img.shields.io/travis/willowtreeapps/wist.svg?style=flat-square)](https://travis-ci.org/willowtreeapps/wist)
 
 Wist is a linter for identifying and reporting errors in Brightscript code. It helps you identify errors before you upload code to your Roku.
 
