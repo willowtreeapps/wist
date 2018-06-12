@@ -46,7 +46,17 @@ In order to run the docs you will need these additional prerequisites:
 * [Jekyll](https://jekyllrb.com/docs/installation/)
 * [Bundler](http://bundler.io/)
 
-Now you can `npm run docs`.
+You need to change directories into the into the docs folder
+
+```
+cd docs
+```
+
+Then you can run
+
+```
+bundle exec jekyll serve
+```
 
 This command launches an instance of Jekyll that allows you to view a local copy of the docs, found at [http://localhost:4000/wist/](http://localhost:4000/wist/).
 
@@ -55,12 +65,15 @@ This command launches an instance of Jekyll that allows you to view a local copy
 The Wist directory and file structure is as follows:
 
 * `bin` - executable files that are available when Wist is installed
-* `build` - build scripts that help with various parts of development
+* `config` - contains wist defaults
+* `dist` - contains distributable binaries and generated sources
 * `docs` - documentation for the project
-* `lib` - contains the source code
-    * `formatters` - all source files defining formatters
-    * `rules` - all source files defining rules
+* `libs` - contains native binaries required to build the wasm module
+* `src` - contains the source code
+    * `cpp` - contains C++ sources
+    * `js` - contains javascript sources
+        * `formatters` - all source files defining formatters
+        * `rules` - all source files defining rules
 * `test` - the main unit test folder
     * `lib` - tests for the source code
-        * `formatters` - tests for the formatters
-        * `rules` - tests for the rules
+    * `regression` - regression tests
