@@ -17,6 +17,9 @@ categories:
       - name: invalid-associative-array-keys
         description: Associative array keys must not collide with global function names
         since: 2.0.0
+      - name: no-arg-types
+        description: Disallows types in arguments
+        since: 2.0.0
       - name: no-comma-separated-arrays
         description: Array elements must NOT be delimited by a comma
         since: 1.0.0

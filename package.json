@@ -15,8 +15,8 @@
     "wist-fmt": "./bin/wist-fmt.js"
   },
   "scripts": {
-    "compile": "npm run grammar && npm run event-generator",
-    "docs": "./build/run-docs.sh",
+    "compile": "npm run grammar && npm run event-generator && npm run docs",
+    "docs": "node ./scripts/docs-rules-gen.js",
     "event-generator": "node ./scripts/event-generator.js",
     "grammar": "./gradlew clean generateGrammarSource",
     "test": "ava",
