@@ -32,6 +32,9 @@ categories:
       - name: no-shorthand-if
         description: Disallow `if` statements without `then` keyword
         since: 1.0.0
+      - name: no-shorthand-print
+        description: Disallow shorthand print statements using `?`
+        since: 2.0.0
       - name: no-stop
         description: Disallow `stop` statements
         since: 1.0.0

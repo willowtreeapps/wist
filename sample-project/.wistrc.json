@@ -10,6 +10,7 @@
         "function-return-type": "error",
         "camel-case-func": "warn",
         "invalid-associative-array-keys": "error",
-        "no-arg-types": "error"
+        "no-arg-types": "error",
+        "no-shorthand-print": "error"
     }
 }
