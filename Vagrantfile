@@ -29,6 +29,5 @@ Vagrant.configure("2") do |config|
     # Doesn't work from here 
     # Activate PATH and other environment variables in the current terminal
     # source ./emsdk_env.sh
-
   SHELL
 end
