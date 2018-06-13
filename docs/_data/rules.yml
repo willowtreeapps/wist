@@ -41,3 +41,6 @@ categories:
       - name: no-void-func
         description: Disallow functions with `void` return type
         since: 1.0.0
+      - name: print-concat-semicolon
+        description: Print concatenation must be done with a semicolon.
+        since: 2.0.0
