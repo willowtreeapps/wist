@@ -7,14 +7,27 @@
 using namespace std;
 using namespace antlr4;
 
+const string SPACE = " ";
+const string TAB = "\t";
+
 class BrightscriptFormatVisitor : public BrightScriptBaseVisitor
 {
 public:
-  BrightscriptFormatVisitor(CommonTokenStream *_tokens) : BrightscriptFormatVisitor(_tokens, 4) { }
-  BrightscriptFormatVisitor(CommonTokenStream *_tokens, int _indentSize)
+  BrightscriptFormatVisitor(CommonTokenStream *_tokens) : BrightscriptFormatVisitor(_tokens, 4, false) {}
+  BrightscriptFormatVisitor(CommonTokenStream *_tokens, int _indentSize, bool useTabs)
   {
     tokens = _tokens;
     indentSize = _indentSize;
+
+    if (useTabs)
+    {
+      indentChar = TAB;
+    }
+    else
+    {
+      indentChar = SPACE;
+    }
+
     hiddenTokenPosition = 0;
 
     source = "";
@@ -36,8 +49,9 @@ public:
 
 private:
   CommonTokenStream *tokens;
-
   int indentSize;
+  string indentChar;
+
   int currentIndent;
   size_t hiddenTokenPosition;
 

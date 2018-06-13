@@ -223,7 +223,7 @@ void BrightscriptFormatVisitor::writeIndent()
 {
   for (int i = 0; i < currentIndent * indentSize; i++)
   {
-    source.append(" ");
+    source.append(indentChar);
   }
 }
 

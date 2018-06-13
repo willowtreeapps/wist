@@ -16,6 +16,11 @@ module.exports = optionator({
             description: "Number of tokens to indent"
         },
         {
+            option: "use-tabs",
+            type: "Boolean",
+            description: "Indent with tabs"
+        },
+        {
             option: "help",
             alias: "h",
             type: "Boolean",

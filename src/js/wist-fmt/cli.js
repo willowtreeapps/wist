@@ -26,15 +26,21 @@ const cli = {
             log.info(options.generateHelp());
         } else {
             var hrstart = process.hrtime();
+
             let indent = 4;
+            let useTabs = false;
+
             if (currentOptions.indent) {
                 indent = currentOptions.indent;
+            }
+            if (currentOptions.useTabs) {
+                useTabs = currentOptions.useTabs;
             }
             files.forEach(filename => {
                 try {
                     let filePath = path.resolve(filename);
                     let text = fs.readFileSync(filePath, 'utf8');
-                    let output = wist.formatText(text, indent);
+                    let output = wist.formatText(text, indent, useTabs);
                     fs.writeFileSync(filePath, output, "utf8");
                 } catch (e) {
                     log.error(e.message);

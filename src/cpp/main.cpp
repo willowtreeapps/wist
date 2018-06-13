@@ -12,7 +12,7 @@ using namespace antlr4;
 using namespace std;
 using namespace emscripten;
 
-string formatText(string text, int indent)
+string formatText(string text, int indent, bool useTabs)
 {
     ANTLRInputStream input(text);
     BrightScriptLexer lexer(&input);
@@ -21,7 +21,7 @@ string formatText(string text, int indent)
     BrightScriptParser parser(&tokens);
     parser.removeErrorListeners();
 
-    BrightscriptFormatVisitor formatter(&tokens, indent);
+    BrightscriptFormatVisitor formatter(&tokens, indent, useTabs);
     formatter.visit(parser.startRule());
     return formatter.getFormattedSource();
 }
