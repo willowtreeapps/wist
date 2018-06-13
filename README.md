@@ -9,7 +9,16 @@
 [![Npm downloads](https://img.shields.io/npm/dt/@willowtreeapps/wist.svg?style=flat-square)](https://www.npmjs.com/package/@willowtreeapps/wist)
 [![Travis branch](https://img.shields.io/travis/willowtreeapps/wist.svg?style=flat-square)](https://travis-ci.org/willowtreeapps/wist)
 
-Wist is a linter for identifying and reporting errors in Brightscript code. It helps you identify errors before you upload code to your Roku.
+
+[Website](https://willowtreeapps.github.io/wist/) |
+[Configuring](https://willowtreeapps.github.io/wist/user-guide/getting-started) |
+[Rules](https://willowtreeapps.github.io/wist/user-guide/rules/) |
+[Contributing](https://willowtreeapps.github.io/wist/developer-guide/contributing/) |
+[Reporting Bugs](https://willowtreeapps.github.io/wist/developer-guide/contributing/#reporting-bugs) |
+[Code of Conduct](https://willowtreeapps.github.io/wist/developer-guide/contributing/code-of-conduct)
+
+
+Wist is a linter for identifying and reporting errors found in Brightscript code. It helps you identify errors before you upload code to your Roku.
 
 **For full documentation, please see our user and developer guides [here](https://willowtreeapps.github.io/wist/)**
 
@@ -36,12 +45,11 @@ The easiest and best way to use Wist, is through our editor clients.
 * [Atom IDE Brightscript](https://github.com/willowtreeapps/atom-ide-brightscript)
 * [VSCode IDE Brightscript](https://github.com/willowtreeapps/vscode-ide-brightscript)
 
-You can install them through their respective package managers and work out of the box with a `.wistrc.json` in your root directory.
+You can install them through their respective package managers and work out of the box with a `.wistrc.json` included in your root directory.
 
 ## Standalone installation
 
 We recommend taking this approach if you if you want to include Wist as part of your project's build pipeline. Wist is available via as an NPM package and can be installed like so:
-
 
 ```
 $ npm install -g @willowtreeapps/wist
@@ -96,7 +104,7 @@ This will generate a `.wistrc.json` file in your directory. In it, you'll see so
 }
 ```
 
-These configures the sort of errors that the [rules engine](https://willowtreeapps.github.io/wist/user-guide/rules-engine) reports back. There are several other [rules](https://willowtreeapps.github.io/wist/user-guide/rules/) that can be configured. See the documentation for the full list.
+These configures the sort of errors that the [rules engine](https://willowtreeapps.github.io/wist/user-guide/rules-engine) reports back. There are several other rules that can be configured. See the [documentation](https://willowtreeapps.github.io/wist/user-guide/rules/) for the full list.
 
 Once your `.wistrc.json` has been configured to your liking. Invoke wist on your Brightscript file.
 
@@ -106,12 +114,13 @@ $ wist yourfile.brs
 
 ## Wist format
 
-Wist format is a code formatter built into Wist.
+Wist format or `wist-fmt` is an opinionated code formatter built into Wist. It works by traversing your codes abstract syntax tree and reprinting it with the appropriate whitespace after. `wist-fmt` can be run in a pre-commit hook, or in your CI environments to ensure your codebase has a consistent code style.
 
 ```
 Usage: wist-fmt [options] [file.brs]
 
   -i, --indent Int  Number of tokens to indent
+  --use-tabs        Indent with tabs
   -h, --help        Show help
   -v, --version     Show version information
 ```
@@ -133,3 +142,21 @@ wist-fmt -i 2 yourfile.brs
 Contributions are welcome. Please see the [Contributing guidelines](CONTRIBUTING.md).
 
 Wist has adopted a [Code of Conduct](CODE_OF_CONDUCT.md) defined by the [Contributor Covenant](http://contributor-covenant.org). Please see our [Code of Conduct](/CODE_OF_CONDUCT.md) as well as our [Contributing Guidelines ](/CONTRIBUTING.md) for more information.
+
+## License
+
+```
+   Copyright 2018 WillowTree Inc.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+```
