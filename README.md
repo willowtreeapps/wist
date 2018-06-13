@@ -24,7 +24,7 @@ Wist is a linter for identifying and reporting errors found in Brightscript code
 
 ## How does it compare to other tools?
 
-Wist has one of the most accurate and complete implementations of the Brightscript grammer available right now. 
+Wist has one of the most accurate and complete implementations of the Brightscript grammar available right now. 
 It focuses reporting not just syntax violations, but reporting patterns that are likely to result in errors.
 
 ## Questions?
