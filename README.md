@@ -17,7 +17,6 @@
 [Reporting Bugs](https://willowtreeapps.github.io/wist/developer-guide/contributing/#reporting-bugs) |
 [Code of Conduct](https://willowtreeapps.github.io/wist/developer-guide/contributing/code-of-conduct)
 
-
 Wist is a linter for identifying and reporting errors found in Brightscript code. It helps you identify errors before you upload code to your Roku.
 
 **For full documentation, please see our user and developer guides [here](https://willowtreeapps.github.io/wist/)**
@@ -143,6 +142,24 @@ Contributions are welcome. Please see the [Contributing guidelines](CONTRIBUTING
 
 Wist has adopted a [Code of Conduct](CODE_OF_CONDUCT.md) defined by the [Contributor Covenant](http://contributor-covenant.org). Please see our [Code of Conduct](/CODE_OF_CONDUCT.md) as well as our [Contributing Guidelines ](/CONTRIBUTING.md) for more information.
 
+## FAQ
+
+1. How do I run wist on directory or path? 
+    
+    You can use the directory syntax to pass a pattern. For example, if I wanted lint all the `*.brs` files in my sources directory, I can do so with this command.
+    
+    ```
+    $ wist source/*.brs
+    ```
+
+2. Wist takes a really long time on large projects
+
+    The reason for this is because Wist currently doesn't run lints in parallel. A work around for this would be to run multiple intances of wist in parallel. For example, 
+    
+    ```
+    $ find source/ -name *.brs | xargs -P 8 wist
+    ```
+    
 ## License
 
 ```
