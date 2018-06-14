@@ -174,7 +174,7 @@ Wist has adopted a [Code of Conduct](CODE_OF_CONDUCT.md) defined by the [Contrib
     Then install from the git repository using, 
     
     ```
-    $ npm install -g git+https://git@github.com:willowtreeapps/wist.git
+    $ npm install -g git+https://github.com/willowtreeapps/wist.git
     ```
     
 ## License
