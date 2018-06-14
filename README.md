@@ -165,6 +165,14 @@ Wist has adopted a [Code of Conduct](CODE_OF_CONDUCT.md) defined by the [Contrib
     You can do this through `npm`. Please note that while the latest development version might 
     have bug fixes and enhancements, it's not guaranteed to be stable until release.
     
+    You have to first uninstall the current version of Wist you have installed
+    
+    ```
+    $ npm uninstall -g @willowtreeapps/wist
+    ```
+    
+    Then install from the git repository using, 
+    
     ```
     $ npm install -g git+https://git@github.com:willowtreeapps/wist.git
     ```
