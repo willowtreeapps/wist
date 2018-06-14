@@ -25,17 +25,8 @@ module.exports = {
                                 }
                             });
                         }
-                        console.log(element);
                     }
                 });
-                // let node = astNode.node;
-                // context.report({
-                //     message: `'print' statements should only be used for debugging purposes.`,
-                //     loc: {
-                //         start: node.start,
-                //         end: node.stop
-                //     }
-                // });
             }
         };
     }
