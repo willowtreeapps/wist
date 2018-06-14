@@ -160,6 +160,15 @@ Wist has adopted a [Code of Conduct](CODE_OF_CONDUCT.md) defined by the [Contrib
     $ find source/ -name *.brs | xargs -P 8 wist
     ```
     
+3. How do I install the latest development version
+
+    You can do this through `npm`. Please note that while the latest development version might 
+    have bug fixes and enhancements, it's not guaranteed to be stable until release.
+    
+    ```
+    $ npm install -g git+https://git@github.com:willowtreeapps/wist.git
+    ```
+    
 ## License
 
 ```
