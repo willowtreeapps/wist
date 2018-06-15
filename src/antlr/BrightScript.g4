@@ -194,6 +194,7 @@ baseType
     | FLOAT
     | FUNCTION
     | INTEGER
+    | LONGINTEGER
     | OBJECT
     | STRING
     | VOID
@@ -466,6 +467,10 @@ IN
 
 INTEGER
     : I N T E G E R
+    ;
+
+LONGINTEGER
+    : L O N G I N T E G E R
     ;
 
 INTERFACE
