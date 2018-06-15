@@ -13,7 +13,6 @@ module.exports = {
         return {
             'printStatement:enter': function(astNode) {
                 let printSymbol = astNode.children.get(0);
-                console.log(printSymbol.node.text);
                 if(printSymbol.node.text == "?"){
                     context.report({
                         message: `Print statements should not use the '?' operator. Use 'print' instead.`,

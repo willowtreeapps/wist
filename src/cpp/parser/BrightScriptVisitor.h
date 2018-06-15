@@ -21,8 +21,6 @@ public:
    */
     virtual antlrcpp::Any visitStartRule(BrightScriptParser::StartRuleContext *context) = 0;
 
-    virtual antlrcpp::Any visitComponent(BrightScriptParser::ComponentContext *context) = 0;
-
     virtual antlrcpp::Any visitComponentHead(BrightScriptParser::ComponentHeadContext *context) = 0;
 
     virtual antlrcpp::Any visitComponentHeadElement(BrightScriptParser::ComponentHeadElementContext *context) = 0;

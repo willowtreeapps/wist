@@ -36,20 +36,6 @@ class BrightScriptEventGenerator : public BrightScriptBaseListener
             _emitter->call<val, string, TreeNode>("emit", "startRule:exit", buildTreeFromContext(ruleContext));
         }
     }
-    void enterComponent(BrightScriptParser::ComponentContext *ctx) override 
-    {
-        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
-        {
-            _emitter->call<val, string, TreeNode>("emit", "component:enter", buildTreeFromContext(ruleContext));
-        }
-    }
-    void exitComponent(BrightScriptParser::ComponentContext *ctx) override 
-    {
-        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
-        {
-            _emitter->call<val, string, TreeNode>("emit", "component:exit", buildTreeFromContext(ruleContext));
-        }
-    }
     void enterComponentHead(BrightScriptParser::ComponentHeadContext *ctx) override 
     {
         if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
