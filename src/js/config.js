@@ -55,9 +55,8 @@ class Config {
         this.ignorePath = options.ignorePath;
 
         this.configCache = new ConfigCache();
-
         this.baseConfig = options.baseConfig
-            ? ConfigOps.merge({}, ConfigFile.loadObject(options.baseConfig, this))
+            ? ConfigOps.merge({}, ConfigFile.load(options.baseConfig, this))
             : { rules: {} };
         this.baseConfig.filePath = '';
         this.baseConfig.baseDirectory = this.options.cwd;

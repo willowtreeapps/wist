@@ -19,9 +19,6 @@ public:
   virtual void enterStartRule(BrightScriptParser::StartRuleContext * /*ctx*/) override { }
   virtual void exitStartRule(BrightScriptParser::StartRuleContext * /*ctx*/) override { }
 
-  virtual void enterComponent(BrightScriptParser::ComponentContext * /*ctx*/) override { }
-  virtual void exitComponent(BrightScriptParser::ComponentContext * /*ctx*/) override { }
-
   virtual void enterComponentHead(BrightScriptParser::ComponentHeadContext * /*ctx*/) override { }
   virtual void exitComponentHead(BrightScriptParser::ComponentHeadContext * /*ctx*/) override { }
 
