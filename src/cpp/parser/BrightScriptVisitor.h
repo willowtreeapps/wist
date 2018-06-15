@@ -21,8 +21,6 @@ public:
    */
     virtual antlrcpp::Any visitStartRule(BrightScriptParser::StartRuleContext *context) = 0;
 
-    virtual antlrcpp::Any visitComponent(BrightScriptParser::ComponentContext *context) = 0;
-
     virtual antlrcpp::Any visitComponentHead(BrightScriptParser::ComponentHeadContext *context) = 0;
 
     virtual antlrcpp::Any visitComponentHeadElement(BrightScriptParser::ComponentHeadElementContext *context) = 0;
@@ -109,6 +107,10 @@ public:
 
     virtual antlrcpp::Any visitExpression(BrightScriptParser::ExpressionContext *context) = 0;
 
+    virtual antlrcpp::Any visitTraversableExpression(BrightScriptParser::TraversableExpressionContext *context) = 0;
+
+    virtual antlrcpp::Any visitAssignableExpression(BrightScriptParser::AssignableExpressionContext *context) = 0;
+
     virtual antlrcpp::Any visitGlobalFunctionInvocation(BrightScriptParser::GlobalFunctionInvocationContext *context) = 0;
 
     virtual antlrcpp::Any visitGlobalFunction(BrightScriptParser::GlobalFunctionContext *context) = 0;
@@ -116,8 +118,6 @@ public:
     virtual antlrcpp::Any visitPrimary(BrightScriptParser::PrimaryContext *context) = 0;
 
     virtual antlrcpp::Any visitLiteral(BrightScriptParser::LiteralContext *context) = 0;
-
-    virtual antlrcpp::Any visitAssignableExpression(BrightScriptParser::AssignableExpressionContext *context) = 0;
 
     virtual antlrcpp::Any visitNumberLiteral(BrightScriptParser::NumberLiteralContext *context) = 0;
 

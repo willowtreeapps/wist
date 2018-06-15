@@ -19,9 +19,6 @@ public:
   virtual void enterStartRule(BrightScriptParser::StartRuleContext * /*ctx*/) override { }
   virtual void exitStartRule(BrightScriptParser::StartRuleContext * /*ctx*/) override { }
 
-  virtual void enterComponent(BrightScriptParser::ComponentContext * /*ctx*/) override { }
-  virtual void exitComponent(BrightScriptParser::ComponentContext * /*ctx*/) override { }
-
   virtual void enterComponentHead(BrightScriptParser::ComponentHeadContext * /*ctx*/) override { }
   virtual void exitComponentHead(BrightScriptParser::ComponentHeadContext * /*ctx*/) override { }
 
@@ -151,6 +148,12 @@ public:
   virtual void enterExpression(BrightScriptParser::ExpressionContext * /*ctx*/) override { }
   virtual void exitExpression(BrightScriptParser::ExpressionContext * /*ctx*/) override { }
 
+  virtual void enterTraversableExpression(BrightScriptParser::TraversableExpressionContext * /*ctx*/) override { }
+  virtual void exitTraversableExpression(BrightScriptParser::TraversableExpressionContext * /*ctx*/) override { }
+
+  virtual void enterAssignableExpression(BrightScriptParser::AssignableExpressionContext * /*ctx*/) override { }
+  virtual void exitAssignableExpression(BrightScriptParser::AssignableExpressionContext * /*ctx*/) override { }
+
   virtual void enterGlobalFunctionInvocation(BrightScriptParser::GlobalFunctionInvocationContext * /*ctx*/) override { }
   virtual void exitGlobalFunctionInvocation(BrightScriptParser::GlobalFunctionInvocationContext * /*ctx*/) override { }
 
@@ -162,9 +165,6 @@ public:
 
   virtual void enterLiteral(BrightScriptParser::LiteralContext * /*ctx*/) override { }
   virtual void exitLiteral(BrightScriptParser::LiteralContext * /*ctx*/) override { }
-
-  virtual void enterAssignableExpression(BrightScriptParser::AssignableExpressionContext * /*ctx*/) override { }
-  virtual void exitAssignableExpression(BrightScriptParser::AssignableExpressionContext * /*ctx*/) override { }
 
   virtual void enterNumberLiteral(BrightScriptParser::NumberLiteralContext * /*ctx*/) override { }
   virtual void exitNumberLiteral(BrightScriptParser::NumberLiteralContext * /*ctx*/) override { }

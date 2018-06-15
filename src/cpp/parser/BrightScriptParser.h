@@ -17,44 +17,45 @@ public:
     ENDIF = 14, ENDSUB = 15, ENDWHILE = 16, EXIT = 17, EXITWHILE = 18, EVAL = 19, 
     FALSE = 20, FLOAT = 21, FOR = 22, FUNCTION = 23, GETGLOBALAA = 24, GETLASTRUNCOMPILEERROR = 25, 
     GETLASTRUNRUNTIMEERROR = 26, GOTO = 27, IF = 28, IN = 29, INTEGER = 30, 
-    INTERFACE = 31, INVALID = 32, LET = 33, LIBRARY = 34, LINE_NUM = 35, 
-    MOD = 36, NEXT = 37, NOT = 38, OBJECT = 39, OBJFUN = 40, OR = 41, POS = 42, 
-    PRINT = 43, REM = 44, RETURN = 45, RUN = 46, STEP = 47, STOP = 48, STRING = 49, 
-    SUB = 50, TAB = 51, THEN = 52, TO = 53, TRUE = 54, VOID = 55, TYPE = 56, 
-    WHILE = 57, STRING_LITERAL = 58, INT_LITERAL = 59, FLOAT_LITERAL = 60, 
-    IDENTIFIER = 61, IDENTIFIER_TYPE_DECLARATION = 62, COMMENT = 63, NEWLINE = 64, 
-    WS = 65, CONDITIONAL_CONST = 66, CONDITIONAL_ELSE = 67, CONDITIONAL_ELSEIF = 68, 
-    CONDITIONAL_ENDIF = 69, CONDITIONAL_ERROR = 70, CONDITIONAL_IF = 71, 
-    SINGLE_QUOTE = 72, QUESTION_MARK = 73, ATTRIBUTE_OPERATOR = 74, INCREMENT = 75, 
-    DECREMENT = 76, OPEN_BRACKET = 77, CLOSE_BRACKET = 78, OPEN_BRACE = 79, 
-    CLOSE_BRACE = 80, OPEN_PARENTHESIS = 81, CLOSE_PARENTHESIS = 82, COMMA = 83, 
-    SEMICOLON = 84, COLON = 85, EQUALS = 86, DOT = 87, ADD = 88, SUBTRACT = 89, 
-    MULTIPLY = 90, DIVIDE = 91, EXPONENT = 92, DIVIDE_INTEGER = 93, BITSHIFT_LEFT = 94, 
-    BITSHIFT_RIGHT = 95, GREATER_THAN = 96, LESS_THAN = 97, GREATER_THAN_OR_EQUAL = 98, 
-    LESS_THAN_OR_EQUAL = 99, NOT_EQUAL = 100, ASSIGNMENT_ADD = 101, ASSIGNMENT_SUBTRACT = 102, 
-    ASSIGNMENT_MULTIPLY = 103, ASSIGNMENT_DIVIDE = 104, ASSIGNMENT_DIVIDE_INTEGER = 105, 
-    ASSIGNMENT_BITSHIFT_LEFT = 106, ASSIGNMENT_BITSHIFT_RIGHT = 107
+    LONGINTEGER = 31, INTERFACE = 32, INVALID = 33, LET = 34, LIBRARY = 35, 
+    LINE_NUM = 36, MOD = 37, NEXT = 38, NOT = 39, OBJECT = 40, OBJFUN = 41, 
+    OR = 42, POS = 43, PRINT = 44, REM = 45, RETURN = 46, RUN = 47, STEP = 48, 
+    STOP = 49, STRING = 50, SUB = 51, TAB = 52, THEN = 53, TO = 54, TRUE = 55, 
+    VOID = 56, TYPE = 57, WHILE = 58, STRING_LITERAL = 59, INT_LITERAL = 60, 
+    FLOAT_LITERAL = 61, IDENTIFIER = 62, IDENTIFIER_TYPE_DECLARATION = 63, 
+    COMMENT = 64, NEWLINE = 65, WS = 66, CONDITIONAL_CONST = 67, CONDITIONAL_ELSE = 68, 
+    CONDITIONAL_ELSEIF = 69, CONDITIONAL_ENDIF = 70, CONDITIONAL_ERROR = 71, 
+    CONDITIONAL_IF = 72, SINGLE_QUOTE = 73, QUESTION_MARK = 74, ATTRIBUTE_OPERATOR = 75, 
+    INCREMENT = 76, DECREMENT = 77, OPEN_BRACKET = 78, CLOSE_BRACKET = 79, 
+    OPEN_BRACE = 80, CLOSE_BRACE = 81, OPEN_PARENTHESIS = 82, CLOSE_PARENTHESIS = 83, 
+    COMMA = 84, SEMICOLON = 85, COLON = 86, EQUALS = 87, DOT = 88, ADD = 89, 
+    SUBTRACT = 90, MULTIPLY = 91, DIVIDE = 92, EXPONENT = 93, DIVIDE_INTEGER = 94, 
+    BITSHIFT_LEFT = 95, BITSHIFT_RIGHT = 96, GREATER_THAN = 97, LESS_THAN = 98, 
+    GREATER_THAN_OR_EQUAL = 99, LESS_THAN_OR_EQUAL = 100, NOT_EQUAL = 101, 
+    ASSIGNMENT_ADD = 102, ASSIGNMENT_SUBTRACT = 103, ASSIGNMENT_MULTIPLY = 104, 
+    ASSIGNMENT_DIVIDE = 105, ASSIGNMENT_DIVIDE_INTEGER = 106, ASSIGNMENT_BITSHIFT_LEFT = 107, 
+    ASSIGNMENT_BITSHIFT_RIGHT = 108
   };
 
   enum {
-    RuleStartRule = 0, RuleComponent = 1, RuleComponentHead = 2, RuleComponentHeadElement = 3, 
-    RuleComponentBody = 4, RuleComponentBodyElement = 5, RuleBlock = 6, 
-    RuleBlockStatement = 7, RuleArrayInitializer = 8, RuleAssociativeArrayInitializer = 9, 
-    RuleAssociativeElementInitializer = 10, RuleConditionalCompilationStatement = 11, 
-    RuleConditionalCompilationConstStatement = 12, RuleConditionalCompilationErrorStatement = 13, 
-    RuleConditionalCompilationIfThenElseStatement = 14, RuleConditionalCompilationIfBlockStatement = 15, 
-    RuleConditionalCompilationIfElseIfBlockStatement = 16, RuleConditionalCompilationIfElseBlockStatement = 17, 
-    RuleDimStatement = 18, RuleEndStatement = 19, RuleExitStatement = 20, 
-    RuleForStatement = 21, RuleForEachStatement = 22, RuleGotoStatement = 23, 
-    RuleIfThenElseStatement = 24, RuleIfSingleLineStatement = 25, RuleIfBlockStatement = 26, 
-    RuleIfElseIfBlockStatement = 27, RuleIfElseBlockStatement = 28, RuleLabelStatement = 29, 
-    RuleLibraryStatement = 30, RuleNextStatement = 31, RulePrintStatement = 32, 
-    RuleReturnStatement = 33, RuleStopStatement = 34, RuleWhileStatement = 35, 
-    RuleAnonymousFunctionDeclaration = 36, RuleFunctionDeclaration = 37, 
-    RuleAnonymousSubDeclaration = 38, RuleSubDeclaration = 39, RuleParameterList = 40, 
-    RuleParameter = 41, RuleBaseType = 42, RuleExpressionList = 43, RuleExpression = 44, 
-    RuleGlobalFunctionInvocation = 45, RuleGlobalFunction = 46, RulePrimary = 47, 
-    RuleLiteral = 48, RuleAssignableExpression = 49, RuleNumberLiteral = 50, 
+    RuleStartRule = 0, RuleComponentHead = 1, RuleComponentHeadElement = 2, 
+    RuleComponentBody = 3, RuleComponentBodyElement = 4, RuleBlock = 5, 
+    RuleBlockStatement = 6, RuleArrayInitializer = 7, RuleAssociativeArrayInitializer = 8, 
+    RuleAssociativeElementInitializer = 9, RuleConditionalCompilationStatement = 10, 
+    RuleConditionalCompilationConstStatement = 11, RuleConditionalCompilationErrorStatement = 12, 
+    RuleConditionalCompilationIfThenElseStatement = 13, RuleConditionalCompilationIfBlockStatement = 14, 
+    RuleConditionalCompilationIfElseIfBlockStatement = 15, RuleConditionalCompilationIfElseBlockStatement = 16, 
+    RuleDimStatement = 17, RuleEndStatement = 18, RuleExitStatement = 19, 
+    RuleForStatement = 20, RuleForEachStatement = 21, RuleGotoStatement = 22, 
+    RuleIfThenElseStatement = 23, RuleIfSingleLineStatement = 24, RuleIfBlockStatement = 25, 
+    RuleIfElseIfBlockStatement = 26, RuleIfElseBlockStatement = 27, RuleLabelStatement = 28, 
+    RuleLibraryStatement = 29, RuleNextStatement = 30, RulePrintStatement = 31, 
+    RuleReturnStatement = 32, RuleStopStatement = 33, RuleWhileStatement = 34, 
+    RuleAnonymousFunctionDeclaration = 35, RuleFunctionDeclaration = 36, 
+    RuleAnonymousSubDeclaration = 37, RuleSubDeclaration = 38, RuleParameterList = 39, 
+    RuleParameter = 40, RuleBaseType = 41, RuleExpressionList = 42, RuleExpression = 43, 
+    RuleTraversableExpression = 44, RuleAssignableExpression = 45, RuleGlobalFunctionInvocation = 46, 
+    RuleGlobalFunction = 47, RulePrimary = 48, RuleLiteral = 49, RuleNumberLiteral = 50, 
     RuleStringLiteral = 51, RuleBooleanLiteral = 52, RuleInvalidLiteral = 53, 
     RuleIdentifier = 54, RuleUntypedIdentifier = 55, RuleReservedWord = 56, 
     RuleComment = 57, RuleEndOfLine = 58, RuleEndOfStatement = 59
@@ -71,7 +72,6 @@ public:
 
 
   class StartRuleContext;
-  class ComponentContext;
   class ComponentHeadContext;
   class ComponentHeadElementContext;
   class ComponentBodyContext;
@@ -115,11 +115,12 @@ public:
   class BaseTypeContext;
   class ExpressionListContext;
   class ExpressionContext;
+  class TraversableExpressionContext;
+  class AssignableExpressionContext;
   class GlobalFunctionInvocationContext;
   class GlobalFunctionContext;
   class PrimaryContext;
   class LiteralContext;
-  class AssignableExpressionContext;
   class NumberLiteralContext;
   class StringLiteralContext;
   class BooleanLiteralContext;
@@ -135,8 +136,11 @@ public:
   public:
     StartRuleContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    ComponentContext *component();
     antlr4::tree::TerminalNode *EOF();
+    std::vector<ComponentHeadContext *> componentHead();
+    ComponentHeadContext* componentHead(size_t i);
+    std::vector<ComponentBodyContext *> componentBody();
+    ComponentBodyContext* componentBody(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -146,23 +150,6 @@ public:
   };
 
   StartRuleContext* startRule();
-
-  class  ComponentContext : public antlr4::ParserRuleContext {
-  public:
-    ComponentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    ComponentBodyContext *componentBody();
-    std::vector<ComponentHeadContext *> componentHead();
-    ComponentHeadContext* componentHead(size_t i);
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-   
-  };
-
-  ComponentContext* component();
 
   class  ComponentHeadContext : public antlr4::ParserRuleContext {
   public:
@@ -577,7 +564,7 @@ public:
     antlr4::tree::TerminalNode *EACH();
     IdentifierContext *identifier();
     antlr4::tree::TerminalNode *IN();
-    ExpressionContext *expression();
+    TraversableExpressionContext *traversableExpression();
     std::vector<EndOfStatementContext *> endOfStatement();
     EndOfStatementContext* endOfStatement(size_t i);
     std::vector<BlockContext *> block();
@@ -984,6 +971,7 @@ public:
     antlr4::tree::TerminalNode *FLOAT();
     antlr4::tree::TerminalNode *FUNCTION();
     antlr4::tree::TerminalNode *INTEGER();
+    antlr4::tree::TerminalNode *LONGINTEGER();
     antlr4::tree::TerminalNode *OBJECT();
     antlr4::tree::TerminalNode *STRING();
     antlr4::tree::TerminalNode *VOID();
@@ -1021,8 +1009,6 @@ public:
     virtual size_t getRuleIndex() const override;
     PrimaryContext *primary();
     GlobalFunctionInvocationContext *globalFunctionInvocation();
-    AssociativeArrayInitializerContext *associativeArrayInitializer();
-    ArrayInitializerContext *arrayInitializer();
     std::vector<ExpressionContext *> expression();
     ExpressionContext* expression(size_t i);
     antlr4::tree::TerminalNode *ADD();
@@ -1072,6 +1058,42 @@ public:
 
   ExpressionContext* expression();
   ExpressionContext* expression(int precedence);
+  class  TraversableExpressionContext : public antlr4::ParserRuleContext {
+  public:
+    TraversableExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    ExpressionContext *expression();
+    ArrayInitializerContext *arrayInitializer();
+    AssociativeArrayInitializerContext *associativeArrayInitializer();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  TraversableExpressionContext* traversableExpression();
+
+  class  AssignableExpressionContext : public antlr4::ParserRuleContext {
+  public:
+    AssignableExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    ExpressionContext *expression();
+    ArrayInitializerContext *arrayInitializer();
+    AssociativeArrayInitializerContext *associativeArrayInitializer();
+    AnonymousFunctionDeclarationContext *anonymousFunctionDeclaration();
+    AnonymousSubDeclarationContext *anonymousSubDeclaration();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  AssignableExpressionContext* assignableExpression();
+
   class  GlobalFunctionInvocationContext : public antlr4::ParserRuleContext {
   public:
     GlobalFunctionInvocationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -1149,25 +1171,6 @@ public:
   };
 
   LiteralContext* literal();
-
-  class  AssignableExpressionContext : public antlr4::ParserRuleContext {
-  public:
-    AssignableExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    ExpressionContext *expression();
-    ArrayInitializerContext *arrayInitializer();
-    AssociativeArrayInitializerContext *associativeArrayInitializer();
-    AnonymousFunctionDeclarationContext *anonymousFunctionDeclaration();
-    AnonymousSubDeclarationContext *anonymousSubDeclaration();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-   
-  };
-
-  AssignableExpressionContext* assignableExpression();
 
   class  NumberLiteralContext : public antlr4::ParserRuleContext {
   public:

@@ -19,10 +19,6 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitComponent(BrightScriptParser::ComponentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual antlrcpp::Any visitComponentHead(BrightScriptParser::ComponentHeadContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -195,6 +191,14 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitTraversableExpression(BrightScriptParser::TraversableExpressionContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitAssignableExpression(BrightScriptParser::AssignableExpressionContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitGlobalFunctionInvocation(BrightScriptParser::GlobalFunctionInvocationContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -208,10 +212,6 @@ public:
   }
 
   virtual antlrcpp::Any visitLiteral(BrightScriptParser::LiteralContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitAssignableExpression(BrightScriptParser::AssignableExpressionContext *ctx) override {
     return visitChildren(ctx);
   }
 

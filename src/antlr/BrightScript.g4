@@ -1,11 +1,7 @@
 grammar BrightScript;
 
 startRule
-    : component EOF
-    ;
-
-component
-    : componentHead* componentBody
+    : componentHead* componentBody* EOF
     ;
 
 componentHead
@@ -51,7 +47,7 @@ blockStatement
     ;
 
 arrayInitializer
-    : OPEN_BRACKET NEWLINE* ((expression | arrayInitializer | associativeArrayInitializer) ((COMMA | endOfLine) NEWLINE* (expression | arrayInitializer | associativeArrayInitializer))*)? NEWLINE* CLOSE_BRACKET
+    : OPEN_BRACKET NEWLINE* ((expression | arrayInitializer | associativeArrayInitializer) COMMA? endOfLine?)* CLOSE_BRACKET
     ;
 
 associativeArrayInitializer
@@ -111,7 +107,7 @@ forStatement
     ;
 
 forEachStatement
-    : FOR EACH identifier IN expression endOfStatement+ block* nextStatement? (END FOR)?
+    : FOR EACH identifier IN traversableExpression endOfStatement+ block* nextStatement? (END FOR)?
     ;
 
 gotoStatement
@@ -198,6 +194,7 @@ baseType
     | FLOAT
     | FUNCTION
     | INTEGER
+    | LONGINTEGER
     | OBJECT
     | STRING
     | VOID
@@ -210,8 +207,6 @@ expressionList
 expression
     : primary
     | globalFunctionInvocation
-    | associativeArrayInitializer
-    | arrayInitializer
     | expression (DOT | ATTRIBUTE_OPERATOR) (identifier | reservedWord)
     | expression OPEN_BRACKET expression CLOSE_BRACKET
     | expression OPEN_PARENTHESIS expressionList? CLOSE_PARENTHESIS
@@ -225,6 +220,21 @@ expression
     | expression (AND|OR) expression
     | <assoc=right> expression (EQUALS|ASSIGNMENT_ADD|ASSIGNMENT_SUBTRACT|ASSIGNMENT_MULTIPLY|ASSIGNMENT_DIVIDE|ASSIGNMENT_DIVIDE_INTEGER|ASSIGNMENT_BITSHIFT_LEFT|ASSIGNMENT_BITSHIFT_RIGHT) assignableExpression
     ;
+
+traversableExpression
+    : expression
+    | arrayInitializer
+    | associativeArrayInitializer
+    ;
+
+assignableExpression
+    : expression
+    | arrayInitializer
+    | associativeArrayInitializer
+    | anonymousFunctionDeclaration
+    | anonymousSubDeclaration
+    ;
+
 
 globalFunctionInvocation
     : globalFunction OPEN_PARENTHESIS expressionList? CLOSE_PARENTHESIS
@@ -253,14 +263,6 @@ literal
     | stringLiteral
     | booleanLiteral
     | invalidLiteral
-    ;
-
-assignableExpression
-    : expression
-    | arrayInitializer
-    | associativeArrayInitializer
-    | anonymousFunctionDeclaration
-    | anonymousSubDeclaration
     ;
 
 numberLiteral
@@ -465,6 +467,10 @@ IN
 
 INTEGER
     : I N T E G E R
+    ;
+
+LONGINTEGER
+    : L O N G I N T E G E R
     ;
 
 INTERFACE

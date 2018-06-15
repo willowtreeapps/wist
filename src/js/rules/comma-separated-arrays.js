@@ -41,7 +41,7 @@ module.exports = {
                 astNode.children.zipWithNext((current, next) => {
                     let currentNodeContext = current.node.context;
                     if (isAssociativeArrayElement(currentNodeContext)) {
-                        if (next.node.text != ',' && next.node.text != '}') {
+                        if (next != null && next.node.text != ',' && next.node.text != '}') {
                             context.report({
                                 message: "Missing ',' after associative array element",
                                 loc: {

@@ -47,6 +47,8 @@ const cli = {
             return 1;
         }
 
+        currentOptions.baseConfig = path.resolve(__dirname, '../../config/wist-recommended.json');
+
         const files = currentOptions._;
 
         if (currentOptions.init) {

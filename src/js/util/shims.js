@@ -84,7 +84,6 @@ if (parser.TreeNodeList.prototype.count == null) {
             if (node == null) {
                 return count;
             } else if (predicate(node)) {
-                console.log(node);
                 count++;
             }
             i++;

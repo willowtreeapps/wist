@@ -17,9 +17,6 @@ public:
   virtual void enterStartRule(BrightScriptParser::StartRuleContext *ctx) = 0;
   virtual void exitStartRule(BrightScriptParser::StartRuleContext *ctx) = 0;
 
-  virtual void enterComponent(BrightScriptParser::ComponentContext *ctx) = 0;
-  virtual void exitComponent(BrightScriptParser::ComponentContext *ctx) = 0;
-
   virtual void enterComponentHead(BrightScriptParser::ComponentHeadContext *ctx) = 0;
   virtual void exitComponentHead(BrightScriptParser::ComponentHeadContext *ctx) = 0;
 
@@ -149,6 +146,12 @@ public:
   virtual void enterExpression(BrightScriptParser::ExpressionContext *ctx) = 0;
   virtual void exitExpression(BrightScriptParser::ExpressionContext *ctx) = 0;
 
+  virtual void enterTraversableExpression(BrightScriptParser::TraversableExpressionContext *ctx) = 0;
+  virtual void exitTraversableExpression(BrightScriptParser::TraversableExpressionContext *ctx) = 0;
+
+  virtual void enterAssignableExpression(BrightScriptParser::AssignableExpressionContext *ctx) = 0;
+  virtual void exitAssignableExpression(BrightScriptParser::AssignableExpressionContext *ctx) = 0;
+
   virtual void enterGlobalFunctionInvocation(BrightScriptParser::GlobalFunctionInvocationContext *ctx) = 0;
   virtual void exitGlobalFunctionInvocation(BrightScriptParser::GlobalFunctionInvocationContext *ctx) = 0;
 
@@ -160,9 +163,6 @@ public:
 
   virtual void enterLiteral(BrightScriptParser::LiteralContext *ctx) = 0;
   virtual void exitLiteral(BrightScriptParser::LiteralContext *ctx) = 0;
-
-  virtual void enterAssignableExpression(BrightScriptParser::AssignableExpressionContext *ctx) = 0;
-  virtual void exitAssignableExpression(BrightScriptParser::AssignableExpressionContext *ctx) = 0;
 
   virtual void enterNumberLiteral(BrightScriptParser::NumberLiteralContext *ctx) = 0;
   virtual void exitNumberLiteral(BrightScriptParser::NumberLiteralContext *ctx) = 0;
