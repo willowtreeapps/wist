@@ -652,6 +652,34 @@ class BrightScriptEventGenerator : public BrightScriptBaseListener
             _emitter->call<val, string, TreeNode>("emit", "expression:exit", buildTreeFromContext(ruleContext));
         }
     }
+    void enterTraversableExpression(BrightScriptParser::TraversableExpressionContext *ctx) override 
+    {
+        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
+        {
+            _emitter->call<val, string, TreeNode>("emit", "traversableExpression:enter", buildTreeFromContext(ruleContext));
+        }
+    }
+    void exitTraversableExpression(BrightScriptParser::TraversableExpressionContext *ctx) override 
+    {
+        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
+        {
+            _emitter->call<val, string, TreeNode>("emit", "traversableExpression:exit", buildTreeFromContext(ruleContext));
+        }
+    }
+    void enterAssignableExpression(BrightScriptParser::AssignableExpressionContext *ctx) override 
+    {
+        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
+        {
+            _emitter->call<val, string, TreeNode>("emit", "assignableExpression:enter", buildTreeFromContext(ruleContext));
+        }
+    }
+    void exitAssignableExpression(BrightScriptParser::AssignableExpressionContext *ctx) override 
+    {
+        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
+        {
+            _emitter->call<val, string, TreeNode>("emit", "assignableExpression:exit", buildTreeFromContext(ruleContext));
+        }
+    }
     void enterGlobalFunctionInvocation(BrightScriptParser::GlobalFunctionInvocationContext *ctx) override 
     {
         if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
@@ -706,20 +734,6 @@ class BrightScriptEventGenerator : public BrightScriptBaseListener
         if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
         {
             _emitter->call<val, string, TreeNode>("emit", "literal:exit", buildTreeFromContext(ruleContext));
-        }
-    }
-    void enterAssignableExpression(BrightScriptParser::AssignableExpressionContext *ctx) override 
-    {
-        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
-        {
-            _emitter->call<val, string, TreeNode>("emit", "assignableExpression:enter", buildTreeFromContext(ruleContext));
-        }
-    }
-    void exitAssignableExpression(BrightScriptParser::AssignableExpressionContext *ctx) override 
-    {
-        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
-        {
-            _emitter->call<val, string, TreeNode>("emit", "assignableExpression:exit", buildTreeFromContext(ruleContext));
         }
     }
     void enterNumberLiteral(BrightScriptParser::NumberLiteralContext *ctx) override 

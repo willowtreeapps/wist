@@ -53,11 +53,11 @@ public:
     RuleAnonymousFunctionDeclaration = 36, RuleFunctionDeclaration = 37, 
     RuleAnonymousSubDeclaration = 38, RuleSubDeclaration = 39, RuleParameterList = 40, 
     RuleParameter = 41, RuleBaseType = 42, RuleExpressionList = 43, RuleExpression = 44, 
-    RuleGlobalFunctionInvocation = 45, RuleGlobalFunction = 46, RulePrimary = 47, 
-    RuleLiteral = 48, RuleAssignableExpression = 49, RuleNumberLiteral = 50, 
-    RuleStringLiteral = 51, RuleBooleanLiteral = 52, RuleInvalidLiteral = 53, 
-    RuleIdentifier = 54, RuleUntypedIdentifier = 55, RuleReservedWord = 56, 
-    RuleComment = 57, RuleEndOfLine = 58, RuleEndOfStatement = 59
+    RuleTraversableExpression = 45, RuleAssignableExpression = 46, RuleGlobalFunctionInvocation = 47, 
+    RuleGlobalFunction = 48, RulePrimary = 49, RuleLiteral = 50, RuleNumberLiteral = 51, 
+    RuleStringLiteral = 52, RuleBooleanLiteral = 53, RuleInvalidLiteral = 54, 
+    RuleIdentifier = 55, RuleUntypedIdentifier = 56, RuleReservedWord = 57, 
+    RuleComment = 58, RuleEndOfLine = 59, RuleEndOfStatement = 60
   };
 
   BrightScriptParser(antlr4::TokenStream *input);
@@ -115,11 +115,12 @@ public:
   class BaseTypeContext;
   class ExpressionListContext;
   class ExpressionContext;
+  class TraversableExpressionContext;
+  class AssignableExpressionContext;
   class GlobalFunctionInvocationContext;
   class GlobalFunctionContext;
   class PrimaryContext;
   class LiteralContext;
-  class AssignableExpressionContext;
   class NumberLiteralContext;
   class StringLiteralContext;
   class BooleanLiteralContext;
@@ -577,7 +578,7 @@ public:
     antlr4::tree::TerminalNode *EACH();
     IdentifierContext *identifier();
     antlr4::tree::TerminalNode *IN();
-    ExpressionContext *expression();
+    TraversableExpressionContext *traversableExpression();
     std::vector<EndOfStatementContext *> endOfStatement();
     EndOfStatementContext* endOfStatement(size_t i);
     std::vector<BlockContext *> block();
@@ -1021,8 +1022,6 @@ public:
     virtual size_t getRuleIndex() const override;
     PrimaryContext *primary();
     GlobalFunctionInvocationContext *globalFunctionInvocation();
-    AssociativeArrayInitializerContext *associativeArrayInitializer();
-    ArrayInitializerContext *arrayInitializer();
     std::vector<ExpressionContext *> expression();
     ExpressionContext* expression(size_t i);
     antlr4::tree::TerminalNode *ADD();
@@ -1072,6 +1071,42 @@ public:
 
   ExpressionContext* expression();
   ExpressionContext* expression(int precedence);
+  class  TraversableExpressionContext : public antlr4::ParserRuleContext {
+  public:
+    TraversableExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    ExpressionContext *expression();
+    ArrayInitializerContext *arrayInitializer();
+    AssociativeArrayInitializerContext *associativeArrayInitializer();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  TraversableExpressionContext* traversableExpression();
+
+  class  AssignableExpressionContext : public antlr4::ParserRuleContext {
+  public:
+    AssignableExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    ExpressionContext *expression();
+    ArrayInitializerContext *arrayInitializer();
+    AssociativeArrayInitializerContext *associativeArrayInitializer();
+    AnonymousFunctionDeclarationContext *anonymousFunctionDeclaration();
+    AnonymousSubDeclarationContext *anonymousSubDeclaration();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  AssignableExpressionContext* assignableExpression();
+
   class  GlobalFunctionInvocationContext : public antlr4::ParserRuleContext {
   public:
     GlobalFunctionInvocationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -1149,25 +1184,6 @@ public:
   };
 
   LiteralContext* literal();
-
-  class  AssignableExpressionContext : public antlr4::ParserRuleContext {
-  public:
-    AssignableExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    ExpressionContext *expression();
-    ArrayInitializerContext *arrayInitializer();
-    AssociativeArrayInitializerContext *associativeArrayInitializer();
-    AnonymousFunctionDeclarationContext *anonymousFunctionDeclaration();
-    AnonymousSubDeclarationContext *anonymousSubDeclaration();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-   
-  };
-
-  AssignableExpressionContext* assignableExpression();
 
   class  NumberLiteralContext : public antlr4::ParserRuleContext {
   public:
