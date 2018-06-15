@@ -19,10 +19,6 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitComponent(BrightScriptParser::ComponentContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual antlrcpp::Any visitComponentHead(BrightScriptParser::ComponentHeadContext *ctx) override {
     return visitChildren(ctx);
   }

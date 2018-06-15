@@ -37,27 +37,27 @@ public:
   };
 
   enum {
-    RuleStartRule = 0, RuleComponent = 1, RuleComponentHead = 2, RuleComponentHeadElement = 3, 
-    RuleComponentBody = 4, RuleComponentBodyElement = 5, RuleBlock = 6, 
-    RuleBlockStatement = 7, RuleArrayInitializer = 8, RuleAssociativeArrayInitializer = 9, 
-    RuleAssociativeElementInitializer = 10, RuleConditionalCompilationStatement = 11, 
-    RuleConditionalCompilationConstStatement = 12, RuleConditionalCompilationErrorStatement = 13, 
-    RuleConditionalCompilationIfThenElseStatement = 14, RuleConditionalCompilationIfBlockStatement = 15, 
-    RuleConditionalCompilationIfElseIfBlockStatement = 16, RuleConditionalCompilationIfElseBlockStatement = 17, 
-    RuleDimStatement = 18, RuleEndStatement = 19, RuleExitStatement = 20, 
-    RuleForStatement = 21, RuleForEachStatement = 22, RuleGotoStatement = 23, 
-    RuleIfThenElseStatement = 24, RuleIfSingleLineStatement = 25, RuleIfBlockStatement = 26, 
-    RuleIfElseIfBlockStatement = 27, RuleIfElseBlockStatement = 28, RuleLabelStatement = 29, 
-    RuleLibraryStatement = 30, RuleNextStatement = 31, RulePrintStatement = 32, 
-    RuleReturnStatement = 33, RuleStopStatement = 34, RuleWhileStatement = 35, 
-    RuleAnonymousFunctionDeclaration = 36, RuleFunctionDeclaration = 37, 
-    RuleAnonymousSubDeclaration = 38, RuleSubDeclaration = 39, RuleParameterList = 40, 
-    RuleParameter = 41, RuleBaseType = 42, RuleExpressionList = 43, RuleExpression = 44, 
-    RuleTraversableExpression = 45, RuleAssignableExpression = 46, RuleGlobalFunctionInvocation = 47, 
-    RuleGlobalFunction = 48, RulePrimary = 49, RuleLiteral = 50, RuleNumberLiteral = 51, 
-    RuleStringLiteral = 52, RuleBooleanLiteral = 53, RuleInvalidLiteral = 54, 
-    RuleIdentifier = 55, RuleUntypedIdentifier = 56, RuleReservedWord = 57, 
-    RuleComment = 58, RuleEndOfLine = 59, RuleEndOfStatement = 60
+    RuleStartRule = 0, RuleComponentHead = 1, RuleComponentHeadElement = 2, 
+    RuleComponentBody = 3, RuleComponentBodyElement = 4, RuleBlock = 5, 
+    RuleBlockStatement = 6, RuleArrayInitializer = 7, RuleAssociativeArrayInitializer = 8, 
+    RuleAssociativeElementInitializer = 9, RuleConditionalCompilationStatement = 10, 
+    RuleConditionalCompilationConstStatement = 11, RuleConditionalCompilationErrorStatement = 12, 
+    RuleConditionalCompilationIfThenElseStatement = 13, RuleConditionalCompilationIfBlockStatement = 14, 
+    RuleConditionalCompilationIfElseIfBlockStatement = 15, RuleConditionalCompilationIfElseBlockStatement = 16, 
+    RuleDimStatement = 17, RuleEndStatement = 18, RuleExitStatement = 19, 
+    RuleForStatement = 20, RuleForEachStatement = 21, RuleGotoStatement = 22, 
+    RuleIfThenElseStatement = 23, RuleIfSingleLineStatement = 24, RuleIfBlockStatement = 25, 
+    RuleIfElseIfBlockStatement = 26, RuleIfElseBlockStatement = 27, RuleLabelStatement = 28, 
+    RuleLibraryStatement = 29, RuleNextStatement = 30, RulePrintStatement = 31, 
+    RuleReturnStatement = 32, RuleStopStatement = 33, RuleWhileStatement = 34, 
+    RuleAnonymousFunctionDeclaration = 35, RuleFunctionDeclaration = 36, 
+    RuleAnonymousSubDeclaration = 37, RuleSubDeclaration = 38, RuleParameterList = 39, 
+    RuleParameter = 40, RuleBaseType = 41, RuleExpressionList = 42, RuleExpression = 43, 
+    RuleTraversableExpression = 44, RuleAssignableExpression = 45, RuleGlobalFunctionInvocation = 46, 
+    RuleGlobalFunction = 47, RulePrimary = 48, RuleLiteral = 49, RuleNumberLiteral = 50, 
+    RuleStringLiteral = 51, RuleBooleanLiteral = 52, RuleInvalidLiteral = 53, 
+    RuleIdentifier = 54, RuleUntypedIdentifier = 55, RuleReservedWord = 56, 
+    RuleComment = 57, RuleEndOfLine = 58, RuleEndOfStatement = 59
   };
 
   BrightScriptParser(antlr4::TokenStream *input);
@@ -71,7 +71,6 @@ public:
 
 
   class StartRuleContext;
-  class ComponentContext;
   class ComponentHeadContext;
   class ComponentHeadElementContext;
   class ComponentBodyContext;
@@ -136,8 +135,11 @@ public:
   public:
     StartRuleContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    ComponentContext *component();
     antlr4::tree::TerminalNode *EOF();
+    std::vector<ComponentHeadContext *> componentHead();
+    ComponentHeadContext* componentHead(size_t i);
+    std::vector<ComponentBodyContext *> componentBody();
+    ComponentBodyContext* componentBody(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -147,23 +149,6 @@ public:
   };
 
   StartRuleContext* startRule();
-
-  class  ComponentContext : public antlr4::ParserRuleContext {
-  public:
-    ComponentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    ComponentBodyContext *componentBody();
-    std::vector<ComponentHeadContext *> componentHead();
-    ComponentHeadContext* componentHead(size_t i);
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-   
-  };
-
-  ComponentContext* component();
 
   class  ComponentHeadContext : public antlr4::ParserRuleContext {
   public:

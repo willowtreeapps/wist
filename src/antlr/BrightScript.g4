@@ -1,11 +1,7 @@
 grammar BrightScript;
 
 startRule
-    : component EOF
-    ;
-
-component
-    : componentHead* componentBody
+    : componentHead* componentBody* EOF
     ;
 
 componentHead

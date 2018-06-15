@@ -17,9 +17,6 @@ public:
   virtual void enterStartRule(BrightScriptParser::StartRuleContext *ctx) = 0;
   virtual void exitStartRule(BrightScriptParser::StartRuleContext *ctx) = 0;
 
-  virtual void enterComponent(BrightScriptParser::ComponentContext *ctx) = 0;
-  virtual void exitComponent(BrightScriptParser::ComponentContext *ctx) = 0;
-
   virtual void enterComponentHead(BrightScriptParser::ComponentHeadContext *ctx) = 0;
   virtual void exitComponentHead(BrightScriptParser::ComponentHeadContext *ctx) = 0;
 
