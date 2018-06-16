@@ -990,7 +990,8 @@ BrightScriptParser::ArrayInitializerContext* BrightScriptParser::arrayInitialize
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << BrightScriptParser::CREATEOBJECT)
+      ((1ULL << _la) & ((1ULL << BrightScriptParser::BOX)
+      | (1ULL << BrightScriptParser::CREATEOBJECT)
       | (1ULL << BrightScriptParser::EVAL)
       | (1ULL << BrightScriptParser::FALSE)
       | (1ULL << BrightScriptParser::GETGLOBALAA)
@@ -1015,6 +1016,7 @@ BrightScriptParser::ArrayInitializerContext* BrightScriptParser::arrayInitialize
       setState(235);
       _errHandler->sync(this);
       switch (_input->LA(1)) {
+        case BrightScriptParser::BOX:
         case BrightScriptParser::CREATEOBJECT:
         case BrightScriptParser::EVAL:
         case BrightScriptParser::FALSE:
@@ -1894,7 +1896,8 @@ BrightScriptParser::ConditionalCompilationIfBlockStatementContext* BrightScriptP
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << BrightScriptParser::CREATEOBJECT)
+      ((1ULL << _la) & ((1ULL << BrightScriptParser::BOX)
+      | (1ULL << BrightScriptParser::CREATEOBJECT)
       | (1ULL << BrightScriptParser::DIM)
       | (1ULL << BrightScriptParser::END)
       | (1ULL << BrightScriptParser::EXIT)
@@ -2109,7 +2112,8 @@ BrightScriptParser::ConditionalCompilationIfElseIfBlockStatementContext* BrightS
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << BrightScriptParser::CREATEOBJECT)
+      ((1ULL << _la) & ((1ULL << BrightScriptParser::BOX)
+      | (1ULL << BrightScriptParser::CREATEOBJECT)
       | (1ULL << BrightScriptParser::DIM)
       | (1ULL << BrightScriptParser::END)
       | (1ULL << BrightScriptParser::EXIT)
@@ -2306,7 +2310,8 @@ BrightScriptParser::ConditionalCompilationIfElseBlockStatementContext* BrightScr
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << BrightScriptParser::CREATEOBJECT)
+      ((1ULL << _la) & ((1ULL << BrightScriptParser::BOX)
+      | (1ULL << BrightScriptParser::CREATEOBJECT)
       | (1ULL << BrightScriptParser::DIM)
       | (1ULL << BrightScriptParser::END)
       | (1ULL << BrightScriptParser::EXIT)
@@ -3929,7 +3934,8 @@ BrightScriptParser::PrintStatementContext* BrightScriptParser::printStatement() 
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << BrightScriptParser::CREATEOBJECT)
+      ((1ULL << _la) & ((1ULL << BrightScriptParser::BOX)
+      | (1ULL << BrightScriptParser::CREATEOBJECT)
       | (1ULL << BrightScriptParser::EVAL)
       | (1ULL << BrightScriptParser::FALSE)
       | (1ULL << BrightScriptParser::GETGLOBALAA)
@@ -4047,7 +4053,8 @@ BrightScriptParser::ReturnStatementContext* BrightScriptParser::returnStatement(
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << BrightScriptParser::CREATEOBJECT)
+      ((1ULL << _la) & ((1ULL << BrightScriptParser::BOX)
+      | (1ULL << BrightScriptParser::CREATEOBJECT)
       | (1ULL << BrightScriptParser::EVAL)
       | (1ULL << BrightScriptParser::FALSE)
       | (1ULL << BrightScriptParser::FUNCTION)
@@ -5579,6 +5586,7 @@ BrightScriptParser::ExpressionContext* BrightScriptParser::expression(int preced
         break;
       }
 
+      case BrightScriptParser::BOX:
       case BrightScriptParser::CREATEOBJECT:
       case BrightScriptParser::EVAL:
       case BrightScriptParser::GETGLOBALAA:
@@ -5860,7 +5868,8 @@ BrightScriptParser::ExpressionContext* BrightScriptParser::expression(int preced
 
           _la = _input->LA(1);
           if ((((_la & ~ 0x3fULL) == 0) &&
-            ((1ULL << _la) & ((1ULL << BrightScriptParser::CREATEOBJECT)
+            ((1ULL << _la) & ((1ULL << BrightScriptParser::BOX)
+            | (1ULL << BrightScriptParser::CREATEOBJECT)
             | (1ULL << BrightScriptParser::EVAL)
             | (1ULL << BrightScriptParser::FALSE)
             | (1ULL << BrightScriptParser::GETGLOBALAA)
@@ -6005,6 +6014,7 @@ BrightScriptParser::TraversableExpressionContext* BrightScriptParser::traversabl
     setState(767);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
+      case BrightScriptParser::BOX:
       case BrightScriptParser::CREATEOBJECT:
       case BrightScriptParser::EVAL:
       case BrightScriptParser::FALSE:
@@ -6121,6 +6131,7 @@ BrightScriptParser::AssignableExpressionContext* BrightScriptParser::assignableE
     setState(774);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
+      case BrightScriptParser::BOX:
       case BrightScriptParser::CREATEOBJECT:
       case BrightScriptParser::EVAL:
       case BrightScriptParser::FALSE:
@@ -6255,7 +6266,8 @@ BrightScriptParser::GlobalFunctionInvocationContext* BrightScriptParser::globalF
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << BrightScriptParser::CREATEOBJECT)
+      ((1ULL << _la) & ((1ULL << BrightScriptParser::BOX)
+      | (1ULL << BrightScriptParser::CREATEOBJECT)
       | (1ULL << BrightScriptParser::EVAL)
       | (1ULL << BrightScriptParser::FALSE)
       | (1ULL << BrightScriptParser::GETGLOBALAA)
@@ -6295,6 +6307,10 @@ BrightScriptParser::GlobalFunctionInvocationContext* BrightScriptParser::globalF
 
 BrightScriptParser::GlobalFunctionContext::GlobalFunctionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* BrightScriptParser::GlobalFunctionContext::BOX() {
+  return getToken(BrightScriptParser::BOX, 0);
 }
 
 tree::TerminalNode* BrightScriptParser::GlobalFunctionContext::CREATEOBJECT() {
@@ -6371,7 +6387,8 @@ BrightScriptParser::GlobalFunctionContext* BrightScriptParser::globalFunction() 
     setState(783);
     _la = _input->LA(1);
     if (!((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & ((1ULL << BrightScriptParser::CREATEOBJECT)
+      ((1ULL << _la) & ((1ULL << BrightScriptParser::BOX)
+      | (1ULL << BrightScriptParser::CREATEOBJECT)
       | (1ULL << BrightScriptParser::EVAL)
       | (1ULL << BrightScriptParser::GETGLOBALAA)
       | (1ULL << BrightScriptParser::GETLASTRUNCOMPILEERROR)
@@ -7785,7 +7802,7 @@ BrightScriptParser::Initializer::Initializer() {
     0x2, 0x27, 0x27, 0x5d, 0x60, 0x3, 0x2, 0x61, 0x62, 0x4, 0x2, 0x59, 0x59, 
     0x63, 0x67, 0x4, 0x2, 0x3, 0x3, 0x2c, 0x2c, 0x4, 0x2, 0x4d, 0x4d, 0x5a, 
     0x5a, 0x3, 0x2, 0x4e, 0x4f, 0x4, 0x2, 0x59, 0x59, 0x68, 0x6e, 0x9, 0x2, 
-    0x7, 0x7, 0x15, 0x15, 0x1a, 0x1c, 0x31, 0x31, 0x34, 0x34, 0x36, 0x36, 
+    0x6, 0x7, 0x15, 0x15, 0x1a, 0x1c, 0x31, 0x31, 0x34, 0x34, 0x36, 0x36, 
     0x3b, 0x3b, 0x3, 0x2, 0x3e, 0x3f, 0x4, 0x2, 0x16, 0x16, 0x39, 0x39, 
     0xc, 0x2, 0x3, 0x3, 0x6, 0x8, 0xb, 0x16, 0x18, 0x1e, 0x23, 0x24, 0x26, 
     0x26, 0x28, 0x29, 0x2b, 0x33, 0x35, 0x39, 0x3b, 0x3c, 0x2, 0x3a8, 0x2, 

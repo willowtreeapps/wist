@@ -1116,6 +1116,7 @@ public:
   public:
     GlobalFunctionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *BOX();
     antlr4::tree::TerminalNode *CREATEOBJECT();
     antlr4::tree::TerminalNode *EVAL();
     antlr4::tree::TerminalNode *GETLASTRUNCOMPILEERROR();

@@ -241,7 +241,8 @@ globalFunctionInvocation
     ;
 
 globalFunction
-    : CREATEOBJECT
+    : BOX
+    | CREATEOBJECT
     | EVAL
     | GETLASTRUNCOMPILEERROR
     | GETGLOBALAA
