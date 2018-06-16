@@ -5278,12 +5278,12 @@ BrightScriptParser::ExpressionListContext::ExpressionListContext(ParserRuleConte
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<BrightScriptParser::ExpressionContext *> BrightScriptParser::ExpressionListContext::expression() {
-  return getRuleContexts<BrightScriptParser::ExpressionContext>();
+std::vector<BrightScriptParser::TraversableExpressionContext *> BrightScriptParser::ExpressionListContext::traversableExpression() {
+  return getRuleContexts<BrightScriptParser::TraversableExpressionContext>();
 }
 
-BrightScriptParser::ExpressionContext* BrightScriptParser::ExpressionListContext::expression(size_t i) {
-  return getRuleContext<BrightScriptParser::ExpressionContext>(i);
+BrightScriptParser::TraversableExpressionContext* BrightScriptParser::ExpressionListContext::traversableExpression(size_t i) {
+  return getRuleContext<BrightScriptParser::TraversableExpressionContext>(i);
 }
 
 std::vector<tree::TerminalNode *> BrightScriptParser::ExpressionListContext::COMMA() {
@@ -5330,7 +5330,7 @@ BrightScriptParser::ExpressionListContext* BrightScriptParser::expressionList() 
   try {
     enterOuterAlt(_localctx, 1);
     setState(705);
-    expression(0);
+    traversableExpression();
     setState(710);
     _errHandler->sync(this);
     _la = _input->LA(1);
@@ -5338,7 +5338,7 @@ BrightScriptParser::ExpressionListContext* BrightScriptParser::expressionList() 
       setState(706);
       match(BrightScriptParser::COMMA);
       setState(707);
-      expression(0);
+      traversableExpression();
       setState(712);
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -5885,10 +5885,12 @@ BrightScriptParser::ExpressionContext* BrightScriptParser::expression(int preced
             | (1ULL << BrightScriptParser::STRING_LITERAL)
             | (1ULL << BrightScriptParser::INT_LITERAL)
             | (1ULL << BrightScriptParser::FLOAT_LITERAL)
-            | (1ULL << BrightScriptParser::IDENTIFIER))) != 0) || ((((_la - 82) & ~ 0x3fULL) == 0) &&
-            ((1ULL << (_la - 82)) & ((1ULL << (BrightScriptParser::OPEN_PARENTHESIS - 82))
-            | (1ULL << (BrightScriptParser::ADD - 82))
-            | (1ULL << (BrightScriptParser::SUBTRACT - 82)))) != 0)) {
+            | (1ULL << BrightScriptParser::IDENTIFIER))) != 0) || ((((_la - 78) & ~ 0x3fULL) == 0) &&
+            ((1ULL << (_la - 78)) & ((1ULL << (BrightScriptParser::OPEN_BRACKET - 78))
+            | (1ULL << (BrightScriptParser::OPEN_BRACE - 78))
+            | (1ULL << (BrightScriptParser::OPEN_PARENTHESIS - 78))
+            | (1ULL << (BrightScriptParser::ADD - 78))
+            | (1ULL << (BrightScriptParser::SUBTRACT - 78)))) != 0)) {
             setState(750);
             expressionList();
           }
@@ -6283,10 +6285,12 @@ BrightScriptParser::GlobalFunctionInvocationContext* BrightScriptParser::globalF
       | (1ULL << BrightScriptParser::STRING_LITERAL)
       | (1ULL << BrightScriptParser::INT_LITERAL)
       | (1ULL << BrightScriptParser::FLOAT_LITERAL)
-      | (1ULL << BrightScriptParser::IDENTIFIER))) != 0) || ((((_la - 82) & ~ 0x3fULL) == 0) &&
-      ((1ULL << (_la - 82)) & ((1ULL << (BrightScriptParser::OPEN_PARENTHESIS - 82))
-      | (1ULL << (BrightScriptParser::ADD - 82))
-      | (1ULL << (BrightScriptParser::SUBTRACT - 82)))) != 0)) {
+      | (1ULL << BrightScriptParser::IDENTIFIER))) != 0) || ((((_la - 78) & ~ 0x3fULL) == 0) &&
+      ((1ULL << (_la - 78)) & ((1ULL << (BrightScriptParser::OPEN_BRACKET - 78))
+      | (1ULL << (BrightScriptParser::OPEN_BRACE - 78))
+      | (1ULL << (BrightScriptParser::OPEN_PARENTHESIS - 78))
+      | (1ULL << (BrightScriptParser::ADD - 78))
+      | (1ULL << (BrightScriptParser::SUBTRACT - 78)))) != 0)) {
       setState(778);
       expressionList();
     }
@@ -8180,8 +8184,8 @@ BrightScriptParser::Initializer::Initializer() {
     0x2be, 0x7, 0x4, 0x2, 0x2, 0x2be, 0x2c0, 0x5, 0x54, 0x2b, 0x2, 0x2bf, 
     0x2bd, 0x3, 0x2, 0x2, 0x2, 0x2bf, 0x2c0, 0x3, 0x2, 0x2, 0x2, 0x2c0, 
     0x53, 0x3, 0x2, 0x2, 0x2, 0x2c1, 0x2c2, 0x9, 0x3, 0x2, 0x2, 0x2c2, 0x55, 
-    0x3, 0x2, 0x2, 0x2, 0x2c3, 0x2c8, 0x5, 0x58, 0x2d, 0x2, 0x2c4, 0x2c5, 
-    0x7, 0x56, 0x2, 0x2, 0x2c5, 0x2c7, 0x5, 0x58, 0x2d, 0x2, 0x2c6, 0x2c4, 
+    0x3, 0x2, 0x2, 0x2, 0x2c3, 0x2c8, 0x5, 0x5a, 0x2e, 0x2, 0x2c4, 0x2c5, 
+    0x7, 0x56, 0x2, 0x2, 0x2c5, 0x2c7, 0x5, 0x5a, 0x2e, 0x2, 0x2c6, 0x2c4, 
     0x3, 0x2, 0x2, 0x2, 0x2c7, 0x2ca, 0x3, 0x2, 0x2, 0x2, 0x2c8, 0x2c6, 
     0x3, 0x2, 0x2, 0x2, 0x2c8, 0x2c9, 0x3, 0x2, 0x2, 0x2, 0x2c9, 0x57, 0x3, 
     0x2, 0x2, 0x2, 0x2ca, 0x2c8, 0x3, 0x2, 0x2, 0x2, 0x2cb, 0x2cc, 0x8, 
