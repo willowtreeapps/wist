@@ -89,7 +89,7 @@ conditionalCompilationIfElseBlockStatement
     ;
 
 dimStatement
-    : DIM identifier OPEN_BRACKET parameterList CLOSE_BRACKET
+    : DIM identifier OPEN_BRACKET (INT_LITERAL COMMA?)* CLOSE_BRACKET
     ;
 
 endStatement

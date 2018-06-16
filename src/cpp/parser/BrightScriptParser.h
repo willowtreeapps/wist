@@ -482,8 +482,11 @@ public:
     antlr4::tree::TerminalNode *DIM();
     IdentifierContext *identifier();
     antlr4::tree::TerminalNode *OPEN_BRACKET();
-    ParameterListContext *parameterList();
     antlr4::tree::TerminalNode *CLOSE_BRACKET();
+    std::vector<antlr4::tree::TerminalNode *> INT_LITERAL();
+    antlr4::tree::TerminalNode* INT_LITERAL(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> COMMA();
+    antlr4::tree::TerminalNode* COMMA(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
