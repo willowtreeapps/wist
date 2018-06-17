@@ -111,7 +111,7 @@ Once your `.wistrc.json` has been configured to your liking. Invoke wist on your
 $ wist yourfile.brs
 ```
 
-## Wist format
+## Wist format (experimental)
 
 Wist format or `wist-fmt` is an opinionated code formatter built into Wist. It works by traversing your codes abstract syntax tree and reprinting it with the appropriate whitespace after. `wist-fmt` can be run in a pre-commit hook, or in your CI environments to ensure your codebase has a consistent code style.
 
