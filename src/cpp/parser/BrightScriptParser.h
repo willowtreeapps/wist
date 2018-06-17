@@ -992,8 +992,8 @@ public:
   public:
     ExpressionListContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    std::vector<TraversableExpressionContext *> traversableExpression();
-    TraversableExpressionContext* traversableExpression(size_t i);
+    std::vector<AssignableExpressionContext *> assignableExpression();
+    AssignableExpressionContext* assignableExpression(size_t i);
     std::vector<antlr4::tree::TerminalNode *> COMMA();
     antlr4::tree::TerminalNode* COMMA(size_t i);
 

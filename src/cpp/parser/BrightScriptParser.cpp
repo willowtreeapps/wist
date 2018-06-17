@@ -5307,12 +5307,12 @@ BrightScriptParser::ExpressionListContext::ExpressionListContext(ParserRuleConte
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<BrightScriptParser::TraversableExpressionContext *> BrightScriptParser::ExpressionListContext::traversableExpression() {
-  return getRuleContexts<BrightScriptParser::TraversableExpressionContext>();
+std::vector<BrightScriptParser::AssignableExpressionContext *> BrightScriptParser::ExpressionListContext::assignableExpression() {
+  return getRuleContexts<BrightScriptParser::AssignableExpressionContext>();
 }
 
-BrightScriptParser::TraversableExpressionContext* BrightScriptParser::ExpressionListContext::traversableExpression(size_t i) {
-  return getRuleContext<BrightScriptParser::TraversableExpressionContext>(i);
+BrightScriptParser::AssignableExpressionContext* BrightScriptParser::ExpressionListContext::assignableExpression(size_t i) {
+  return getRuleContext<BrightScriptParser::AssignableExpressionContext>(i);
 }
 
 std::vector<tree::TerminalNode *> BrightScriptParser::ExpressionListContext::COMMA() {
@@ -5359,7 +5359,7 @@ BrightScriptParser::ExpressionListContext* BrightScriptParser::expressionList() 
   try {
     enterOuterAlt(_localctx, 1);
     setState(713);
-    traversableExpression();
+    assignableExpression();
     setState(718);
     _errHandler->sync(this);
     _la = _input->LA(1);
@@ -5367,7 +5367,7 @@ BrightScriptParser::ExpressionListContext* BrightScriptParser::expressionList() 
       setState(714);
       match(BrightScriptParser::COMMA);
       setState(715);
-      traversableExpression();
+      assignableExpression();
       setState(720);
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -5901,6 +5901,7 @@ BrightScriptParser::ExpressionContext* BrightScriptParser::expression(int preced
             | (1ULL << BrightScriptParser::CREATEOBJECT)
             | (1ULL << BrightScriptParser::EVAL)
             | (1ULL << BrightScriptParser::FALSE)
+            | (1ULL << BrightScriptParser::FUNCTION)
             | (1ULL << BrightScriptParser::GETGLOBALAA)
             | (1ULL << BrightScriptParser::GETLASTRUNCOMPILEERROR)
             | (1ULL << BrightScriptParser::GETLASTRUNRUNTIMEERROR)
@@ -5908,6 +5909,7 @@ BrightScriptParser::ExpressionContext* BrightScriptParser::expression(int preced
             | (1ULL << BrightScriptParser::NOT)
             | (1ULL << BrightScriptParser::RUN)
             | (1ULL << BrightScriptParser::STRING)
+            | (1ULL << BrightScriptParser::SUB)
             | (1ULL << BrightScriptParser::TAB)
             | (1ULL << BrightScriptParser::TRUE)
             | (1ULL << BrightScriptParser::TYPE)
@@ -6301,6 +6303,7 @@ BrightScriptParser::GlobalFunctionInvocationContext* BrightScriptParser::globalF
       | (1ULL << BrightScriptParser::CREATEOBJECT)
       | (1ULL << BrightScriptParser::EVAL)
       | (1ULL << BrightScriptParser::FALSE)
+      | (1ULL << BrightScriptParser::FUNCTION)
       | (1ULL << BrightScriptParser::GETGLOBALAA)
       | (1ULL << BrightScriptParser::GETLASTRUNCOMPILEERROR)
       | (1ULL << BrightScriptParser::GETLASTRUNRUNTIMEERROR)
@@ -6308,6 +6311,7 @@ BrightScriptParser::GlobalFunctionInvocationContext* BrightScriptParser::globalF
       | (1ULL << BrightScriptParser::NOT)
       | (1ULL << BrightScriptParser::RUN)
       | (1ULL << BrightScriptParser::STRING)
+      | (1ULL << BrightScriptParser::SUB)
       | (1ULL << BrightScriptParser::TAB)
       | (1ULL << BrightScriptParser::TRUE)
       | (1ULL << BrightScriptParser::TYPE)
@@ -8220,8 +8224,8 @@ BrightScriptParser::Initializer::Initializer() {
     0x2c6, 0x7, 0x4, 0x2, 0x2, 0x2c6, 0x2c8, 0x5, 0x54, 0x2b, 0x2, 0x2c7, 
     0x2c5, 0x3, 0x2, 0x2, 0x2, 0x2c7, 0x2c8, 0x3, 0x2, 0x2, 0x2, 0x2c8, 
     0x53, 0x3, 0x2, 0x2, 0x2, 0x2c9, 0x2ca, 0x9, 0x3, 0x2, 0x2, 0x2ca, 0x55, 
-    0x3, 0x2, 0x2, 0x2, 0x2cb, 0x2d0, 0x5, 0x5a, 0x2e, 0x2, 0x2cc, 0x2cd, 
-    0x7, 0x56, 0x2, 0x2, 0x2cd, 0x2cf, 0x5, 0x5a, 0x2e, 0x2, 0x2ce, 0x2cc, 
+    0x3, 0x2, 0x2, 0x2, 0x2cb, 0x2d0, 0x5, 0x5c, 0x2f, 0x2, 0x2cc, 0x2cd, 
+    0x7, 0x56, 0x2, 0x2, 0x2cd, 0x2cf, 0x5, 0x5c, 0x2f, 0x2, 0x2ce, 0x2cc, 
     0x3, 0x2, 0x2, 0x2, 0x2cf, 0x2d2, 0x3, 0x2, 0x2, 0x2, 0x2d0, 0x2ce, 
     0x3, 0x2, 0x2, 0x2, 0x2d0, 0x2d1, 0x3, 0x2, 0x2, 0x2, 0x2d1, 0x57, 0x3, 
     0x2, 0x2, 0x2, 0x2d2, 0x2d0, 0x3, 0x2, 0x2, 0x2, 0x2d3, 0x2d4, 0x8, 

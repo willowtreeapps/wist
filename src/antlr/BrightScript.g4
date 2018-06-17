@@ -201,7 +201,7 @@ baseType
     ;
 
 expressionList
-    : traversableExpression (COMMA traversableExpression)*
+    : assignableExpression (COMMA assignableExpression)*
     ;
 
 expression
