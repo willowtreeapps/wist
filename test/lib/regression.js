@@ -1,7 +1,7 @@
-import test from 'ava';
-import cli from '../../src/js/cli';
-import fs from 'fs';
-import path from 'path';
+const test = require('ava');
+const cli = require('../../src/js/cli');
+const fs = require('fs');
+const path = require('path');
 
 test('Regression tests parse successfully', t => {
     process.chdir('./test/regression');
