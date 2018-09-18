@@ -22,7 +22,7 @@
     "test": "ava",
     "test:watch": "ava --watch"
   },
-  "main": "./lib/api.js",
+  "main": "./src/js/api.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/willowtreeapps/wist.git"

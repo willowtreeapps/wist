@@ -2,7 +2,7 @@
 
 const Linter = require('./linter');
 const CLIEngine = require('./cli-engine');
-const Parser = require('../parser/index');
+const Parser = require('../../dist/libwist');
 
 module.exports = {
     CLIEngine,
