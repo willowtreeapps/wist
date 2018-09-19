@@ -1,9 +1,9 @@
-const path = require('path'),
-    Rules = require('../../src/js/rules'),
-    test = require('ava');
+const path = require('path');
+const Rules = require('../../src/js/rules');
+const test = require('ava');
 
-const VALID_DIR = path.resolve(`${__dirname}/../fixtures/rules`),
-    INVALID_DIR = path.resolve(`${__dirname}/../fixtures/rules-invaliddir`);
+const VALID_DIR = path.resolve(`${__dirname}/../fixtures/rules`);
+const INVALID_DIR = path.resolve(`${__dirname}/../fixtures/rules-invaliddir`);
 
 let rules;
 
@@ -25,7 +25,7 @@ test('error is not thrown when given a valid rules directory', t => {
 
 test('rules.get for a valid rule returns an object', t => {
     rules.load(VALID_DIR);
-    
+
     const rule = rules.get('fixture-rule');
 
     t.is(typeof rule, 'object');
