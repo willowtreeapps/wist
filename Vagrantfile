@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     # Install dependencies
     apt update
-    apt install -y git cmake build-essential python nodejs npm
+    apt install -y git cmake build-essential python nodejs npm openjdk-8-jdk
     git clone https://github.com/juj/emsdk.git
 
     # Emscripten sdk installation sourced from here

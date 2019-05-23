@@ -15,8 +15,8 @@ EMFLAGS=  -s DISABLE_EXCEPTION_CATCHING=0 \
 					-s WASM=1 \
 					-s BINARYEN_ASYNC_COMPILATION=0 \
 					-s ALLOW_MEMORY_GROWTH=1 \
-					-s AGGRESSIVE_VARIABLE_ELIMINATION=1
-					
+					-s AGGRESSIVE_VARIABLE_ELIMINATION=1 \
+					-s EMBIND_STD_STRING_IS_UTF8=1
 emscripten:
 	$(CC) $(CPPFLAGS) $(SOURCES) $(CFLAGS) $(EMFLAGS) $(LDFLAGS) $(LIBS) --bind -o dist/libwist.bc
 	$(CC) $(CFLAGS) $(EMFLAGS) --bind dist/libwist.bc -s WASM=1 -o dist/libwist.js --pre-js scripts/pre.js

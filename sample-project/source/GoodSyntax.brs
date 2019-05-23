@@ -7,6 +7,7 @@ REM
 REM Not all linting rules pass
 
 sub DefaultMain()
+    print "request failed �"
     #if debug = true
     print "debug mode enabled"
     #else

@@ -36,27 +36,6 @@ class BrightScriptEventGenerator : public BrightScriptBaseListener
             _emitter->call<val, string, TreeNode>("emit", "startRule:exit", buildTreeFromContext(ruleContext));
         }
     }
-    void enterComponentHead(BrightScriptParser::ComponentHeadContext *ctx) override 
-    {
-        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
-        {
-            _emitter->call<val, string, TreeNode>("emit", "componentHead:enter", buildTreeFromContext(ruleContext));
-        }
-    }
-    void exitComponentHead(BrightScriptParser::ComponentHeadContext *ctx) override 
-    {
-        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
-        {
-            _emitter->call<val, string, TreeNode>("emit", "componentHead:exit", buildTreeFromContext(ruleContext));
-        }
-    }
-    void enterComponentHeadElement(BrightScriptParser::ComponentHeadElementContext *ctx) override 
-    {
-        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
-        {
-            _emitter->call<val, string, TreeNode>("emit", "componentHeadElement:enter", buildTreeFromContext(ruleContext));
-        }
-    }
     void exitComponentHeadElement(BrightScriptParser::ComponentHeadElementContext *ctx) override 
     {
         if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
@@ -85,11 +64,11 @@ class BrightScriptEventGenerator : public BrightScriptBaseListener
             _emitter->call<val, string, TreeNode>("emit", "componentBodyElement:enter", buildTreeFromContext(ruleContext));
         }
     }
-    void exitComponentBodyElement(BrightScriptParser::ComponentBodyElementContext *ctx) override 
+    void enterComponentHead(BrightScriptParser::ComponentHeadContext *ctx) override 
     {
         if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
         {
-            _emitter->call<val, string, TreeNode>("emit", "componentBodyElement:exit", buildTreeFromContext(ruleContext));
+            _emitter->call<val, string, TreeNode>("emit", "componentHead:enter", buildTreeFromContext(ruleContext));
         }
     }
     void enterBlock(BrightScriptParser::BlockContext *ctx) override 
@@ -645,18 +624,18 @@ class BrightScriptEventGenerator : public BrightScriptBaseListener
             _emitter->call<val, string, TreeNode>("emit", "traversableExpression:enter", buildTreeFromContext(ruleContext));
         }
     }
+    void exitComponentHead(BrightScriptParser::ComponentHeadContext *ctx) override 
+    {
+        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
+        {
+            _emitter->call<val, string, TreeNode>("emit", "componentHead:exit", buildTreeFromContext(ruleContext));
+        }
+    }
     void exitTraversableExpression(BrightScriptParser::TraversableExpressionContext *ctx) override 
     {
         if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
         {
             _emitter->call<val, string, TreeNode>("emit", "traversableExpression:exit", buildTreeFromContext(ruleContext));
-        }
-    }
-    void enterAssignableExpression(BrightScriptParser::AssignableExpressionContext *ctx) override 
-    {
-        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
-        {
-            _emitter->call<val, string, TreeNode>("emit", "assignableExpression:enter", buildTreeFromContext(ruleContext));
         }
     }
     void exitAssignableExpression(BrightScriptParser::AssignableExpressionContext *ctx) override 
@@ -874,6 +853,27 @@ class BrightScriptEventGenerator : public BrightScriptBaseListener
         if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
         {
             _emitter->call<val, string, TreeNode>("emit", "everyRule:exit", buildTreeFromContext(ruleContext));
+        }
+    }
+    void enterComponentHeadElement(BrightScriptParser::ComponentHeadElementContext *ctx) override 
+    {
+        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
+        {
+            _emitter->call<val, string, TreeNode>("emit", "componentHeadElement:enter", buildTreeFromContext(ruleContext));
+        }
+    }
+    void exitComponentBodyElement(BrightScriptParser::ComponentBodyElementContext *ctx) override 
+    {
+        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
+        {
+            _emitter->call<val, string, TreeNode>("emit", "componentBodyElement:exit", buildTreeFromContext(ruleContext));
+        }
+    }
+    void enterAssignableExpression(BrightScriptParser::AssignableExpressionContext *ctx) override 
+    {
+        if (ParserRuleContext *ruleContext = dynamic_cast<ParserRuleContext *>(ctx))
+        {
+            _emitter->call<val, string, TreeNode>("emit", "assignableExpression:enter", buildTreeFromContext(ruleContext));
         }
     }
   
