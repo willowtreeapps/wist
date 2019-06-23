@@ -1,6 +1,7 @@
 # Wist
 
 <p align="center">
+    <img width="400px" height="250px" src="artwork/wist_2.0.gif">
     <img width="200px" height="200px" src="https://user-images.githubusercontent.com/2018617/40627339-63aa1270-628c-11e8-8418-5b0eb88d68e1.png"/>
 </p>
 
